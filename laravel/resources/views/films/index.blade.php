@@ -18,7 +18,7 @@
         <div class="col-7 col-lg-4">
             <label class="visually-hidden" for="ka-quality">Качество</label>
             <select id="ka-quality" name="quality" class="form-select">
-                <option value="">Все качества ({{ $qualities->count() }})</option>
+                <option value="">Все качества</option>
                 @foreach($qualities as $q)
                     <option @selected(($filters['quality'] ?? '') === $q)>{{ $q }}</option>
                 @endforeach
