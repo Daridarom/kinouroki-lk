@@ -12,11 +12,12 @@
         </button>
     </div>
     <li class="nav-item {{ request()->routeIs('news.*') ? 'active' : '' }}"><a class="nav-link align-items-center d-flex" href="{{ route('news.index') }}">Новости</a></li>
-    <li class="nav-item "><a class="nav-link" href="{{ $prod }}/users">Личный кабинет</a></li>
-    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="{{ $prod }}/practies">Социальные практики</a></li>
-    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="{{ $prod }}/initiatives"> Инициативы </a></li>
-    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="{{ $prod }}/statistics/activities">Статистика</a></li>
-    <li class="nav-item {{ request()->routeIs('films.*') ? 'active' : '' }}">
+    <li class="nav-item "><a class="nav-link" href="{{ route('cabinet.profile') }}">Личный кабинет</a></li>
+    <li class="nav-item {{ request()->routeIs('cabinet.practices*') ? 'active' : '' }}"><a class="nav-link align-items-center d-flex" href="{{ route('cabinet.practices') }}">Социальные практики</a></li>
+    <li class="nav-item {{ request()->routeIs('cabinet.initiatives*') ? 'active' : '' }}"><a class="nav-link align-items-center d-flex" href="{{ route('cabinet.initiatives') }}"> Инициативы </a></li>
+    <li class="nav-item {{ request()->routeIs('cabinet.statistics') ? 'active' : '' }}"><a class="nav-link align-items-center d-flex" href="{{ route('cabinet.statistics', 'activities') }}">Статистика</a></li>
+    <li class="nav-item"><a class="nav-link align-items-center d-flex" href="{{ route('news.index') }}"> Акции </a></li>
+    <li class="nav-item {{ request()->routeIs('films.*', 'cabinet.lesson*') ? 'active' : '' }}">
         <a class="nav-link align-items-center d-flex" href="{{ route('films.index') }}">Киноуроки</a>
         @if(request()->routeIs('films.*'))
         <div class="list-group my-3 shadow">

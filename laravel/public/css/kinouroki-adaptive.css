@@ -97,3 +97,55 @@
   .font-size-28 { font-size: 1.4rem !important; }
 }
 .ka-cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* ==========================================================================
+   6. Страницы кабинета: профиль, социальные практики, киноуроки, статистика
+   ========================================================================== */
+
+/* Длинные строки без пробелов (имена файлов «МР_…_фильм_….pdf», адреса, ссылки)
+   на проде выходят за край экрана. */
+.ka-break { overflow-wrap: anywhere; word-break: break-word; }
+.main_auth .container { overflow-wrap: break-word; }
+
+/* Текст в 2 строки с многоточием — вместо text-truncate в одну строку */
+.ka-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Кнопка «Смотреть все новости...»: на проде col-lg-2 — на телефоне на всю ширину и с переносом */
+.ka-btn-auto { white-space: normal; }
+@media (max-width: 575.98px) { .ka-btn-auto { width: 100%; } }
+
+/* Точка «в сети» у фото профиля: на проде — абсолютные отступы 120px/-50px, при другом размере фото уезжает */
+.ka-online-dot { position: absolute; right: 18px; bottom: 6px; }
+
+/* Метки качества («Ответственность за свои поступки перед другими людьми») — перенос вместо вылета за карточку */
+.ka-pill-wrap { white-space: normal; text-align: left; max-width: 100%; }
+
+/* Длинные пункты выпадающего списка «Название | Качество» */
+.ka-select-wrap { text-overflow: ellipsis; }
+
+/* Карточка практики: на проде внутри каждой карточки свой <style>; стили здесь */
+.practice-card h4 { font-weight: 400; margin-bottom: .25rem; }
+.practies .card { transition: .2s; }
+.practies .card:hover { box-shadow: 0 0 .3125rem rgba(173, 181, 189, .5) !important; }
+
+/* Фильтр практик: на телефоне свёрнут под кнопку, на компьютере всегда открыт */
+.ka-filter-details > summary { list-style: none; }
+.ka-filter-details > summary::-webkit-details-marker { display: none; }
+@media (min-width: 768px) { .ka-filter-details > summary { display: none; } }
+
+/* Пагинация: на узком экране прячем дальние номера, чтобы строка не шире экрана */
+@media (max-width: 575.98px) {
+  .ka-pagination .ka-page-far:nth-child(n+5) { display: none; }
+  .ka-pagination .page-link { padding: .375rem .6rem; }
+}
+
+/* Пустые списки */
+.ka-empty-state { max-width: 560px; }
+
+/* Таблицы статистики — горизонтальная прокрутка внутри блока, а не обрезка */
+.ka-table { min-width: 640px; }
+.ka-table th { white-space: nowrap; font-weight: 500; }
+@media (max-width: 575.98px) {
+  .statistics-section .font-size-36 { font-size: 1.75rem !important; }
+  .statistics-section .font-size-24 { font-size: 1.15rem !important; }
+}

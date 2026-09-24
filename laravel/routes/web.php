@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CabinetController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
@@ -20,7 +21,18 @@ foreach (['about', 'faq', 'documents', 'research', 'webinars', 'video' => 'video
     Route::get('/'.$uri, fn () => app(PageController::class)->show($key))->name('pages.'.$key);
 }
 
+// Кабинет (данные — примеры, см. CabinetController)
+Route::get('/users/0', [CabinetController::class, 'profile'])->name('cabinet.profile');
+Route::get('/practies', [CabinetController::class, 'practices'])->name('cabinet.practices');
+Route::get('/practies/user/0', fn () => app(CabinetController::class)->empty('Мои социальные практики'))->name('cabinet.practices.user');
+Route::get('/practices/draft', fn () => app(CabinetController::class)->empty('Черновики практик'))->name('cabinet.practices.draft');
+Route::get('/initiatives', [CabinetController::class, 'initiatives'])->name('cabinet.initiatives');
+Route::get('/initiatives/draft', fn () => app(CabinetController::class)->empty('Черновики инициатив'))->name('cabinet.initiatives.draft');
+Route::get('/lessons', [CabinetController::class, 'lessons'])->name('cabinet.lessons');
+Route::get('/lessons/{lesson}', [CabinetController::class, 'lesson'])->whereNumber('lesson')->name('cabinet.lesson');
+Route::get('/statistics/{section}', [CabinetController::class, 'statistics'])->name('cabinet.statistics');
+
 // Разделы, которые в копию не переносились, — на боевой сайт
-foreach (['practies', 'initiatives', 'statistics/activities', 'lessons', 'users', 'login', 'register'] as $uri) {
+foreach (['login', 'register'] as $uri) {
     Route::redirect('/'.$uri, config('kinouroki.prod_url').'/'.$uri);
 }

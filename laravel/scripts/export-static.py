@@ -24,12 +24,12 @@ try:
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
-    for d in ('css', 'js'):
+    for d in ('css', 'js', 'img'):
         shutil.copytree(APP / 'public' / d, OUT / d)
     (OUT / '.nojekyll').write_text('')
     (OUT / 'robots.txt').write_text('User-agent: *\nDisallow: /\n')
 
-    seen, queue = set(), ['/films', '/news']
+    seen, queue = set(), ['/films', '/news', '/users/0']
     link_re = re.compile(r'href="' + re.escape(ROOT_URL) + r'(/[^"#?]*)')
     while queue:
         path = queue.pop()
@@ -45,7 +45,7 @@ try:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(html)
         for p in link_re.findall(html):
-            if not p.startswith(('/css/', '/js/')) and p not in seen:
+            if not p.startswith(('/css/', '/js/', '/img/')) and p not in seen:
                 queue.append(p)
     # корень сайта → каталог фильмов
     (OUT / 'index.html').write_text(

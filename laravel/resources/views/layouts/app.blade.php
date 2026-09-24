@@ -38,8 +38,10 @@
                     <span class="ka-avatar me-2" aria-hidden="true">П</span><span class="d-none d-md-inline-block">{{ config('kinouroki.demo_user.name') }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end shadow">
-                    <li><a class="dropdown-item" href="{{ $prod }}/users">Личный кабинет</a></li>
-                    <li><a class="dropdown-item border-top mt-2 pt-2" href="{{ $prod }}/practies">Мои социальные практики</a></li>
+                    <li><a class="dropdown-item" href="{{ route('cabinet.profile') }}">Личный кабинет</a></li>
+                    <li><a class="dropdown-item border-top mt-2 pt-2" href="{{ route('cabinet.practices.user') }}">Мои социальные практики</a></li>
+                    <li><a class="dropdown-item" href="{{ route('cabinet.practices.draft') }}">Черновики практик</a></li>
+                    <li><a class="dropdown-item" href="{{ route('cabinet.initiatives.draft') }}">Черновики инициатив</a></li>
                 </ul>
             </li>
         </ul>

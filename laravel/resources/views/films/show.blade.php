@@ -29,7 +29,7 @@
         <div class="d-flex flex-column order-1 order-lg-2 ka-film-media">
             @if($film->lesson_id)
                 {{-- KINOUROKI-ADAPTIVE: главная кнопка видна сразу на телефоне --}}
-                <a class="btn btn-primary w-100 mt-3 d-lg-none" href="{{ config('kinouroki.prod_url') }}/lessons/{{ $film->lesson_id }}">Провести киноурок по фильму</a>
+                <a class="btn btn-primary w-100 mt-3 d-lg-none" href="{{ route('cabinet.lesson', $film->lesson_id) }}">Провести киноурок по фильму</a>
             @endif
             <nav class="mt-3">
                 {{-- KINOUROKI-ADAPTIVE: ka-tabs — вкладки прокручиваются вбок, а не переносятся в столбик --}}
@@ -47,7 +47,7 @@
                         <button class="nav-item nav-link text-muted" id="nav-tims-tab" data-bs-toggle="tab" data-bs-target="#nav-time" type="button" role="tab" aria-controls="nav-time" aria-selected="false"> Сроки </button>
                     @endif
                     @if($film->lesson_id)
-                        <a class="nav-item nav-link btn-seccondary bg-outline-primary text-primary d-none d-lg-block" href="{{ config('kinouroki.prod_url') }}/lessons/{{ $film->lesson_id }}" role="tab" aria-selected="false"> Провести киноурок по фильму </a>
+                        <a class="nav-item nav-link btn-seccondary bg-outline-primary text-primary d-none d-lg-block" href="{{ route('cabinet.lesson', $film->lesson_id) }}" role="tab" aria-selected="false"> Провести киноурок по фильму </a>
                     @endif
                 </div>
             </nav>
