@@ -89,6 +89,11 @@
     box.appendChild(b);
   });
 
+  /* ---------- 2a. Фильтр практик: на телефоне свёрнут ---------- */
+  document.querySelectorAll('.ka-filter-details').forEach(function (d) {
+    if (window.matchMedia('(max-width: 767.98px)').matches) d.removeAttribute('open');
+  });
+
   /* ---------- 3. Боковое меню: запасной вариант ---------- */
   var btn = document.getElementById('collapse-side-menu-btn');
   var menu = document.getElementById('side-menu');
