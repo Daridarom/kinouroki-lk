@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% from "_macros.html" import film_card %}
+{% block content %}
+<section class="hero">
+  <div>
+    <div class="eyebrow">Всероссийский народный проект</div>
+    <h1>Киноуроки в школах России</h1>
+    <p>Короткие художественные фильмы о дружбе, мужестве, чести и других качествах — с готовыми методичками для классного часа.</p>
+    <div class="hero-actions">
+      <a class="btn btn-accent" href="{{ root }}films/index.html">Выбрать фильм</a>
+      <a class="btn btn-ghost" href="{{ live }}/register">Зарегистрироваться</a>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>{{ films_total }}</b><span>фильмов</span></div>
+    <div class="stat"><b>93 421</b><span>социальная практика</span></div>
+    <div class="stat"><b>204 589</b><span>пользователей</span></div>
+  </div>
+</section>
+
+<div class="section-title"><h2>Как проходит киноурок</h2><a href="{{ root }}about.html">О проекте →</a></div>
+<div class="steps" style="margin-top:0">
+  <div class="step"><div class="num">1</div><h3>Просмотр</h3><p class="muted" style="margin:0">Класс смотрит профессиональный короткометражный фильм.</p></div>
+  <div class="step"><div class="num">2</div><h3>Обсуждение</h3><p class="muted" style="margin:0">Педагог ведёт разговор по методическим рекомендациям.</p></div>
+  <div class="step"><div class="num">3</div><h3>Социальная практика</h3><p class="muted" style="margin:0">Дети сами придумывают и делают полезное дело.</p></div>
+</div>
+
+<div class="section-title"><h2>Новые фильмы</h2><a href="{{ root }}films/index.html">Все {{ films_total }} фильмов →</a></div>
+<div class="films-grid">{% for f in films %}{{ film_card(f, root, stages) }}{% endfor %}</div>
+
+{% if news %}
+<div class="section-title"><h2>Новости</h2><a href="{{ root }}news/index.html">Все новости →</a></div>
+<div class="news-grid">
+  {% for n in news %}
+  <a class="news-card" href="{{ root }}news/{{ n.slug }}.html">
+    <div class="img"><img src="{{ live }}/storage/news/{{ n.img|urlencode }}" alt="" loading="lazy"></div>
+    <div class="body"><small class="muted">{{ n.date }}</small><div class="title">{{ n.title }}</div></div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="section-title"><h2>Педагогам</h2></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+  <a class="material" href="{{ root }}documents.html"><span class="ico">📄</span><span><b style="font-weight:500">Программа воспитания</b><small>и другие документы проекта</small></span></a>
+  <a class="material" href="{{ root }}research.html"><span class="ico">📊</span><span><b style="font-weight:500">Исследование</b><small>научное подтверждение эффективности</small></span></a>
+  <a class="material" href="{{ root }}faq.html"><span class="ico">💬</span><span><b style="font-weight:500">Вопросы и ответы</b><small>как присоединиться, где методички</small></span></a>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Новости — Киноуроки в школах России{% endblock %}
+{% block content %}
+<div class="page-head"><h1>Новости</h1></div>
+<div class="seg" id="newsCats" role="group" aria-label="Рубрика" style="margin-bottom:20px">
+  <button type="button" data-cat="" aria-pressed="true">Все</button>
+  {% for c in ["Важное", "Педагогам", "Акции", "В регионах", "О социальных практиках"] %}
+  <button type="button" data-cat="{{ c }}" aria-pressed="false">{{ c }}</button>
+  {% endfor %}
+</div>
+<div class="news-grid">
+  {% for n in news %}
+  <a class="news-card" href="{{ n.slug }}.html" data-cats="{{ n.cats|join('|') }}">
+    <div class="img"><img src="{{ live }}/storage/news/{{ n.img|urlencode }}" alt="" loading="lazy"></div>
+    <div class="body">
+      <small class="muted">{{ n.date }} · {{ n.cats|join(', ') }}</small>
+      <div class="title">{{ n.title }}</div>
+      <div class="excerpt">{{ n.body.split('\n\n')[0] }}</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+<p class="muted" style="margin-top:24px;font-size:14px">В макете {{ news|length }} последних новостей. Архив — на <a href="{{ live }}/news">боевом сайте</a>.</p>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  var seg = document.getElementById('newsCats');
+  if (!seg) return;
+  seg.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    seg.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    var cat = b.dataset.cat;
+    document.querySelectorAll('.news-card').forEach(function (c) {
+      c.classList.toggle('hidden', !!cat && c.dataset.cats.split('|').indexOf(cat) < 0);
+    });
+  });
+})();
+</script>
+{% endblock %}

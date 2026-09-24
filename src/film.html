@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% from "_macros.html" import film_card %}
+{% block title %}{{ f.title }} — фильм к киноуроку «{{ f.quality }}»{% endblock %}
+{% block description %}{{ f.lead[:160] }}{% endblock %}
+{% block content %}
+<nav class="crumbs" aria-label="Навигация"><a href="{{ root }}films/index.html">Фильмы</a> / {{ f.quality }}</nav>
+
+<!-- COMPONENT: film-hero (поля: видео фильма, трейлер, постер, название, качество, ступени, дата, кнопки) -->
+<section class="film-hero">
+  <div>
+    <div class="player" id="player" data-film="{{ f.video }}" data-teaser="{{ f.teaser }}">
+      <button type="button" class="player-cover" id="playerCover" aria-label="Смотреть фильм «{{ f.title }}»"
+              style="all:unset;cursor:pointer;display:block;width:100%;height:100%;position:relative">
+        <img src="{{ f.poster }}" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        <span style="position:absolute;inset:0;display:grid;place-items:center">
+          <span style="width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;font-size:28px;color:#1d2433;box-shadow:0 6px 24px rgba(0,0,0,.3)">▶</span>
+        </span>
+      </button>
+    </div>
+    <div class="player-tabs" role="group" aria-label="Что смотреть">
+      {% if f.video %}<button type="button" class="btn btn-sm btn-primary" data-src="film" aria-pressed="true">Фильм целиком</button>{% endif %}
+      {% if f.teaser %}<button type="button" class="btn btn-sm btn-ghost" data-src="teaser" aria-pressed="false">Трейлер</button>{% endif %}
+    </div>
+  </div>
+
+  <div class="film-side">
+    <h1>{{ f.title }}</h1>
+    <div class="chips">
+      <span class="chip chip-accent">Качество: {{ f.quality }}</span>
+      {% for key, name, grades in stages if key in f.stages %}<span class="chip chip-neutral">{{ name }} · {{ grades }}</span>{% endfor %}
+    </div>
+    {% if f.lead %}<p class="lead">{{ f.lead }}</p>{% endif %}
+    <div class="film-actions">
+      {% if f.lesson %}<a class="btn btn-primary btn-block" href="{{ live }}/lessons/{{ f.lesson }}">Провести киноурок по фильму</a>{% endif %}
+      {% if f.links %}<a class="btn btn-ghost btn-block" href="{{ f.links[0][1] }}" target="_blank" rel="noopener">⬇ Скачать фильм и методичку</a>{% endif %}
+    </div>
+    <dl class="facts">
+      {% if f.audience %}<dt>Для кого</dt><dd>{{ f.audience }}</dd>{% endif %}
+      {% if f.date %}<dt>Опубликован</dt><dd>{{ f.date }}</dd>{% endif %}
+      <dt>На боевом сайте</dt><dd><a href="{{ f.live }}">открыть оригинал ↗</a></dd>
+    </dl>
+  </div>
+</section>
+<!-- /COMPONENT: film-hero -->
+
+<div class="tabs" role="tablist" aria-label="Разделы фильма">
+  <button role="tab" id="t-lesson" aria-controls="p-lesson" aria-selected="true">К уроку</button>
+  <button role="tab" id="t-about" aria-controls="p-about" aria-selected="false">О фильме</button>
+  <button role="tab" id="t-materials" aria-controls="p-materials" aria-selected="false">Материалы <span class="muted">{{ f.links|length }}</span></button>
+  {% if f.photos %}<button role="tab" id="t-photos" aria-controls="p-photos" aria-selected="false">Фото</button>{% endif %}
+  {% if f.credits %}<button role="tab" id="t-credits" aria-controls="p-credits" aria-selected="false">Съёмки</button>{% endif %}
+</div>
+
+<section role="tabpanel" id="p-lesson" aria-labelledby="t-lesson">
+  <div class="concept">
+    <div class="panel"><h3>Понятие</h3><div class="big">{{ f.quality }}</div></div>
+    {% if f.antipode %}<div class="panel"><h3>Антипод</h3><div class="big">{{ f.antipode }}</div></div>{% endif %}
+  </div>
+  {% if f.definition %}<div class="panel" style="margin-top:16px"><h3 class="muted" style="font-size:14px;text-transform:uppercase;letter-spacing:.05em">Определение</h3><p style="margin:0">{{ f.definition }}</p></div>{% endif %}
+  {% if f.quote %}<div style="margin-top:16px"><blockquote>{{ f.quote }}</blockquote></div>{% endif %}
+  <p class="muted" style="margin-top:16px;font-size:14px">Три этапа киноурока: просмотр фильма → обсуждение по методичке → социальная практика класса.</p>
+</section>
+
+<section role="tabpanel" id="p-about" aria-labelledby="t-about" hidden>
+  <div class="prose">{% for p in f.paras %}<p>{{ p|replace('\n', ' ') }}</p>{% endfor %}</div>
+  <p class="muted" style="font-size:14px">Текст в макете сокращён — полное описание на <a href="{{ f.live }}">странице фильма на боевом сайте</a>.</p>
+</section>
+
+<section role="tabpanel" id="p-materials" aria-labelledby="t-materials" hidden>
+  <div class="materials">
+    {% for title, href, meta in f.links %}
+    <a class="material" href="{{ href }}" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">{{ '🎬' if loop.first else '📄' }}</span>
+      <span><b style="font-weight:500">{{ title }}</b><small>{{ meta }}</small></span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% if f.photos %}
+<section role="tabpanel" id="p-photos" aria-labelledby="t-photos" hidden>
+  <div class="gallery">{% for p in f.photos %}<a href="{{ p }}" target="_blank" rel="noopener"><img src="{{ p }}" alt="Кадр со съёмок фильма «{{ f.title }}»" loading="lazy"></a>{% endfor %}</div>
+  <p class="muted" style="font-size:14px">В макете — первые кадры. Все фото — на <a href="{{ f.live }}">боевом сайте</a>.</p>
+</section>
+{% endif %}
+
+{% if f.credits %}
+<section role="tabpanel" id="p-credits" aria-labelledby="t-credits" hidden>
+  <div class="panel credits">{{ f.credits }}</div>
+</section>
+{% endif %}
+
+{% if related %}
+<section class="related">
+  <div class="section-title"><h2>Ещё для этой ступени</h2><a href="{{ root }}films/index.html">Все фильмы →</a></div>
+  <div class="films-grid">{% for r in related %}{{ film_card(r, root, stages) }}{% endfor %}</div>
+</section>
+{% endif %}
+
+<nav style="display:flex;justify-content:space-between;gap:12px;margin-top:32px;flex-wrap:wrap" aria-label="Соседние фильмы">
+  {% if prev %}<a class="btn btn-ghost" href="{{ prev.slug }}.html">← {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+  {% if next %}<a class="btn btn-ghost" href="{{ next.slug }}.html">{{ next.title }} →</a>{% endif %}
+</nav>
+{% endblock %}
+{% block scripts %}<script src="{{ root }}assets/film.js"></script>{% endblock %}

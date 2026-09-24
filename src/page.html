@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "_macros.html" import paras %}
+{% block title %}{{ page.title }} — Киноуроки в школах России{% endblock %}
+{% block content %}
+<div class="page-head"><h1>{{ page.title }}</h1></div>
+{% set base = page.base or '' %}
+{% for s in page.sections %}
+  {% if s.type == 'text' %}
+    <section class="prose" style="margin-bottom:28px">
+      {% if s.title %}<h2>{{ s.title }}</h2>{% endif %}
+      {{ paras(s.text) }}
+    </section>
+  {% elif s.type == 'links' %}
+    <section style="margin-bottom:28px">
+      <h2>{{ s.title }} <span class="count">{{ s['items']|length }}</span></h2>
+      <div class="list">
+        {% for it in s['items'] %}
+        {% set href = it[1] %}
+        {% if href.startswith('~') %}{% set href = live ~ (base ~ href[1:])|urlencode %}{% elif href.startswith('/') %}{% set href = live ~ href|urlencode %}{% endif %}
+        <a class="list-item" href="{{ href }}" target="_blank" rel="noopener">
+          <span>{{ it[0] }}{% if it|length > 2 %}<br><small style="color:#b3261e">⚠ {{ it[2] }}</small>{% endif %}</span>
+          <small>{{ it[1].rsplit('.', 1)[-1]|upper if '.' in it[1][-6:] else '' }}</small>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% elif s.type == 'faq' %}
+    <section style="max-width:860px">
+      {% for q, a in s['items'] %}
+      <details class="faq"{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><div>{{ paras(a) }}</div></details>
+      {% endfor %}
+    </section>
+  {% elif s.type == 'list' %}
+    <div class="list">
+      {% for t, d, href in s['items'] %}<a class="list-item" href="{{ live }}{{ href }}"><span>{{ t }}</span><small>{{ d }}</small></a>{% endfor %}
+    </div>
+  {% elif s.type == 'cards' %}
+    <div class="news-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
+      {% for t, d, file, img in s['items'] %}
+      <a class="news-card" href="{{ live }}{{ (s.file_base ~ file[1:])|urlencode }}" target="_blank" rel="noopener">
+        <div class="img" style="aspect-ratio:3/4"><img src="{{ live }}{{ (s.img_base ~ img[1:])|urlencode }}" alt="Обложка журнала {{ t }}" loading="lazy"></div>
+        <div class="body"><small class="muted">{{ d }}</small><div class="title">{{ t }}</div></div>
+      </a>
+      {% endfor %}
+    </div>
+  {% elif s.type == 'note' %}
+    <p class="muted" style="margin-top:20px;font-size:14px">{{ s.text }}</p>
+  {% endif %}
+{% endfor %}
+{% endblock %}

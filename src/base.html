@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Киноуроки в школах России{% endblock %}</title>
+<meta name="description" content="{% block description %}Всероссийский народный проект «Киноуроки в школах России»: фильмы, методические материалы и социальные практики для воспитательной работы.{% endblock %}">
+<meta name="robots" content="noindex">
+<link rel="icon" href="{{ root }}assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{{ root }}assets/site.css">
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="proto-bar">Прототип для обсуждения улучшений. Данные взяты с lk.kinouroki.org 24.09.2026, вход и личный кабинет не работают.</div>
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="logo" href="{{ root }}index.html"><span class="logo-mark" aria-hidden="true">▶</span><span>Киноуроки</span></a>
+    <nav class="nav" id="nav" aria-label="Основное меню">
+      <a href="{{ root }}films/index.html" {% if active == 'films' %}aria-current="page"{% endif %}>Фильмы</a>
+      <a href="{{ live }}/lessons" title="Требует входа — открывается на боевом сайте">Киноуроки</a>
+      <a href="{{ live }}/practies" title="Раздел не переносился в макет">Соц. практики</a>
+      <a href="{{ root }}news/index.html" {% if active == 'news' %}aria-current="page"{% endif %}>Новости</a>
+      <a href="{{ root }}documents.html" {% if active == 'documents' %}aria-current="page"{% endif %}>Документы</a>
+      <div class="nav-more" id="navMore">
+        <button type="button" aria-expanded="false" aria-controls="navMoreList">Ещё ▾</button>
+        <div class="nav-more-list" id="navMoreList">
+          <a href="{{ root }}about.html" {% if active == 'about' %}aria-current="page"{% endif %}>О проекте</a>
+          <a href="{{ root }}research.html" {% if active == 'research' %}aria-current="page"{% endif %}>Исследование</a>
+          <a href="{{ root }}webinars.html" {% if active == 'webinars' %}aria-current="page"{% endif %}>Вебинары</a>
+          <a href="{{ root }}video.html" {% if active == 'video' %}aria-current="page"{% endif %}>Видеопрограммы</a>
+          <a href="{{ root }}journals.html" {% if active == 'journals' %}aria-current="page"{% endif %}>Журналы</a>
+          <a href="{{ root }}faq.html" {% if active == 'faq' %}aria-current="page"{% endif %}>Вопросы и ответы</a>
+          <a href="{{ root }}contacts.html" {% if active == 'contacts' %}aria-current="page"{% endif %}>Контакты</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-primary btn-sm btn-login" href="{{ live }}/login">Войти</a>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Меню">☰</button>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+  {% block content %}{% endblock %}
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <div><b>Киноуроки в школах России</b> — искусство на службе воспитания</div>
+      <div>8 800 444 54 58 · <a href="mailto:info@kinouroki.ru">info@kinouroki.ru</a></div>
+    </div>
+    <nav aria-label="Ссылки в подвале">
+      <a href="{{ root }}about.html">О нас</a>
+      <a href="{{ root }}contacts.html">Контакты и реквизиты</a>
+      <a href="{{ root }}faq.html">Вопросы и ответы</a>
+      <a href="https://t.me/kinouroki">Telegram</a>
+      <a href="https://vk.com/kinouroki">ВКонтакте</a>
+      <a href="https://www.youtube.com/channel/UCxi_N-CavXzEfbxIlWPfSkw">YouTube</a>
+    </nav>
+  </div>
+</footer>
+<script src="{{ root }}assets/site.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

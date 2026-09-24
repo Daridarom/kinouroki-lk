@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "_macros.html" import film_card %}
+{% block title %}Фильмы — Киноуроки в школах России{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Фильмы <span class="count">{{ films|length }}</span></h1>
+  <p class="muted" style="margin:0">Короткометражные фильмы с методичками к киноурокам. Бесплатно и без регистрации.</p>
+</div>
+
+<form class="filters" id="filters" role="search" onsubmit="return false">
+  <div class="filters-row">
+    <label class="search">
+      <span class="sr-only">Поиск по названию, качеству или описанию</span>
+      <input type="search" id="q" placeholder="Поиск: название, качество, слово" autocomplete="off">
+    </label>
+    <label>
+      <span class="sr-only">Качество</span>
+      <select class="ctl" id="quality">
+        <option value="">Все качества ({{ qualities|length }})</option>
+        {% for q in qualities %}<option>{{ q }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>
+      <span class="sr-only">Сортировка</span>
+      <select class="ctl" id="sort">
+        <option value="new">Сначала новые</option>
+        <option value="old">Сначала старые</option>
+        <option value="az">По алфавиту</option>
+      </select>
+    </label>
+  </div>
+  <div class="seg" id="stage" role="group" aria-label="Ступень обучения">
+    <button type="button" data-stage="" aria-pressed="true">Все классы</button>
+    {% for key, name, grades in stages %}
+    <button type="button" data-stage="{{ key }}" aria-pressed="false">{{ name }} <span class="muted">· {{ grades }}</span></button>
+    {% endfor %}
+  </div>
+  <div class="filters-meta">
+    <span id="found" aria-live="polite">Показано {{ films|length }} из {{ films|length }}</span>
+    <button type="button" class="linklike" id="reset" hidden>Сбросить фильтры</button>
+  </div>
+</form>
+
+<div class="films-grid" id="grid">
+  {% for f in films %}{{ film_card(f, root, stages) }}{% endfor %}
+</div>
+<div class="empty hidden" id="empty">
+  <p>По этим условиям фильмов нет.</p>
+  <button type="button" class="btn btn-ghost" id="reset2">Сбросить фильтры</button>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ root }}assets/films.js"></script>{% endblock %}

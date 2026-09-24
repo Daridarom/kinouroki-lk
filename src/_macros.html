@@ -1,0 +1,25 @@
+{% macro film_card(f, root, stages) -%}
+<!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
+<a class="film-card" href="{{ root }}films/{{ f.slug }}.html"
+   data-title="{{ f.title|lower }}" data-quality="{{ f.quality }}" data-q="{{ (f.title ~ ' ' ~ f.quality ~ ' ' ~ f.lead)|lower }}"
+   data-stages="{{ f.stages|join(' ') }}" data-year="{{ f.year }}" data-order="{{ f.order }}">
+  <div class="poster">
+    <img src="{{ f.poster }}" alt="" loading="lazy" decoding="async" width="480" height="270">
+    <span class="chip">{{ f.quality }}</span>
+    <span class="play" aria-hidden="true">▶</span>
+  </div>
+  <div class="body">
+    <div class="title">{{ f.title }}</div>
+    {% if f.lead %}<div class="desc">{{ f.lead }}</div>{% endif %}
+    <div class="meta">
+      {% for key, name, grades in stages if key in f.stages %}<span class="chip chip-neutral" title="{{ grades }}">{{ name }}</span>{% endfor %}
+      {% if f.year %}<span>{{ f.year }}</span>{% endif %}
+    </div>
+  </div>
+</a>
+<!-- /COMPONENT: film-card -->
+{%- endmacro %}
+
+{% macro paras(text) -%}
+{% for p in text.split('\n\n') if p.strip() %}<p>{{ p.strip()|replace('\n', ' ') }}</p>{% endfor %}
+{%- endmacro %}

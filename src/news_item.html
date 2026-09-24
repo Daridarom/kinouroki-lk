@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "_macros.html" import paras %}
+{% block title %}{{ n.title }} — Киноуроки{% endblock %}
+{% block content %}
+<nav class="crumbs"><a href="index.html">Новости</a> / {{ n.cats|join(', ') }}</nav>
+<article class="prose" style="max-width:820px">
+  <h1>{{ n.title }}</h1>
+  <p class="muted">{{ n.date }}</p>
+  <img src="{{ live }}/storage/news/{{ n.img|urlencode }}" alt="" style="border-radius:14px;margin:12px 0 20px;max-height:460px;width:100%;object-fit:cover">
+  {{ paras(n.body) }}
+  {% if n.links %}
+  <div class="materials" style="margin:20px 0">
+    {% for t, href in n.links %}<a class="material" href="{{ href }}" target="_blank" rel="noopener"><span class="ico">🔗</span><span><b style="font-weight:500">{{ t }}</b><small>{{ href.split('/')[2] }}</small></span></a>{% endfor %}
+  </div>
+  {% endif %}
+  {% if n.film %}<p><a class="btn btn-primary" href="../films/{{ n.film }}.html">Открыть фильм из новости</a></p>{% endif %}
+  <p class="muted" style="font-size:14px">Текст в макете сокращён. <a href="{{ live }}{{ n.live }}">Полная новость на боевом сайте ↗</a></p>
+</article>
+{% if latest %}
+<div class="section-title"><h2>Другие новости</h2></div>
+<div class="news-grid">
+  {% for x in latest %}
+  <a class="news-card" href="{{ x.slug }}.html"><div class="img"><img src="{{ live }}/storage/news/{{ x.img|urlencode }}" alt="" loading="lazy"></div><div class="body"><small class="muted">{{ x.date }}</small><div class="title">{{ x.title }}</div></div></a>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
