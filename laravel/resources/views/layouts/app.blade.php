@@ -19,7 +19,7 @@
         .Rubik-Light { font-family: Rubik-Light !important; }
     </style>
     {{-- KINOUROKI-ADAPTIVE: единственный новый CSS-файл --}}
-    <link href="{{ asset('css/kinouroki-adaptive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/kinouroki-adaptive.css') }}?v={{ filemtime(public_path('css/kinouroki-adaptive.css')) }}" rel="stylesheet">
     <link href="{{ $prod }}/favicon.ico" rel="shortcut icon" type="image/x-icon">
 </head>
 <body class="@yield('body_class', 'films.index-section') d-flex flex-column min-vh-100">
@@ -57,7 +57,7 @@
 
 <script src="{{ $prod }}{{ config('kinouroki.app_js') }}"></script>
 {{-- KINOUROKI-ADAPTIVE --}}
-<script src="{{ asset('js/kinouroki-adaptive.js') }}"></script>
+<script src="{{ asset('js/kinouroki-adaptive.js') }}?v={{ filemtime(public_path('js/kinouroki-adaptive.js')) }}"></script>
 @stack('scripts')
 </body>
 </html>
