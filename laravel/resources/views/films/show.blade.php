@@ -20,7 +20,8 @@
          «Провести киноурок», потом длинное описание. На компьютере порядок как на проде. --}}
     <div class="d-flex flex-column">
         <div class="mt-3 card p-3 pt-4 fw-light ka-film-body order-2 order-lg-1">
-            {!! $film->description !!}
+            {{-- KINOUROKI-ADAPTIVE [KA-S03] HTML из редактора выводится только после очистки --}}
+            {!! \App\Support\SafeHtml::clean($film->description) !!}
             @foreach($film->links ?? [] as [$label, $href])
                 <p><a class="btn btn-primary" href="{{ $href }}" target="_blank" rel="noopener">{{ $label }}</a></p>
             @endforeach

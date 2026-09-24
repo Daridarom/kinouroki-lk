@@ -13,7 +13,8 @@
                 @endif
                 <a class="btn btn-primary btn-sm mb-3 rounded d-block" href="{{ route('films.show', $film) }}">Подробнее о фильме</a>
                 <div class="my-3 border-top py-3 border-bottom fw-light ka-film-body">
-                    {!! $film->description !!}
+                    {{-- KINOUROKI-ADAPTIVE [KA-S03] HTML из редактора выводится только после очистки --}}
+            {!! \App\Support\SafeHtml::clean($film->description) !!}
                 </div>
                 <p class="card-text mt-auto fw-light"><span class="btn btn-primary btn-sm rounded-pill font-size-14 disabled btn-sm ka-pill-wrap">{{ $film->quality }}</span></p>
             </div>
