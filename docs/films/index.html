@@ -1,1114 +1,1291 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Фильмы — Киноуроки в школах России</title>
-<meta name="description" content="Всероссийский народный проект «Киноуроки в школах России»: фильмы, методические материалы и социальные практики для воспитательной работы.">
-<meta name="robots" content="noindex">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="robots" content="noindex">
+    <title>Киноуроки | Фильмы</title>
+    <link href="https://lk.kinouroki.org/css/app.css?id=ec445e8beadc7ebc8f6e2a0630a7cf9e" rel="stylesheet">
+    <style>
+        .text-red { color: red !important; }
+        @font-face { font-family: "Rubik-Light"; src: url('https://lk.kinouroki.org/fonts/Rubik-Light.ttf'); font-weight: 300; }
+        .Rubik-Light { font-family: Rubik-Light !important; }
+    </style>
+    
+    <link href="https://daridarom.github.io/kinouroki-lk/css/kinouroki-adaptive.css" rel="stylesheet">
+    <link href="https://lk.kinouroki.org/favicon.ico" rel="shortcut icon" type="image/x-icon">
 </head>
-<body>
-<a class="skip" href="#main">Перейти к содержанию</a>
-<div class="proto-bar">Прототип для обсуждения улучшений. Данные взяты с lk.kinouroki.org 24.09.2026, вход и личный кабинет не работают.</div>
-<header class="header" id="header">
-  <div class="wrap">
-    <a class="logo" href="../index.html"><span class="logo-mark" aria-hidden="true">▶</span><span>Киноуроки</span></a>
-    <nav class="nav" id="nav" aria-label="Основное меню">
-      <a href="../films/index.html" aria-current="page">Фильмы</a>
-      <a href="https://lk.kinouroki.org/lessons" title="Требует входа — открывается на боевом сайте">Киноуроки</a>
-      <a href="https://lk.kinouroki.org/practies" title="Раздел не переносился в макет">Соц. практики</a>
-      <a href="../news/index.html" >Новости</a>
-      <a href="../documents.html" >Документы</a>
-      <div class="nav-more" id="navMore">
-        <button type="button" aria-expanded="false" aria-controls="navMoreList">Ещё ▾</button>
-        <div class="nav-more-list" id="navMoreList">
-          <a href="../about.html" >О проекте</a>
-          <a href="../research.html" >Исследование</a>
-          <a href="../webinars.html" >Вебинары</a>
-          <a href="../video.html" >Видеопрограммы</a>
-          <a href="../journals.html" >Журналы</a>
-          <a href="../faq.html" >Вопросы и ответы</a>
-          <a href="../contacts.html" >Контакты</a>
+<body class="films.index-section d-flex flex-column min-vh-100">
+
+<div class="ka-demo-bar">Копия кабинета для проверки улучшений · данные с lk.kinouroki.org на 24.09.2026 · вход и сохранение не работают</div>
+
+<nav id="top-navbar" class=" navbar navbar-expand navbar-dark shadow-sm border-bottom border-dark px-3">
+    <div class="d-flex align-items-center justify-content-between w-100" style="min-width:0">
+        
+        <button class="me-3" id="collapse-side-menu-btn" style="flex-shrink: 0" aria-controls="side-menu" aria-expanded="false" aria-label="Меню">
+            <svg width="20" height="20" viewBox="0 0 448 512" aria-hidden="true"><path fill="#1f3eeb" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+        </button>
+        <ul class="navbar-nav d-flex" style="flex-shrink: 0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff">
+                    <span class="ka-avatar me-2" aria-hidden="true">П</span><span class="d-none d-md-inline-block">Педагог (демо)</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end shadow">
+                    <li><a class="dropdown-item" href="https://lk.kinouroki.org/users">Личный кабинет</a></li>
+                    <li><a class="dropdown-item border-top mt-2 pt-2" href="https://lk.kinouroki.org/practies">Мои социальные практики</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class=" main_auth ">
+    <div class="d-flex">
+        <div class="col-3 side-menu shadow-sm border-right" id="side-menu">
+    <div class="mb-3">
+        <center>
+            <a class="navbar-brand d-none d-md-block" href="https://daridarom.github.io/kinouroki-lk/films" style="margin-bottom: 25px">
+                <img src="https://lk.kinouroki.org/images/backgrounds/logo_w.png" width="35%" alt="Киноуроки">
+            </a>
+        </center>
+        <button class="btn btn-light text-muted w-100 py-2 fw-light" id="show-search" type="button">
+            <span class="me-2"> Универсальный поиск </span>
+        </button>
+    </div>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/news">Новости</a></li>
+    <li class="nav-item "><a class="nav-link" href="https://lk.kinouroki.org/users">Личный кабинет</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://lk.kinouroki.org/practies">Социальные практики</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://lk.kinouroki.org/initiatives"> Инициативы </a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://lk.kinouroki.org/statistics/activities">Статистика</a></li>
+    <li class="nav-item active">
+        <a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/films">Киноуроки</a>
+                <div class="list-group my-3 shadow">
+                        <a class="list-group-item list-group-item-action list-group-item-primary active" href="https://daridarom.github.io/kinouroki-lk/films"> Все киноуроки </a>
+                            <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films/category/1"> Начальная школа </a>
+                            <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films/category/2"> Основная школа </a>
+                            <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films/category/3"> Средняя школа </a>
+                    </div>
+            </li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/jurnals">Журналы</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex " href="https://daridarom.github.io/kinouroki-lk/video-programms">Видеопрограммы </a></li>
+    <li class="nav-item "><a class="nav-link" href="https://daridarom.github.io/kinouroki-lk/webinars">Вебинары</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/faq">Вопросы и ответы</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/documents">Документы</a></li>
+    <li class="nav-item "><a class="nav-link" href="https://daridarom.github.io/kinouroki-lk/about">О проекте Киноуроки</a></li>
+    <li class="nav-item "><a class="nav-link" href="https://daridarom.github.io/kinouroki-lk/research">Исследование</a></li>
+    <div class="footer_component text-center">
+        <div class="row g-0 lead align-items-center justify-content-center mb-4">
+            <div class="text-white font-size-14">Телефон: <a class="text-white fw-light text-decoration-none px-0 text-dark" href="tel:88004445458">8 800 444 54 58</a></div>
+            <div class="text-white font-size-14 mt-3">E-Mail: <a class="text-white fw-light text-decoration-none px-0 text-dark" href="mailto:info@kinouroki.ru">info@kinouroki.ru </a></div>
         </div>
-      </div>
-    </nav>
-    <a class="btn btn-primary btn-sm btn-login" href="https://lk.kinouroki.org/login">Войти</a>
-    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Меню">☰</button>
-  </div>
-</header>
-<main id="main">
-  <div class="wrap">
-<div class="page-head">
-  <h1>Фильмы <span class="count">67</span></h1>
-  <p class="muted" style="margin:0">Короткометражные фильмы с методичками к киноурокам. Бесплатно и без регистрации.</p>
+        <div class="row row-cols-auto g-0 social-links align-items-center justify-content-center bg-white rounded shadow py-2">
+            <a class="social-link" href="https://t.me/kinouroki" target="_blank" aria-label="Telegram"><svg aria-hidden="true" class="svg-inline--fa fa-telegram fa-w-16" focusable="false" height="28px" role="img" viewBox="0 0 496 512" width="28px"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+            <a class="social-link" href="https://vk.com/kinouroki" target="_blank" aria-label="ВКонтакте"><svg aria-hidden="true" class="vk" focusable="false" height="28px" role="img" viewBox="0 0 576 512" width="28px"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg></a>
+        </div>
+        <div class="small fw-light text-light font-size-12 mt-4">Платформа разработана и поддерживается участниками проекта <br> «Киноуроки в школах мира» <br> 2020 - 2026 </div>
+    </div>
+</div>
+        <div class="container p-3">
+            
+<div class="font-size-28 title fw-light text-muted mb-3">
+    Фильмы <span class="badge badge-primary ms-3">67</span>
 </div>
 
-<form class="filters" id="filters" role="search" onsubmit="return false">
-  <div class="filters-row">
-    <label class="search">
-      <span class="sr-only">Поиск по названию, качеству или описанию</span>
-      <input type="search" id="q" placeholder="Поиск: название, качество, слово" autocomplete="off">
-    </label>
-    <label>
-      <span class="sr-only">Качество</span>
-      <select class="ctl" id="quality">
-        <option value="">Все качества (67)</option>
-<option>Аккуратность</option><option>Активная жизненная позиция</option><option>Бескорыстие</option><option>Благодарность. признательность</option><option>Благородство</option><option>Вдохновение</option><option>Великодушие</option><option>Верность идеалам</option><option>Взаимопомощь</option><option>Воображение, фантазия</option><option>Герой, пример для подражания</option><option>Добро</option><option>Доброжелательность</option><option>Дружба</option><option>Дружелюбие</option><option>Единение, согласованность</option><option>Единство слова и дела</option><option>Здоровый образ жизни</option><option>Искренность</option><option>Коллективизм</option><option>Личная ответственность</option><option>Любовь</option><option>Любовь к природе</option><option>Любознательность</option><option>Мечта</option><option>Милосердие</option><option>Моральный выбор</option><option>Мотив, побуждение</option><option>Мужество</option><option>Наблюдательность, внимательность</option><option>Обязанность</option><option>Осознанность</option><option>Отвага</option><option>Ответственность за свои поступки перед другими людьми</option><option>Ответственность перед миром и человечеством</option><option>Отзывчивость</option><option>Патриотизм</option><option>Патриотизм как чувство ответственности за будущее Родины</option><option>Подвиг</option><option>Подвижничество</option><option>Помощь вместо осуждения</option><option>Прощение</option><option>Радость за другого</option><option>Радость познания</option><option>Решительность</option><option>Самоотверженность</option><option>Сила воли, сила духа</option><option>Смелость</option><option>Созидательный труд</option><option>Сострадание</option><option>Справедливость</option><option>Стойкость, выносливость</option><option>Счастье</option><option>Творческая самодеятельность</option><option>Требовательность к себе</option><option>Трудолюбие</option><option>Убежденность, идейность</option><option>Уважение</option><option>Упорство</option><option>Усердие, добросовестность</option><option>Целеустремленность</option><option>Целомудрие</option><option>Честность</option><option>Честь</option><option>Чувство долга</option><option>Чуткость</option><option>Экологичность</option>      </select>
-    </label>
-    <label>
-      <span class="sr-only">Сортировка</span>
-      <select class="ctl" id="sort">
-        <option value="new">Сначала новые</option>
-        <option value="old">Сначала старые</option>
-        <option value="az">По алфавиту</option>
-      </select>
-    </label>
-  </div>
-  <div class="seg" id="stage" role="group" aria-label="Ступень обучения">
-    <button type="button" data-stage="" aria-pressed="true">Все классы</button>
-    <button type="button" data-stage="primary" aria-pressed="false">Начальная школа <span class="muted">· 1–4 класс</span></button>
-    <button type="button" data-stage="middle" aria-pressed="false">Основная школа <span class="muted">· 5–9 класс</span></button>
-    <button type="button" data-stage="senior" aria-pressed="false">Старшая школа <span class="muted">· 10–11 класс</span></button>
-  </div>
-  <div class="filters-meta">
-    <span id="found" aria-live="polite">Показано 67 из 67</span>
-    <button type="button" class="linklike" id="reset" hidden>Сбросить фильтры</button>
-  </div>
+
+<form method="GET" action="https://daridarom.github.io/kinouroki-lk/films" class="ka-filters card p-3 mb-3" data-ka-filters>
+    <div class="row g-2 align-items-center">
+        <div class="col-12 col-lg-6">
+            <label class="visually-hidden" for="ka-q">Поиск</label>
+            <input id="ka-q" type="search" name="q" value="" class="form-control" placeholder="Поиск: название, качество, слово из описания" autocomplete="off">
+        </div>
+        <div class="col-7 col-lg-4">
+            <label class="visually-hidden" for="ka-quality">Качество</label>
+            <select id="ka-quality" name="quality" class="form-select">
+                <option value="">Все качества (67)</option>
+                                    <option >Аккуратность</option>
+                                    <option >Активная жизненная позиция</option>
+                                    <option >Бескорыстие</option>
+                                    <option >Благодарность. признательность</option>
+                                    <option >Благородство</option>
+                                    <option >Вдохновение</option>
+                                    <option >Великодушие</option>
+                                    <option >Верность идеалам</option>
+                                    <option >Взаимопомощь</option>
+                                    <option >Воображение, фантазия</option>
+                                    <option >Герой, пример для подражания</option>
+                                    <option >Добро</option>
+                                    <option >Доброжелательность</option>
+                                    <option >Дружба</option>
+                                    <option >Дружелюбие</option>
+                                    <option >Единение, согласованность</option>
+                                    <option >Единство слова и дела</option>
+                                    <option >Здоровый образ жизни</option>
+                                    <option >Искренность</option>
+                                    <option >Коллективизм</option>
+                                    <option >Личная ответственность</option>
+                                    <option >Любовь</option>
+                                    <option >Любовь к природе</option>
+                                    <option >Любознательность</option>
+                                    <option >Мечта</option>
+                                    <option >Милосердие</option>
+                                    <option >Моральный выбор</option>
+                                    <option >Мотив, побуждение</option>
+                                    <option >Мужество</option>
+                                    <option >Наблюдательность, внимательность</option>
+                                    <option >Обязанность</option>
+                                    <option >Осознанность</option>
+                                    <option >Отвага</option>
+                                    <option >Ответственность за свои поступки перед другими людьми</option>
+                                    <option >Ответственность перед миром и человечеством</option>
+                                    <option >Отзывчивость</option>
+                                    <option >Патриотизм</option>
+                                    <option >Патриотизм как чувство ответственности за будущее Родины</option>
+                                    <option >Подвиг</option>
+                                    <option >Подвижничество</option>
+                                    <option >Помощь вместо осуждения</option>
+                                    <option >Прощение</option>
+                                    <option >Радость за другого</option>
+                                    <option >Радость познания</option>
+                                    <option >Решительность</option>
+                                    <option >Самоотверженность</option>
+                                    <option >Сила воли, сила духа</option>
+                                    <option >Смелость</option>
+                                    <option >Созидательный труд</option>
+                                    <option >Сострадание</option>
+                                    <option >Справедливость</option>
+                                    <option >Стойкость, выносливость</option>
+                                    <option >Счастье</option>
+                                    <option >Творческая самодеятельность</option>
+                                    <option >Требовательность к себе</option>
+                                    <option >Трудолюбие</option>
+                                    <option >Убежденность, идейность</option>
+                                    <option >Уважение</option>
+                                    <option >Упорство</option>
+                                    <option >Усердие, добросовестность</option>
+                                    <option >Целеустремленность</option>
+                                    <option >Целомудрие</option>
+                                    <option >Честность</option>
+                                    <option >Честь</option>
+                                    <option >Чувство долга</option>
+                                    <option >Чуткость</option>
+                                    <option >Экологичность</option>
+                            </select>
+        </div>
+        <div class="col-5 col-lg-2">
+            <label class="visually-hidden" for="ka-sort">Порядок</label>
+            <select id="ka-sort" name="sort" class="form-select">
+                <option value="new" selected>Новые</option>
+                <option value="old" >Старые</option>
+                <option value="az" >А–Я</option>
+            </select>
+        </div>
+    </div>
+    <div class="ka-stages mt-2" role="group" aria-label="Ступень">
+        <a class="btn btn-sm rounded-pill btn-primary" href="https://daridarom.github.io/kinouroki-lk/films" data-ka-cat="">Все</a>
+                    <a class="btn btn-sm rounded-pill btn-outline-primary"
+               href="https://daridarom.github.io/kinouroki-lk/films/category/1" data-ka-cat="1">Начальная школа <span class="opacity-75">· 1–4 класс</span></a>
+                    <a class="btn btn-sm rounded-pill btn-outline-primary"
+               href="https://daridarom.github.io/kinouroki-lk/films/category/2" data-ka-cat="2">Основная школа <span class="opacity-75">· 5–9 класс</span></a>
+                    <a class="btn btn-sm rounded-pill btn-outline-primary"
+               href="https://daridarom.github.io/kinouroki-lk/films/category/3" data-ka-cat="3">Средняя школа <span class="opacity-75">· 10–11 класс</span></a>
+            </div>
+    <noscript><button class="btn btn-primary btn-sm mt-2">Показать</button></noscript>
+    <div class="small text-muted mt-2" data-ka-found aria-live="polite"></div>
 </form>
 
-<div class="films-grid" id="grid">
-<!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/72.html"
-   data-title="свет" data-quality="Упорство" data-q="свет упорство короткометражный профориентационный художественный фильм «свет» посвящён профессии «предприниматель» и раскрывает качество упорство. режиссёр елена дубровская."
-   data-stages="middle senior" data-year="2026" data-order="0">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/zE290eopvUtnNVnd/%D0%A1%D0%B2%D0%B5%D1%82lv.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Упорство</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Свет</div>
-<div class="desc">Короткометражный профориентационный художественный фильм «Свет» посвящён профессии «Предприниматель» и раскрывает качество упорство. Режиссёр Елена Дубровская.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2026</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/71.html"
-   data-title="станция назначения" data-quality="Требовательность к себе" data-q="станция назначения требовательность к себе короткометражный профориентационный художественный фильм «станция назначения» призван сформировать интерес к профессии «оператор газораспределительной станции» и раскрывает важное нравственное качество — требовательность к себе. режиссёр елена дубровская."
-   data-stages="middle" data-year="2026" data-order="1">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/PWmfcYFIxlNwSM6U/%D0%A1%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8Flv.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Требовательность к себе</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Станция назначения</div>
-<div class="desc">Короткометражный профориентационный художественный фильм «Станция назначения» призван сформировать интерес к профессии «Оператор газораспределительной станции» и раскрывает важное нравственное качество — требовательность к себе. Режиссёр Елена Дубровская.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2026</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/70.html"
-   data-title="дед мороз знает" data-quality="Творческая самодеятельность" data-q="дед мороз знает творческая самодеятельность что делать, если семью на родительском собрании выбрали для выступления от класса на концерте, посвящённом новому году, а к двери подбросили трёх маленьких котят, на которых у бабушки аллергия?! под новый год свершаются чудеса..."
-   data-stages="primary" data-year="2025" data-order="2">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/sYgtXsenQUqI11B2/%D0%94%D0%B5%D0%B4%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%B7%D0%BD%D0%B0%D0%B5%D1%82.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Творческая самодеятельность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Дед Мороз знает</div>
-<div class="desc">Что делать, если семью на родительском собрании выбрали для выступления от класса на концерте, посвящённом Новому году, а к двери подбросили трёх маленьких котят, на которых у бабушки аллергия?! Под Новый год свершаются чудеса...</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2025</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/69.html"
-   data-title="я люблю тебя" data-quality="Любознательность" data-q="я люблю тебя любознательность что делать, если родился 31 декабря? огорчаться или радоваться? переживать о себе, считая, что дед мороз тебя не любит, или искать ответ на вопрос, для чего родился? вместе с агнией пройдём путь понимания."
-   data-stages="primary" data-year="2025" data-order="3">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/G5ABKQ1tXQhfdfTE/%D0%AF%20%D0%BB%D1%8E%D0%B1%D0%BB%D1%8E%20%D1%82%D0%B5%D0%B1%D1%8F_1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Любознательность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Я люблю тебя</div>
-<div class="desc">Что делать, если родился 31 декабря? Огорчаться или радоваться? Переживать о себе, считая, что Дед Мороз тебя не любит, или искать ответ на вопрос, для чего родился? Вместе с Агнией пройдём путь понимания.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2025</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/68.html"
-   data-title="строители мира" data-quality="Мотив, побуждение" data-q="строители мира мотив, побуждение «строители мира» — третий профориентационный фильм системы воспитания «киноуроки в школах россии и мира» международного культурно-гуманитарного проекта «о будущем»и направлен на повышение престижа профессии «производитель работ». фильм раскрывает нравственное понятие «мотив, побуждение»."
-   data-stages="middle" data-year="2025" data-order="4">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/4bmznissSvOdPaiZ/%D0%A1%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D0%B8%20%D0%BC%D0%B8%D1%80%D0%B0.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Мотив, побуждение</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Строители мира</div>
-<div class="desc">«Строители мира» — третий профориентационный фильм системы воспитания «Киноуроки в школах России и мира» Международного культурно-гуманитарного проекта «О будущем»и направлен на повышение престижа профессии «производитель работ». Фильм раскрывает нравственное понятие «мотив, побуждение».</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2025</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/67.html"
-   data-title="мамины сказки" data-quality="Сострадание" data-q="мамины сказки сострадание в каждой стране, в каждом уголке земли есть брошенные, несчастные малыши, которым нужна поддержка. главная героиня фильма, ольга – многодетная мама, актриса, певица, которая благодаря своему сыну знакомится с директором приюта для детей сирот. и теперь она по вечерам приходит читать детям сказки и петь колыбельные песни, чтобы помочь…"
-   data-stages="middle" data-year="2025" data-order="5">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/9RXctRmn8qV0HO1r/1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Сострадание</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Мамины сказки</div>
-<div class="desc">В каждой стране, в каждом уголке земли есть брошенные, несчастные малыши, которым нужна поддержка. Главная героиня фильма, Ольга – многодетная мама, актриса, певица, которая благодаря своему сыну знакомится с директором приюта для детей сирот. И теперь она по вечерам приходит читать детям сказки и петь колыбельные песни, чтобы помочь…</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2025</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/66.html"
-   data-title="809, или один день вовки во исполнение указа" data-quality="Активная жизненная позиция" data-q="809, или один день вовки во исполнение указа активная жизненная позиция начальная школа (1–4 классы), основная школа (5–7 классы)"
-   data-stages="primary middle" data-year="2025" data-order="6">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/ciH23894Y5mrtYE3/4.2.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Активная жизненная позиция</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">809, или Один день Вовки во исполнение Указа</div>
-<div class="desc">НАЧАЛЬНАЯ ШКОЛА (1–4 классы), ОСНОВНАЯ ШКОЛА (5–7 классы)</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2025</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/65.html"
-   data-title="прогулка по вселенной" data-quality="Искренность" data-q="прогулка по вселенной искренность начальная школа (и 5–6-е классы), тема: искренность"
-   data-stages="primary middle" data-year="2024" data-order="7">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/0NfpKBnnGG7cSDrV/2024-12-26_10-35-58_2.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Искренность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Прогулка по вселенной</div>
-<div class="desc">НАЧАЛЬНАЯ ШКОЛА (и 5–6-е классы), ТЕМА: ИСКРЕННОСТЬ</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2024</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/64.html"
-   data-title="крепость" data-quality="Патриотизм как чувство ответственности за будущее Родины" data-q="крепость патриотизм как чувство ответственности за будущее родины по сюжету, в неформальных взаимоотношениях группы старшеклассников выделились два претендующих на лидерство сильных характера. к тому времени, когда в классе появляется новый ученик антон, в 10 «а» уже давно привык верховодить своенравный себялюбец даниил. но постепенно умный, красивый, спортивный, умело владеющий гитарой новичок перетягивает симпатии ребят…"
-   data-stages="senior" data-year="2024" data-order="8">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/JfG6pRfUYu1Km8Ed/%D0%9A%D0%A0%D0%95%D0%9F%D0%9E%D0%A1%D0%A2%D0%AC%20%20%D0%B4%D0%BB%D1%8F%20lv.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Патриотизм как чувство ответственности за будущее Родины</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Крепость</div>
-<div class="desc">По сюжету, в неформальных взаимоотношениях группы старшеклассников выделились два претендующих на лидерство сильных характера. К тому времени, когда в классе появляется новый ученик Антон, в 10 «А» уже давно привык верховодить своенравный себялюбец Даниил. Но постепенно умный, красивый, спортивный, умело владеющий гитарой новичок перетягивает симпатии ребят…</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2024</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/63.html"
-   data-title="торопись жить" data-quality="Обязанность" data-q="торопись жить обязанность наша главная обязанность в этой жизни – быть человеком
-(режиссер е. в. дубровская)"
-   data-stages="middle" data-year="2024" data-order="9">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/nOS5QbHeqCB17TA7/%D0%A2%D0%BE%D1%80%D0%BE%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B6%D0%B8%D1%82%D1%8C.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Обязанность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Торопись жить</div>
-<div class="desc">Наша главная обязанность в этой жизни – быть человеком
-(Режиссер Е. В. Дубровская)</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2024</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/62.html"
-   data-title="думать тишину" data-quality="Чуткость" data-q="думать тишину чуткость фильм «думать тишину» переносит зрителей в тяжелые дни блокады ленинграда, рассказывает о судьбах детей, сумевших сохранить человечность в условиях крайней нужды и опасности. кинокартина раскрывает важное духовно-нравственное качество чуткость, показывает, как в самые трудные времена человек может оставаться человеком."
-   data-stages="primary" data-year="2024" data-order="10">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/8mWpeixL3Ea0yH9e/dumat_tishiny_%D1%81%D0%B0%D0%B9%D1%82_%D0%BF%D0%B5%D0%B4.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Чуткость</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Думать тишину</div>
-<div class="desc">Фильм «Думать тишину» переносит зрителей в тяжелые дни блокады Ленинграда, рассказывает о судьбах детей, сумевших сохранить человечность в условиях крайней нужды и опасности. Кинокартина раскрывает важное духовно-нравственное качество чуткость, показывает, как в самые трудные времена человек может оставаться человеком.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2024</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/61.html"
-   data-title="город крылатого коня" data-quality="Вдохновение" data-q="город крылатого коня вдохновение старшая школа (8–11 класс). тема: вдохновение"
-   data-stages="middle senior" data-year="2024" data-order="11">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/sfuGas0ljnHpUZKA/%D0%93%D0%BE%D1%80%D0%BE%D0%B4%20540%D1%85280.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Вдохновение</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Город крылатого коня</div>
-<div class="desc">СТАРШАЯ ШКОЛА (8–11 класс). ТЕМА: ВДОХНОВЕНИЕ</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2024</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/60.html"
-   data-title="две девушки и скейтбордисты" data-quality="Великодушие" data-q="две девушки и скейтбордисты великодушие – мам! дедушка сказал, что у ильи душа большая. как узнать душа большая или маленькая?"
-   data-stages="middle" data-year="2023" data-order="12">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/9l0xXVQqAqrAy0qY/2.2_1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Великодушие</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Две девушки и скейтбордисты</div>
-<div class="desc">– Мам! Дедушка сказал, что у Ильи душа большая. Как узнать душа большая или маленькая?</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/59.html"
-   data-title="василёк" data-quality="Решительность" data-q="василёк решительность что делать, когда брату дал слово и чувствуешь ответственность, а душа рвётся помочь?"
-   data-stages="primary" data-year="2023" data-order="13">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/RoVhpiRTyvliTHcZ/%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%91%D0%BA1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Решительность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Василёк</div>
-<div class="desc">Что делать, когда брату дал слово и чувствуешь ответственность, а душа рвётся помочь?</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/58.html"
-   data-title="где живёт любовь" data-quality="Любовь" data-q="где живёт любовь любовь где живёт любовь? что есть любовь совершенная и всеобъемлющая? в чём истинное значение любви? на эти вопросы пытается найти ответы каждый человек."
-   data-stages="senior" data-year="2023" data-order="14">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/vQF3xHvZxfLrrjYP/lEg5JInFOzo%201%29.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Любовь</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Где живёт любовь</div>
-<div class="desc">Где живёт Любовь? Что есть любовь совершенная и всеобъемлющая? В чём истинное значение любви? На эти вопросы пытается найти ответы каждый человек.</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/57.html"
-   data-title="отыщи моё сердце" data-quality="Любовь к природе" data-q="отыщи моё сердце любовь к природе фильм «отыщи моё сердце» системы воспитания «киноуроки в школах россии и мира» международного культурно-гуманитарного проекта «о будущем» раскрывает понятие любовь к природе."
-   data-stages="primary middle" data-year="2023" data-order="15">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/wVKJ4tYu1TGoY04S/%D0%9E%D1%82%D1%8B%D1%89%D0%B8%20%D0%BC%D0%BE%D1%91%20%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Любовь к природе</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Отыщи моё сердце</div>
-<div class="desc">Фильм «Отыщи моё сердце» системы воспитания «Киноуроки в школах России и мира» Международного культурно-гуманитарного проекта «О будущем» раскрывает понятие любовь к природе.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/56.html"
-   data-title="счастливые люди" data-quality="Подвиг" data-q="счастливые люди подвиг действие фильма происходит на территории луганской народной республики."
-   data-stages="middle" data-year="2023" data-order="16">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/NeaFZW81gJpxzWRH/%D0%A1%D1%87%D0%B0%D1%81%D1%82%D0%BB%D0%B8%D0%B2%D1%8B%D0%B5%20%D0%BB%D1%8E%D0%B4%D0%B8.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Подвиг</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Счастливые люди</div>
-<div class="desc">Действие фильма происходит на территории Луганской Народной Республики.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/55.html"
-   data-title="призвание" data-quality="Подвижничество" data-q="призвание подвижничество «подвижники нужны, как солнце. составляя самый поэтический и жизнерадостный элемент общества, они возбуждают, утешают и облагораживают» антон павлович чехов"
-   data-stages="senior" data-year="2023" data-order="17">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/7rZRRE47S2J5meRX/1.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Подвижничество</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Призвание</div>
-<div class="desc">«Подвижники нужны, как солнце. Составляя самый поэтический и жизнерадостный элемент общества, они возбуждают, утешают и облагораживают» Антон Павлович Чехов</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/54.html"
-   data-title="здесь есть душа" data-quality="Единение, согласованность" data-q="здесь есть душа единение, согласованность «газпром трансгаз москва» — школам мира!"
-   data-stages="senior" data-year="2023" data-order="18">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/N3YN6jin1Zrk6JK2/1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Единение, согласованность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Здесь есть душа</div>
-<div class="desc">«Газпром трансгаз Москва» — школам мира!</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2023</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/53.html"
-   data-title="волшебники" data-quality="Взаимопомощь" data-q="волшебники взаимопомощь новополоцк, республика беларусь – школам мира"
-   data-stages="" data-year="2022" data-order="19">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/jsdWXcHdIxHtLcVP/1Volshebniki.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Взаимопомощь</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Волшебники</div>
-<div class="desc">Новополоцк, Республика Беларусь – школам мира</div>    <div class="meta">
-<span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/52.html"
-   data-title="утраченное полотно" data-quality="Осознанность" data-q="утраченное полотно осознанность с детства нам говорят: «прежде чем делать, подумай». что стоит за этими словами? это значит – поразмышляй, к каким последствиям для себя и окружающих приведут эти действия, хорощи ли они, как повлияют на наши взаимоотношения с людьми, принесут ли радость нам и близким, сделают ли лучше их жизнь."
-   data-stages="senior" data-year="2022" data-order="20">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/MuHz2g3trqF6Do9J/%D1%81%D0%BA%D1%80%D0%B8%D0%BD4.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Осознанность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Утраченное полотно</div>
-<div class="desc">С детства нам говорят: «Прежде чем делать, подумай». Что стоит за этими словами? Это значит – поразмышляй, к каким последствиям для себя и окружающих приведут эти действия, хорощи ли они, как повлияют на наши взаимоотношения с людьми, принесут ли радость нам и близким, сделают ли лучше их жизнь.</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/51.html"
-   data-title="крылья" data-quality="Личная ответственность" data-q="крылья личная ответственность киноурок для детей среднего школьного возраста раскрывает нравственное понятие личная ответственность и направлен на популяризацию авиамодельного спорта и профессий, связанных с авиацией."
-   data-stages="middle" data-year="2022" data-order="21">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/YyQThyR5uUyFricd/Clip2net_230326123646.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Личная ответственность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Крылья</div>
-<div class="desc">Киноурок для детей среднего школьного возраста раскрывает нравственное понятие личная ответственность и направлен на популяризацию авиамодельного спорта и профессий, связанных с авиацией.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/50.html"
-   data-title="редкий вид" data-quality="Усердие, добросовестность" data-q="редкий вид усердие, добросовестность прототипом героя, история которого будет рассказана в фильме, стал александр эйхман – сын полка, юный разведчик. мальчик из советских немцев свободно говорил по-немецки и очень хорошо играл на баяне. с баяном, в который был вмонтирован радиопередатчик, он не раз ходил во вражеский тыл и сообщал оттуда данные о противнике советскому командованию."
-   data-stages="middle" data-year="2022" data-order="22">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/eVFXgHp4CXgaRZ9L/%D0%A0%D0%B5%D0%B4%D0%BA%D0%B8%D0%B9%20%D0%B2%D0%B8%D0%B41.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Усердие, добросовестность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Редкий вид</div>
-<div class="desc">Прототипом героя, история которого будет рассказана в фильме, стал Александр Эйхман – сын полка, юный разведчик. Мальчик из советских немцев свободно говорил по-немецки и очень хорошо играл на баяне. С баяном, в который был вмонтирован радиопередатчик, он не раз ходил во вражеский тыл и сообщал оттуда данные о противнике советскому командованию.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/49.html"
-   data-title="звёзды из колодца" data-quality="Смелость" data-q="звёзды из колодца смелость проявить смелость бывает непросто. но и это качество можно воспитать, если честно себе признался, что поступил неправильно."
-   data-stages="primary" data-year="2022" data-order="23">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/ml4BTDZD8HaRW3gW/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D1%8B%20%D0%B8%D0%B7%20%D0%BA%D0%BE%D0%BB%D0%BE%D0%B4%D1%86%D0%B04.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Смелость</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Звёзды из колодца</div>
-<div class="desc">Проявить смелость бывает непросто. Но и это качество можно воспитать, если честно себе признался, что поступил неправильно.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/48.html"
-   data-title="мост" data-quality="Стойкость, выносливость" data-q="мост стойкость, выносливость стойкость – это проявление силы духа, которая дает возможность человеку сохранять равновесие, спокойствие и находить выход из любого затруднительного положения, смотреть в будущее с оптимизмом, преодолевая жизненные невзгоды."
-   data-stages="primary" data-year="2022" data-order="24">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/7pQIfDR4luvtRkJP/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D1%80%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA%20%285%29.bmp" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Стойкость, выносливость</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Мост</div>
-<div class="desc">Стойкость – это проявление силы духа, которая дает возможность человеку сохранять равновесие, спокойствие и находить выход из любого затруднительного положения, смотреть в будущее с оптимизмом, преодолевая жизненные невзгоды.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/47.html"
-   data-title="живой город" data-quality="Счастье" data-q="живой город счастье таганрог – школам россии"
-   data-stages="senior" data-year="2022" data-order="25">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/8DY5kKBzbOms6Vt1/%D0%96%D0%B8%D0%B2%D0%BE%D0%B9%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B43.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Счастье</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Живой город</div>
-<div class="desc">Таганрог – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/46.html"
-   data-title="школьные ботаны" data-quality="Целеустремленность" data-q="школьные ботаны целеустремленность фильм, актуализирующий тему творчества в науке через понятие целеустремленность."
-   data-stages="middle" data-year="2022" data-order="26">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/PNvu9QywwSdBQlK6/%D1%88%D0%BA%20%D0%B1%D0%BE%D1%82%D0%B0%D0%BD%D1%8B2.JPG" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Целеустремленность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Школьные ботаны</div>
-<div class="desc">Фильм, актуализирующий тему творчества в науке через понятие целеустремленность.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/45.html"
-   data-title="с новым годом, раиса родионовна!" data-quality="Благодарность. признательность" data-q="с новым годом, раиса родионовна! благодарность. признательность нередко мы ждем благодарности от других людей, но как часто проявляем ее мы сами? живут ли в нас чувства признательности и благодарности? умеем ли мы дарить их от чистого сердца?"
-   data-stages="primary" data-year="2022" data-order="27">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/ONXCC5ZIo3a29ANy/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D1%80%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA%20%287%29.bmp" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Благодарность. признательность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">С Новым годом, Раиса Родионовна!</div>
-<div class="desc">Нередко мы ждем благодарности от других людей, но как часто проявляем ее мы сами? Живут ли в нас чувства признательности и благодарности? Умеем ли мы дарить их от чистого сердца?</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2022</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/44.html"
-   data-title="интервью с неудачником" data-quality="Единство слова и дела" data-q="интервью с неудачником единство слова и дела фильм создан при поддержке сообщества «трезвый мир»"
-   data-stages="middle" data-year="2021" data-order="28">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/z68tIvdviNVsPYjw/%D0%9D%D0%B5%D1%83%D0%B4.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Единство слова и дела</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Интервью с неудачником</div>
-<div class="desc">Фильм создан при поддержке Сообщества «Трезвый мир»</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/43.html"
-   data-title="первое дело" data-quality="Убежденность, идейность" data-q="первое дело убежденность, идейность неудачный день в школе, спасение щенков, случайный разговор, – череда совсем не связанных между собой событий привела олега к решению, которое изменило его жизнь."
-   data-stages="primary" data-year="2021" data-order="29">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/GP8fSKow8PmSOXLU/%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20%D0%B2%20%D1%84%D0%B5%D0%B2%D1%80%D0%B0%D0%BB%D0%B5%20%285%29.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Убежденность, идейность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Первое дело</div>
-<div class="desc">Неудачный день в школе, спасение щенков, случайный разговор, – череда совсем не связанных между собой событий привела Олега к решению, которое изменило его жизнь.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/42.html"
-   data-title="дороги" data-quality="Самоотверженность" data-q="дороги самоотверженность фильм «дороги» рассказывает о жизни и работе механизаторов, которые ежедневно сталкиваются с вызовами и трудностями в дорожном строительстве."
-   data-stages="middle senior" data-year="2021" data-order="30">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/359uvdWLODUSIhCH/%D0%94%D0%BE%D1%80%D0%BE%D0%B3%D0%B81.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Самоотверженность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Дороги</div>
-<div class="desc">Фильм «Дороги» рассказывает о жизни и работе механизаторов, которые ежедневно сталкиваются с вызовами и трудностями в дорожном строительстве.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/navsegda.html"
-   data-title="навсегда" data-quality="Отвага" data-q="навсегда отвага фильм «навсегда» для детей среднего школьного возраста расскажет о том, что смелость и отвага – это качества, необходимые сегодня не только в минуту опасности, но и каждому, кто дорожит памятью о своих близких, историей своей семьи, своего народа, своей страны."
-   data-stages="middle" data-year="2021" data-order="31">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/N5osuUV9qA8KhdAN/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%20%D0%B1%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Отвага</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Навсегда</div>
-<div class="desc">Фильм «Навсегда» для детей среднего школьного возраста расскажет о том, что смелость и отвага – это качества, необходимые сегодня не только в минуту опасности, но и каждому, кто дорожит памятью о своих близких, историей своей семьи, своего народа, своей страны.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/tri_solntsa.html"
-   data-title="три солнца" data-quality="Уважение" data-q="три солнца уважение республика чувашия – школам россии"
-   data-stages="primary" data-year="2021" data-order="32">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/aFSbWaqTvH2h6ZF5/%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80%20%D1%82%D1%80%D0%B8%20%D1%81%D0%BE%D0%BB%D0%BD%D1%86%D0%B0.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Уважение</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Три солнца</div>
-<div class="desc">Республика Чувашия – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/37.html"
-   data-title="чистодей" data-quality="Трудолюбие" data-q="чистодей трудолюбие фильм «чистодей» предназначен для учеников начальной школы, раскрывает понятия труда и трудолюбия, рассказывает о ценности многодетной семьи."
-   data-stages="primary" data-year="2021" data-order="33">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/UAsGnG2d4Wn1F8yb/%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20%D0%B2%20%D1%84%D0%B5%D0%B2%D1%80%D0%B0%D0%BB%D0%B5%20%283%29.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Трудолюбие</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Чистодей</div>
-<div class="desc">Фильм «Чистодей» предназначен для учеников начальной школы, раскрывает понятия труда и трудолюбия, рассказывает о ценности многодетной семьи.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/36.html"
-   data-title="8 марта" data-quality="Наблюдательность, внимательность" data-q="8 марта наблюдательность, внимательность галя с папой каждые выходные занимается развивающими упражнениями на внимательность и наблюдательность. идя домой из школы, галя заметила, как один мальчик выронил теннисный мяч. желая вернуть мяч, она познакомилась с олегом и узнала, что он выбросил его специально, потому что больше не может заниматься теннисом, так как неизлечимо болен и теперь будет жить…"
-   data-stages="primary" data-year="2021" data-order="34">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/B2q4kaquzc9Z9gRU/2022-01-10_16-58-47%20%282%29.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Наблюдательность, внимательность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">8 марта</div>
-<div class="desc">Галя с папой каждые выходные занимается развивающими упражнениями на внимательность и наблюдательность. Идя домой из школы, Галя заметила, как один мальчик выронил теннисный мяч. Желая вернуть мяч, она познакомилась с Олегом и узнала, что он выбросил его специально, потому что больше не может заниматься теннисом, так как неизлечимо болен и теперь будет жить…</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/35.html"
-   data-title="эра" data-quality="Мечта" data-q="эра мечта всероссийский проект к 60-летию полёта человека в космос (при поддержке гк «роскосмос», моо «русское космическое общество»)"
-   data-stages="primary" data-year="2021" data-order="35">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1612263623/eZT5N1tuh7oI31Hf2VZlohDkpPCvmDYHZec9A8dc.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Мечта</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">ЭРА</div>
-<div class="desc">Всероссийский проект к 60-летию полёта человека в космос (при поддержке ГК «Роскосмос», МОО «Русское космическое общество»)</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/34.html"
-   data-title="письма" data-quality="Целомудрие" data-q="письма целомудрие «интелрост» — школам россии"
-   data-stages="senior" data-year="2021" data-order="36">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/IqaJa1oAuH9S8BO3/SOToTZnXtdc%20%283%29.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Целомудрие</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Письма</div>
-<div class="desc">«ИНТЕЛРОСТ» — школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/33.html"
-   data-title="там, где мечтают медведи" data-quality="Ответственность перед миром и человечеством" data-q="там, где мечтают медведи ответственность перед миром и человечеством республика карелия — школам россии"
-   data-stages="senior" data-year="2021" data-order="37">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611149857/ELQ4tFMECLcPKB8pOmUUVsCzXbttaxxwPwq5TorF.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Ответственность перед миром и человечеством</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Там, где мечтают медведи</div>
-<div class="desc">Республика Карелия — школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/30.html"
-   data-title="неанисия" data-quality="Здоровый образ жизни" data-q="неанисия здоровый образ жизни «интелрост» — школам россии"
-   data-stages="senior" data-year="2021" data-order="38">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/SXtFMqoJOsCe9Z4w/%D0%9D%D0%B5%D0%B0%D0%BD%D0%B8%D1%81%D0%B8%D1%8F.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Здоровый образ жизни</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Неанисия</div>
-<div class="desc">«ИНТЕЛРОСТ» — школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/29.html"
-   data-title="дом" data-quality="Коллективизм" data-q="дом коллективизм тверская область – школам россии."
-   data-stages="middle" data-year="2021" data-order="39">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611133779/NUY3IYm9HL0mHppFZiwbMmdmd1VhLbBdQe1KeH1x.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Коллективизм</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Дом</div>
-<div class="desc">Тверская область – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/28.html"
-   data-title="музыка внутри" data-quality="Милосердие" data-q="музыка внутри милосердие республика мордовия – школам россии"
-   data-stages="middle" data-year="2021" data-order="40">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611133412/Lv6uXg2HcMX8Olvx5SMfMsnvSEFLqNI3SYFeOYdP.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Милосердие</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Музыка внутри</div>
-<div class="desc">Республика Мордовия – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/27.html"
-   data-title="экзамен" data-quality="Аккуратность" data-q="экзамен аккуратность санкт-петербург – школам россии"
-   data-stages="primary" data-year="2021" data-order="41">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611132542/I1CjsxGojMVUNkzDOa5784OPJEXmg2d19zRI0Zax.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Аккуратность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Экзамен</div>
-<div class="desc">Санкт-Петербург – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/26.html"
-   data-title="если бы не я" data-quality="Сила воли, сила духа" data-q="если бы не я сила воли, сила духа санкт-петербург – школам россии"
-   data-stages="senior" data-year="2021" data-order="42">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611132041/WiuEl7a2ePUcGB188wf6It38TxDCOEmoLfRnOp3w.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Сила воли, сила духа</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Если бы не я</div>
-<div class="desc">Санкт-Петербург – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/25.html"
-   data-title="бв" data-quality="Прощение" data-q="бв прощение санкт-петербург – школам россии"
-   data-stages="senior" data-year="2021" data-order="43">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611130745/8ZCPSeJdBQLEjQKi3YcSpH3w1p32zSK0qmeMzbO1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Прощение</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">БВ</div>
-<div class="desc">Санкт-Петербург – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/24.html"
-   data-title="александр" data-quality="Ответственность за свои поступки перед другими людьми" data-q="александр ответственность за свои поступки перед другими людьми санкт-петербург – школам россии"
-   data-stages="middle" data-year="2021" data-order="44">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611130190/7647mq5cO4QHDD6DZc399oUFvzeZcIgcQaIjY7RB.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Ответственность за свои поступки перед другими людьми</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Александр</div>
-<div class="desc">Санкт-Петербург – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/23.html"
-   data-title="когда небо улыбается" data-quality="Радость познания" data-q="когда небо улыбается радость познания тульская область – школам россии."
-   data-stages="primary" data-year="2021" data-order="45">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611130001/DhoR6Iy4rcd7wSljf4jrrYaGHglujDIfljVy9TPW.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Радость познания</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Когда небо улыбается</div>
-<div class="desc">Тульская область – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/22.html"
-   data-title="мой друг дима зорин" data-quality="Благородство" data-q="мой друг дима зорин благородство город луга — школам россии"
-   data-stages="primary" data-year="2021" data-order="46">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611129797/Zmp5Qk0m3bJGAPyvt5WvrcMtuXdmb1abc8hRfuBO.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Благородство</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Мой друг Дима Зорин</div>
-<div class="desc">Город Луга — школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/21.html"
-   data-title="песня ветра" data-quality="Дружелюбие" data-q="песня ветра дружелюбие республика башкортостан – школам россии."
-   data-stages="primary" data-year="2021" data-order="47">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611129109/LSrheG607fGyrw3kk58irKpjZrtuKGehfkEAwfYz.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Дружелюбие</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Песня ветра</div>
-<div class="desc">Республика Башкортостан – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/20.html"
-   data-title="пять дней" data-quality="Созидательный труд" data-q="пять дней созидательный труд город красногорск – школам россии."
-   data-stages="middle senior" data-year="2021" data-order="48">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611128567/C58kDtKFe1GX2bef2bD6gmBk6QEvVOqqS3sQNM25.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Созидательный труд</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Пять дней</div>
-<div class="desc">Город Красногорск – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span class="chip chip-neutral" title="10–11 класс">Старшая школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/19.html"
-   data-title="ванька адмирал" data-quality="Герой, пример для подражания" data-q="ванька адмирал герой, пример для подражания город рыбинск – школам россии."
-   data-stages="primary" data-year="2021" data-order="49">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611128060/mEMTWLKSTVdXr1wKyLGkT6NbbD5TDN1833cLqsDK.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Герой, пример для подражания</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Ванька адмирал</div>
-<div class="desc">Город Рыбинск – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/18.html"
-   data-title="великий" data-quality="Справедливость" data-q="великий справедливость новгородская область – школам россии."
-   data-stages="middle" data-year="2021" data-order="50">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611127853/KEObkWrpGPmFgvr3Kj37K2a908REoBw4PUcTaQXY.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Справедливость</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Великий</div>
-<div class="desc">Новгородская область – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/17.html"
-   data-title="лошадка для героя" data-quality="Чувство долга" data-q="лошадка для героя чувство долга псковская область — школам россии"
-   data-stages="primary" data-year="2021" data-order="51">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611127066/yGYQHlrKF2NA3bdfUmPqQ1RECiBygUUbC1PECFF7.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Чувство долга</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Лошадка для героя</div>
-<div class="desc">Псковская область — школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/16.html"
-   data-title="мой друг единорог" data-quality="Воображение, фантазия" data-q="мой друг единорог воображение, фантазия интелрост – школам россии."
-   data-stages="primary" data-year="2021" data-order="52">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611126819/cLlothHVo0zAQiBn6j4I0A4w2dgD52u2OKPwQ8Cl.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Воображение, фантазия</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Мой друг единорог</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/15.html"
-   data-title="мой танец" data-quality="Честность" data-q="мой танец честность республика удмуртия — школам россии."
-   data-stages="primary" data-year="2021" data-order="53">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611126374/4KBRI2YM6VNFPFaAeuPpWxycJtDCXp2q7Q7caCIT.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Честность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Мой танец</div>
-<div class="desc">Республика Удмуртия — школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/14.html"
-   data-title="честь имею" data-quality="Честь" data-q="честь имею честь костромская область — школам россии."
-   data-stages="middle" data-year="2021" data-order="54">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611126177/YzhyEGH0OAIjGEDoYGR33TLqT6n9yHnEXBVxDPnN.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Честь</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Честь имею</div>
-<div class="desc">Костромская область — школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/13.html"
-   data-title="хорошие песни" data-quality="Доброжелательность" data-q="хорошие песни доброжелательность ярославская область – школам россии."
-   data-stages="primary" data-year="2021" data-order="55">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611125912/eTRPN2jyyosVFcUsOzD5zVbRMi0zEOw28WODmPij.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Доброжелательность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Хорошие песни</div>
-<div class="desc">Ярославская область – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/12.html"
-   data-title="новогодний подарок" data-quality="Добро" data-q="новогодний подарок добро астраханская область — школам россии."
-   data-stages="primary" data-year="2021" data-order="56">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611125117/lYxdDvu31phXnpjJ1X70uYrbD4jkYigVB6ghHkVu.jpg" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Добро</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Новогодний подарок</div>
-<div class="desc">Астраханская область — школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/11.html"
-   data-title="стеша" data-quality="Экологичность" data-q="стеша экологичность москва и московская область — школам россии."
-   data-stages="primary" data-year="2021" data-order="57">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611072741/hIORNtzA5GDnw0pJC0ju3yXa4fcr2EayB6Y8Roz3.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Экологичность</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Стеша</div>
-<div class="desc">Москва и Московская область — школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/10.html"
-   data-title="друг в беде не бросит" data-quality="Помощь вместо осуждения" data-q="друг в беде не бросит помощь вместо осуждения интелрост – школам россии."
-   data-stages="primary" data-year="2021" data-order="58">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611071950/VipnjOXZfiwU0nYpqUkLP4c8ghQCwr4KD0WWjCvS.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Помощь вместо осуждения</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Друг в беде не бросит</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/9.html"
-   data-title="другой мир" data-quality="Верность идеалам" data-q="другой мир верность идеалам интелрост – школам россии."
-   data-stages="primary" data-year="2021" data-order="59">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611070601/blmKinYaHRsuyJe43viUZc7sSIWVJz6I6jvvXufz.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Верность идеалам</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Другой мир</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/8.html"
-   data-title="за руку с богом" data-quality="Бескорыстие" data-q="за руку с богом бескорыстие интелрост – школам россии."
-   data-stages="primary" data-year="2021" data-order="60">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611070348/SoMJCi6vg7KzemcmAsW5eIGJ4yFB8OpEkZGrbanE.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Бескорыстие</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">За руку с Богом</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/7.html"
-   data-title="трудный выбор" data-quality="Моральный выбор" data-q="трудный выбор моральный выбор интелрост – школам россии."
-   data-stages="primary middle" data-year="2021" data-order="61">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/vag8iOHwy0ccb7P8/%D0%A2%D1%80%D1%83%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%B2%D1%8B%D0%B1%D0%BE%D1%80.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Моральный выбор</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Трудный выбор</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span class="chip chip-neutral" title="5–9 класс">Основная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/6.html"
-   data-title="шайба" data-quality="Мужество" data-q="шайба мужество санкт-петербург – школам россии."
-   data-stages="primary" data-year="2021" data-order="62">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611067163/t517KFYzAhG4S50AiVQ8VfcMz7owxBmY2a1s2D2t.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Мужество</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Шайба</div>
-<div class="desc">Санкт-Петербург – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/4.html"
-   data-title="не трус и не предатель" data-quality="Дружба" data-q="не трус и не предатель дружба интелрост – школам россии."
-   data-stages="primary" data-year="2021" data-order="63">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611065495/N8GTzyOR7oNmszE6mUmyf6d8p9OZT8ANZHEwIwWM.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Дружба</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Не трус и не предатель</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/3.html"
-   data-title="воин света" data-quality="Отзывчивость" data-q="воин света отзывчивость интелрост – школам россии."
-   data-stages="primary" data-year="2021" data-order="64">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611066144/oF3434le39QHLAdo12HHZJP5wrczzg02ePb59Vt1.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Отзывчивость</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Воин света</div>
-<div class="desc">ИНТЕЛРОСТ – школам России.</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/2.html"
-   data-title="наследники победы" data-quality="Патриотизм" data-q="наследники победы патриотизм интелрост – школам россии"
-   data-stages="primary" data-year="2021" data-order="65">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/poster/u0tDpQgK8tGGaZ0z/image%20%284%29.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Патриотизм</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Наследники Победы</div>
-<div class="desc">ИНТЕЛРОСТ – школам России</div>    <div class="meta">
-<span class="chip chip-neutral" title="1–4 класс">Начальная школа</span><span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --><!-- COMPONENT: film-card  (поля: постер, название, качество, ступень, год, анонс) -->
-<a class="film-card" href="../films/1.html"
-   data-title="мандарин" data-quality="Радость за другого" data-q="мандарин радость за другого интелрост – школам россии"
-   data-stages="" data-year="2021" data-order="66">
-  <div class="poster">
-    <img src="https://lk.kinouroki.org/storage/films/posters/1611066574/bj0xPWIHYNk1bIJBhNM3638wOT69qfXtZXqJ3iqC.png" alt="" loading="lazy" decoding="async" width="480" height="270">
-    <span class="chip">Радость за другого</span>
-    <span class="play" aria-hidden="true">▶</span>
-  </div>
-  <div class="body">
-    <div class="title">Мандарин</div>
-<div class="desc">ИНТЕЛРОСТ – школам России</div>    <div class="meta">
-<span>2021</span>    </div>
-  </div>
-</a>
-<!-- /COMPONENT: film-card --></div>
-<div class="empty hidden" id="empty">
-  <p>По этим условиям фильмов нет.</p>
-  <button type="button" class="btn btn-ghost" id="reset2">Сбросить фильтры</button>
-</div>
-  </div>
-</main>
-<footer class="footer">
-  <div class="wrap">
-    <div>
-      <div><b>Киноуроки в школах России</b> — искусство на службе воспитания</div>
-      <div>8 800 444 54 58 · <a href="mailto:info@kinouroki.ru">info@kinouroki.ru</a></div>
+
+<div class="row films row-cols-1 g-0 align-items-start" data-ka-grid>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/72"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="свет упорство основная школа и 10–11 класс, тема: упорство короткометражный профориентационный художественный фильм «свет» посвящён профессии «предприниматель» и раскрывает качество упорство. режиссёр елена дубровская. фильм «свет» — это вдохновляющая история о том, как талант и упорство побеждают обстоятельства...."
+   data-ka-quality="Упорство"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/zE290eopvUtnNVnd/%D0%A1%D0%B2%D0%B5%D1%82lv.png" alt="Свет" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Упорство</span>
     </div>
-    <nav aria-label="Ссылки в подвале">
-      <a href="../about.html">О нас</a>
-      <a href="../contacts.html">Контакты и реквизиты</a>
-      <a href="../faq.html">Вопросы и ответы</a>
-      <a href="https://t.me/kinouroki">Telegram</a>
-      <a href="https://vk.com/kinouroki">ВКонтакте</a>
-      <a href="https://www.youtube.com/channel/UCxi_N-CavXzEfbxIlWPfSkw">YouTube</a>
-    </nav>
-  </div>
-</footer>
-<script src="../assets/site.js"></script>
-<script src="../assets/films.js"></script></body>
+    <div class="ka-body">
+        <div class="ka-title">Свет</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2026</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/71"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="станция назначения требовательность к себе средняя школа и 8–9 класс, тема: требовательность к себе короткометражный профориентационный художественный фильм «станция назначения» призван сформировать интерес к профессии «оператор газораспределительной станции» и раскрывает важное нравственное качество — требовательность к себе. режиссёр елена..."
+   data-ka-quality="Требовательность к себе"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/PWmfcYFIxlNwSM6U/%D0%A1%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8Flv.png" alt="Станция назначения" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Требовательность к себе</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Станция назначения</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2026</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/70"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="дед мороз знает творческая самодеятельность начальная школа, тема: творческая самодеятельность что делать, если семью на родительском собрании выбрали для выступления от класса на концерте, посвящённом новому году, а к двери подбросили трёх маленьких котят, на которых у бабушки аллергия?! под новый год свершаются чудеса... для проведения кино..."
+   data-ka-quality="Творческая самодеятельность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/sYgtXsenQUqI11B2/%D0%94%D0%B5%D0%B4%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%B7%D0%BD%D0%B0%D0%B5%D1%82.png" alt="Дед Мороз знает" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Творческая самодеятельность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Дед Мороз знает</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/69"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="я люблю тебя любознательность начальная школа, тема: любознательность что делать, если родился 31 декабря? огорчаться или радоваться? переживать о себе, считая, что дед мороз тебя не любит, или искать ответ на вопрос, для чего родился? вместе с агнией пройдём путь понимания. для проведения киноурока мы предлагаем следующие матер..."
+   data-ka-quality="Любознательность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/G5ABKQ1tXQhfdfTE/%D0%AF%20%D0%BB%D1%8E%D0%B1%D0%BB%D1%8E%20%D1%82%D0%B5%D0%B1%D1%8F_1.png" alt="Я люблю тебя" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Любознательность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Я люблю тебя</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/68"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="строители мира мотив, побуждение основная школа тема: мотив, побуждение «строители мира» — третий профориентационный фильм системы воспитания «киноуроки в школах россии и мира» международного культурно-гуманитарного проекта «о будущем»и направлен на повышение престижа профессии «производитель работ». фильм раскрывает нравственное п..."
+   data-ka-quality="Мотив, побуждение"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/4bmznissSvOdPaiZ/%D0%A1%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D0%B8%20%D0%BC%D0%B8%D1%80%D0%B0.png" alt="Строители мира" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Мотив, побуждение</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Строители мира</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/67"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="мамины сказки сострадание основная школа тема: сострадание в каждой стране, в каждом уголке земли есть брошенные, несчастные малыши, которым нужна поддержка. главная героиня фильма, ольга – многодетная мама, актриса, певица, которая благодаря своему сыну знакомится с директором приюта для детей сирот. и теперь она по вечерам..."
+   data-ka-quality="Сострадание"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/9RXctRmn8qV0HO1r/1.png" alt="Мамины сказки" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Сострадание</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Мамины сказки</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/66"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="809, или один день вовки во исполнение указа активная жизненная позиция начальная школа (1–4 классы), основная школа (5–7 классы) тема: активная жизненная позиция пока старший брат вовки вместе с друзьями на форуме «ладога» разбирается в традиционных ценностях, обозначенных в указе № 809 президента россии, и размышляет над тем, какие духовно-нравственные качества лежат..."
+   data-ka-quality="Активная жизненная позиция"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/ciH23894Y5mrtYE3/4.2.png" alt="809, или Один день Вовки во исполнение Указа" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Активная жизненная позиция</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">809, или Один день Вовки во исполнение Указа</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/65"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="прогулка по вселенной искренность начальная школа (и 5–6-е классы), тема: искренность фильм «прогулка по вселенной» режиссера елены дубровской. жизнь постоянно проверяет нас, какие мы настоящие. вот и у родиона возникла ситуация, когда одноклассник попросил его помочь отвлечь учительницу, чтобы тот мог исправить оценки в электронном..."
+   data-ka-quality="Искренность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/0NfpKBnnGG7cSDrV/2024-12-26_10-35-58_2.png" alt="Прогулка по вселенной" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Искренность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Прогулка по вселенной</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2024</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/64"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="крепость патриотизм как чувство ответственности за будущее родины старшая школа. тема: патриотизм как чувство ответственности за будущее родины по сюжету, в неформальных взаимоотношениях группы старшеклассников выделились два претендующих на лидерство сильных характера. к тому времени, когда в классе появляется новый ученик антон, в 10 «а» уже давно привык верхово..."
+   data-ka-quality="Патриотизм как чувство ответственности за будущее Родины"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/JfG6pRfUYu1Km8Ed/%D0%9A%D0%A0%D0%95%D0%9F%D0%9E%D0%A1%D0%A2%D0%AC%20%20%D0%B4%D0%BB%D1%8F%20lv.jpg" alt="Крепость" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Патриотизм как чувство ответственности за будущее Родины</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Крепость</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2024</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/63"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="торопись жить обязанность основная школа. тема: обязанность наша главная обязанность в этой жизни – быть человеком (режиссер е. в. дубровская) в тихом провинциальном городке торопец появляется загадочный художник по имени светик. не произнося ни слова, лишь своими рисунками он преображает жизнь вокруг: его портреты исцеляют..."
+   data-ka-quality="Обязанность"
+   data-ka-cats="1 2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/nOS5QbHeqCB17TA7/%D0%A2%D0%BE%D1%80%D0%BE%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B6%D0%B8%D1%82%D1%8C.png" alt="Торопись жить" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Обязанность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Торопись жить</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2024</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/62"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="думать тишину чуткость начальная школа. тема: чуткость фильм «думать тишину» переносит зрителей в тяжелые дни блокады ленинграда, рассказывает о судьбах детей, сумевших сохранить человечность в условиях крайней нужды и опасности. кинокартина раскрывает важное духовно-нравственное качество чуткость, показывает, как в самые..."
+   data-ka-quality="Чуткость"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/8mWpeixL3Ea0yH9e/dumat_tishiny_%D1%81%D0%B0%D0%B9%D1%82_%D0%BF%D0%B5%D0%B4.jpg" alt="Думать тишину" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Чуткость</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Думать тишину</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2024</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/61"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="город крылатого коня вдохновение старшая школа (8–11 класс). тема: вдохновение «город крылатого коня» – первый профориентационный фильм проекта «киноуроки в школах россии и мира». этот фильм раскрывает духовно-нравственное качество вдохновение. обычно, когда мы говорим о вдохновении, то вспоминаем людей сферы искусства. но разве мо..."
+   data-ka-quality="Вдохновение"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/sfuGas0ljnHpUZKA/%D0%93%D0%BE%D1%80%D0%BE%D0%B4%20540%D1%85280.jpg" alt="Город крылатого коня" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Вдохновение</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Город крылатого коня</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2024</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/60"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="две девушки и скейтбордисты великодушие основная школа. тема: великодушие – мам! дедушка сказал, что у ильи душа большая. как узнать душа большая или маленькая? – а ты смотри, сколько в душе любви помещается. вот кружка только тебя напоить может. ведро может всю семью напоить, колодец – деревню. а если волга? так и душа большая очень мног..."
+   data-ka-quality="Великодушие"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/9l0xXVQqAqrAy0qY/2.2_1.png" alt="Две девушки и скейтбордисты" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Великодушие</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Две девушки и скейтбордисты</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/59"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="василёк решительность начальная школа. тема: решительность что делать, когда брату дал слово и чувствуешь ответственность, а душа рвётся помочь? василёк принимает непростое решение. для проведения киноурока мы предлагаем следующие материалы:рассматриваемое понятие: решительность определение: способность быстро, самостоят..."
+   data-ka-quality="Решительность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/RoVhpiRTyvliTHcZ/%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%91%D0%BA1.png" alt="Василёк" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Решительность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Василёк</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/58"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="где живёт любовь любовь старшая школа. тема: любовь где живёт любовь? что есть любовь совершенная и всеобъемлющая? в чём истинное значение любви? на эти вопросы пытается найти ответы каждый человек. героиня фильма «где живёт любовь» вера и ее младшие сестры в поисках ответов на эти вопросы открывают для себя смыслы любви и..."
+   data-ka-quality="Любовь"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/vQF3xHvZxfLrrjYP/lEg5JInFOzo%201%29.jpg" alt="Где живёт любовь" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Любовь</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Где живёт любовь</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/57"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="отыщи моё сердце любовь к природе начальная и основная школа тема: любовь к природе фильм «отыщи моё сердце» системы воспитания «киноуроки в школах россии и мира» международного культурно-гуманитарного проекта «о будущем» раскрывает понятие любовь к природе. неважно, где человек родился, какой у него достаток, главное, есть ли у нег..."
+   data-ka-quality="Любовь к природе"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/wVKJ4tYu1TGoY04S/%D0%9E%D1%82%D1%8B%D1%89%D0%B8%20%D0%BC%D0%BE%D1%91%20%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5.jpg" alt="Отыщи моё сердце" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Любовь к природе</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Отыщи моё сердце</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/56"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="счастливые люди подвиг средняя (основная) школа. тема: подвиг действие фильма происходит на территории луганской народной республики. фильм «счастливые люди» о детях. детях, которые уже 10 лет живут там, где идёт война. некоторые из них иной жизни и не знали. при этом они пишут стихи и поют песни, а в самые тяжёлые момент..."
+   data-ka-quality="Подвиг"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/NeaFZW81gJpxzWRH/%D0%A1%D1%87%D0%B0%D1%81%D1%82%D0%BB%D0%B8%D0%B2%D1%8B%D0%B5%20%D0%BB%D1%8E%D0%B4%D0%B8.jpg" alt="Счастливые люди" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Подвиг</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Счастливые люди</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/55"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="призвание подвижничество старшая школа, тема подвижничество «подвижники нужны, как солнце. составляя самый поэтический и жизнерадостный элемент общества, они возбуждают, утешают и облагораживают» антон павлович чехов фильм посвящен важному человеку в жизни каждого ребенка – учителю и раскрывает такое понятие как подвижничес..."
+   data-ka-quality="Подвижничество"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/7rZRRE47S2J5meRX/1.jpg" alt="Призвание" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Подвижничество</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Призвание</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/54"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="здесь есть душа единение, согласованность старшая школа, тема: единение, согласованность «газпром трансгаз москва» — школам мира! фильм «здесь есть душа» — первый фильм в рамках международного сотрудничества в сфере культуры стран брикс. согласованность – это как сыгранный оркестр: каждый музыкальный инструмент играет свою партию, но при эт..."
+   data-ka-quality="Единение, согласованность"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/N3YN6jin1Zrk6JK2/1.png" alt="Здесь есть душа" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Единение, согласованность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Здесь есть душа</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2023</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/53"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="волшебники взаимопомощь новополоцк, республика беларусь – школам мира фильм «волшебники» системы воспитания «киноуроки в школах россии и мира» международного культурно-гуманитарного проекта «о будущем» раскрывает понятие взаимопомощь. режиссер елена дубровская. при подготовке к новогоднему концерту в школе, посвященному юб..."
+   data-ka-quality="Взаимопомощь"
+   data-ka-cats="1 2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/jsdWXcHdIxHtLcVP/1Volshebniki.png" alt="Волшебники" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Взаимопомощь</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Волшебники</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/52"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="утраченное полотно осознанность старшая школа, тема: осознанность с детства нам говорят: «прежде чем делать, подумай». что стоит за этими словами? это значит – поразмышляй, к каким последствиям для себя и окружающих приведут эти действия, хорощи ли они, как повлияют на наши взаимоотношения с людьми, принесут ли радость нам и близк..."
+   data-ka-quality="Осознанность"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/MuHz2g3trqF6Do9J/%D1%81%D0%BA%D1%80%D0%B8%D0%BD4.jpg" alt="Утраченное полотно" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Осознанность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Утраченное полотно</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/51"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="крылья личная ответственность средняя (основная) школа тема: личная ответственность киноурок для детей среднего школьного возраста раскрывает нравственное понятие личная ответственность и направлен на популяризацию авиамодельного спорта и профессий, связанных с авиацией. нравственные качества военных летчиков, героев истории и с..."
+   data-ka-quality="Личная ответственность"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/YyQThyR5uUyFricd/Clip2net_230326123646.png" alt="Крылья" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Личная ответственность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Крылья</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/50"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="редкий вид усердие, добросовестность основная школа, тема: усердие, добросовестность прототипом героя, история которого будет рассказана в фильме, стал александр эйхман – сын полка, юный разведчик. мальчик из советских немцев свободно говорил по-немецки и очень хорошо играл на баяне. с баяном, в который был вмонтирован радиопередатчик,..."
+   data-ka-quality="Усердие, добросовестность"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/eVFXgHp4CXgaRZ9L/%D0%A0%D0%B5%D0%B4%D0%BA%D0%B8%D0%B9%20%D0%B2%D0%B8%D0%B41.jpg" alt="Редкий вид" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Усердие, добросовестность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Редкий вид</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/49"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="звёзды из колодца смелость начальная школа, тема: смелость проявить смелость бывает непросто. но и это качество можно воспитать, если честно себе признался, что поступил неправильно. этот киноурок популяризирует борьбу самбо. самбо — это система воспитания, способствующая развитию морально-волевых качеств человека, патриотизм..."
+   data-ka-quality="Смелость"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/ml4BTDZD8HaRW3gW/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D1%8B%20%D0%B8%D0%B7%20%D0%BA%D0%BE%D0%BB%D0%BE%D0%B4%D1%86%D0%B04.jpg" alt="Звёзды из колодца" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Смелость</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Звёзды из колодца</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/48"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="мост стойкость, выносливость начальная школа, тема: стойкость, выносливость республика саха (якутия) – школам мира стойкость – это проявление силы духа, которая дает возможность человеку сохранять равновесие, спокойствие и находить выход из любого затруднительного положения, смотреть в будущее с оптимизмом, преодолевая жизненны..."
+   data-ka-quality="Стойкость, выносливость"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/7pQIfDR4luvtRkJP/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D1%80%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA%20%285%29.bmp" alt="Мост" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Стойкость, выносливость</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Мост</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/47"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="живой город счастье старшая школа, тема: счастье таганрог – школам россии арина поспорила с архипом, когда обсуждали в классе, что такое счастье. матвей забирает к себе домой гошу, гена с гошей приютили бродячую собаку – они раскрываются перед ариной в своих поступках. и на этом фоне ее слова из разговора с архипом — «..."
+   data-ka-quality="Счастье"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/8DY5kKBzbOms6Vt1/%D0%96%D0%B8%D0%B2%D0%BE%D0%B9%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B43.jpg" alt="Живой город" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Счастье</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Живой город</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/46"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="школьные ботаны целеустремленность средняя (основная) школа, тема: целеустремленность фильм, актуализирующий тему творчества в науке через понятие целеустремленность. детский художественный короткометражный фильм «школьные ботаны» рассчитан на учащихся средней (основной) школы. задача фильма не просто рассказать уникальную историю юн..."
+   data-ka-quality="Целеустремленность"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/PNvu9QywwSdBQlK6/%D1%88%D0%BA%20%D0%B1%D0%BE%D1%82%D0%B0%D0%BD%D1%8B2.JPG" alt="Школьные ботаны" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Целеустремленность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Школьные ботаны</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/45"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="с новым годом, раиса родионовна! благодарность. признательность начальная школа, тема: благодарность, признательность нередко мы ждем благодарности от других людей, но как часто проявляем ее мы сами? живут ли в нас чувства признательности и благодарности? умеем ли мы дарить их от чистого сердца? для проведения киноурока мы предлагаем следующие материалы:рассматр..."
+   data-ka-quality="Благодарность. признательность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/ONXCC5ZIo3a29ANy/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D1%80%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA%20%287%29.bmp" alt="С Новым годом, Раиса Родионовна!" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Благодарность. признательность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">С Новым годом, Раиса Родионовна!</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2022</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/44"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="интервью с неудачником единство слова и дела основная (средняя) школа, тема: единство слова и дела фильм создан при поддержке сообщества «трезвый мир» за внешней легкостью и яркостью лаврика не стоит никаких серьезных достижений. он — центральный персонаж в своем классе, организатор ежедневного утреннего шоу. истинное отношение к нему вдруг пр..."
+   data-ka-quality="Единство слова и дела"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/z68tIvdviNVsPYjw/%D0%9D%D0%B5%D1%83%D0%B4.jpg" alt="Интервью с неудачником" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Единство слова и дела</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Интервью с неудачником</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/43"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="первое дело убежденность, идейность начальная школа тема: убежденность, идейность неудачный день в школе, спасение щенков, случайный разговор, – череда совсем не связанных между собой событий привела олега к решению, которое изменило его жизнь. для проведения киноурока мы предлагаем следующие материалы:рассматриваемое понятие: убежден..."
+   data-ka-quality="Убежденность, идейность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/GP8fSKow8PmSOXLU/%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20%D0%B2%20%D1%84%D0%B5%D0%B2%D1%80%D0%B0%D0%BB%D0%B5%20%285%29.png" alt="Первое дело" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Убежденность, идейность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Первое дело</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/42"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="дороги самоотверженность средняя (старшая школа), тема: самоотверженность фильм «дороги» рассказывает о жизни и работе механизаторов, которые ежедневно сталкиваются с вызовами и трудностями в дорожном строительстве. в сюжете фильма нашлось место для проявления самоотверженности, товарищества и мужества. в одной из сцен они..."
+   data-ka-quality="Самоотверженность"
+   data-ka-cats="2 3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/359uvdWLODUSIhCH/%D0%94%D0%BE%D1%80%D0%BE%D0%B3%D0%B81.jpg" alt="Дороги" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Самоотверженность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Дороги</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/navsegda"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="навсегда отвага средняя (основная) школа, тема: отвага фильм «навсегда» для детей среднего школьного возраста расскажет о том, что смелость и отвага – это качества, необходимые сегодня не только в минуту опасности, но и каждому, кто дорожит памятью о своих близких, историей своей семьи, своего народа, своей страны...."
+   data-ka-quality="Отвага"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/N5osuUV9qA8KhdAN/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%20%D0%B1%D0%B5%D0%B7%20%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png" alt="Навсегда" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Отвага</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Навсегда</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/tri_solntsa"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="три солнца уважение начальная школа, тема: уважение республика чувашия – школам россии — мне понравилось участвовать в кастинге, и я не особо переживал, — рассказал о своих впечатлениях от кинопроб николай иванов, 14-летний школьник из села шихазаны канашского района республики. — мне задавали классные вопросы. было оч..."
+   data-ka-quality="Уважение"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/aFSbWaqTvH2h6ZF5/%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80%20%D1%82%D1%80%D0%B8%20%D1%81%D0%BE%D0%BB%D0%BD%D1%86%D0%B0.jpg" alt="Три солнца" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Уважение</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Три солнца</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/37"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="чистодей трудолюбие начальная школа, тема: трудолюбие фильм «чистодей» предназначен для учеников начальной школы, раскрывает понятия труда и трудолюбия, рассказывает о ценности многодетной семьи. семья и труд имеют первостепенное значение в жизни каждого человека. именно в семье закладываются основы мировоззрения, куль..."
+   data-ka-quality="Трудолюбие"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/UAsGnG2d4Wn1F8yb/%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0%20%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%20%D0%B2%20%D1%84%D0%B5%D0%B2%D1%80%D0%B0%D0%BB%D0%B5%20%283%29.png" alt="Чистодей" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Трудолюбие</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Чистодей</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/36"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="8 марта наблюдательность, внимательность начальная школа, тема: внимательность, наблюдательность галя с папой каждые выходные занимается развивающими упражнениями на внимательность и наблюдательность. идя домой из школы, галя заметила, как один мальчик выронил теннисный мяч. желая вернуть мяч, она познакомилась с олегом и узнала, что он вы..."
+   data-ka-quality="Наблюдательность, внимательность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/B2q4kaquzc9Z9gRU/2022-01-10_16-58-47%20%282%29.png" alt="8 марта" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Наблюдательность, внимательность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">8 марта</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/35"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="эра мечта начальная школа тема: мечта всероссийский проект к 60-летию полёта человека в космос (при поддержке гк «роскосмос», моо «русское космическое общество») главный герой фильма – обычный второклассник ростислав. но только у ростика есть настоящая мечта: полететь в космос. поэтому он составил подробный п..."
+   data-ka-quality="Мечта"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1612263623/eZT5N1tuh7oI31Hf2VZlohDkpPCvmDYHZec9A8dc.jpg" alt="ЭРА" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Мечта</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">ЭРА</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/34"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="письма целомудрие старшая школа, тема: целомудрие «интелрост» — школам россии 17-летняя жизнь полины состояла из бесконечных будней в больнице. ни школы, ни шумных компаний, ни театров и музеев. только индивидуальное обучение в больничной палате. её друзьями были такие же, как она, дети, проводившие свои дни в этих с..."
+   data-ka-quality="Целомудрие"
+   data-ka-cats="3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/IqaJa1oAuH9S8BO3/SOToTZnXtdc%20%283%29.jpg" alt="Письма" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Целомудрие</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Письма</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/33"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="там, где мечтают медведи ответственность перед миром и человечеством старшая школа, тема: ответственность (перед миром и человечеством) республика карелия — школам россии настя кагаева, молодая журналистка российского движения школьников, ведет расследование. она хочет понять, что побудило подростка, который собирался навсегда уехать из карелии и построить карьеру ус..."
+   data-ka-quality="Ответственность перед миром и человечеством"
+   data-ka-cats="2 3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611149857/ELQ4tFMECLcPKB8pOmUUVsCzXbttaxxwPwq5TorF.png" alt="Там, где мечтают медведи" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Ответственность перед миром и человечеством</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Там, где мечтают медведи</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/30"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="неанисия здоровый образ жизни старшая школа, тема: здоровый образ жизни «интелрост» — школам россии к своим 18-ти годам богдан уже пережил несколько личных трагедий, что научило его скрывать свои эмоции, проявлять циничность. его лучшими друзьями стали байк и молчаливый паша грифон. всего лишь неверно набранный номер переворачив..."
+   data-ka-quality="Здоровый образ жизни"
+   data-ka-cats="2 3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/SXtFMqoJOsCe9Z4w/%D0%9D%D0%B5%D0%B0%D0%BD%D0%B8%D1%81%D0%B8%D1%8F.png" alt="Неанисия" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Здоровый образ жизни</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Неанисия</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/29"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="дом коллективизм средняя (основная) школа, тема: коллективизм тверская область – школам россии. кирилл, воспитанник детского дома, совершенно замкнут и не общителен. он смог найти общий язык только с олей пахомовой, девочкой из их отряда в детском лагере. совершенно случайно директор лагеря и профессор архитектуры у..."
+   data-ka-quality="Коллективизм"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611133779/NUY3IYm9HL0mHppFZiwbMmdmd1VhLbBdQe1KeH1x.png" alt="Дом" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Коллективизм</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Дом</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/28"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="музыка внутри милосердие основная школа, тема: милосердие республика мордовия – школам россии елисей родился неслышащим, но его бабушка растила его как обычного мальчика: пела ему песни, читала. научила его быть добрым и помогать другим – с этими чувствами и вырос елисей. на соседнем балконе с елисеем живет олег, мальчик-ин..."
+   data-ka-quality="Милосердие"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611133412/Lv6uXg2HcMX8Olvx5SMfMsnvSEFLqNI3SYFeOYdP.png" alt="Музыка внутри" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Милосердие</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Музыка внутри</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/27"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="экзамен аккуратность начальная школа, тема: аккуратность санкт-петербург – школам россии генка всегда был растяпой, отличался неаккуратностью и плохими оценками. знакомство с воспитанной, умной, интеллигентной амелией из англии заставляет его пойти на курсы английского языка, где он ищет помощи и поддержки у своих новых..."
+   data-ka-quality="Аккуратность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611132542/I1CjsxGojMVUNkzDOa5784OPJEXmg2d19zRI0Zax.png" alt="Экзамен" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Аккуратность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Экзамен</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/26"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="если бы не я сила воли, сила духа старшая школа, тема: сила воли, сила духа санкт-петербург – школам россии вероника, умная, скромная и тихая девочка, влюбляется в своего одноклассника жеку, модного разгильдяя, не имеющего никаких представлений о морали и воспитании. чтобы произвести на него впечатление, вместе со своей подругой лиз..."
+   data-ka-quality="Сила воли, сила духа"
+   data-ka-cats="2 3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611132041/WiuEl7a2ePUcGB188wf6It38TxDCOEmoLfRnOp3w.png" alt="Если бы не я" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Сила воли, сила духа</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Если бы не я</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/25"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="бв прощение старшая школа, тема: прощение санкт-петербург – школам россии в школе дашу называют бв – «белая ворона» или «бесит всех». но это нисколько ее не задевает. даша живет в мире книг и творчества. вечерами, в одном из кафе, она делает букеты из конфет и читает любимые монологи, радуя своих постоянных слу..."
+   data-ka-quality="Прощение"
+   data-ka-cats="2 3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611130745/8ZCPSeJdBQLEjQKi3YcSpH3w1p32zSK0qmeMzbO1.png" alt="БВ" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Прощение</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">БВ</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/24"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="александр ответственность за свои поступки перед другими людьми основная школа, тема: ответственность (за свои поступки перед другими) санкт-петербург – школам россии у каждого ребенка, особенно мальчишки, есть герой. для фёдора это был великий князь александр невский! с ранних лет он собирал альбом, посвященный своему герою, где было всё. родители, видя искренн..."
+   data-ka-quality="Ответственность за свои поступки перед другими людьми"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611130190/7647mq5cO4QHDD6DZc399oUFvzeZcIgcQaIjY7RB.png" alt="Александр" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Ответственность за свои поступки перед другими людьми</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Александр</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/23"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="когда небо улыбается радость познания начальная школа, тема: радость познания тульская область – школам россии. егор и катя – не только одноклассники, но еще они вместе ходят в анимационную студию. именно там они знакомятся со своим наставником маргаритой, которая вступает в спор с родионом по поводу тем новых мультфильмов для фестиваля..."
+   data-ka-quality="Радость познания"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611130001/DhoR6Iy4rcd7wSljf4jrrYaGHglujDIfljVy9TPW.png" alt="Когда небо улыбается" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Радость познания</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Когда небо улыбается</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/22"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="мой друг дима зорин благородство начальная школа, тема: благородство город луга — школам россии оксана и дима были лучшими друзьями, пока на одном концерте в детском саду, где выступал их школьный хор, они не услышали маленького композитора с синдромом аспергера — егора соболева. музыка была настолько красива, что дима решил помочь..."
+   data-ka-quality="Благородство"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611129797/Zmp5Qk0m3bJGAPyvt5WvrcMtuXdmb1abc8hRfuBO.png" alt="Мой друг Дима Зорин" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Благородство</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Мой друг Дима Зорин</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/21"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="песня ветра дружелюбие начальная школа, тема: дружелюбие республика башкортостан – школам россии. алла идрисовна повезла свой 2-ой «а» класс на экскурсию к подножию горы уклы кая. сидя у костра, она рассказала ребятам очень древнюю легенду о мальчике акмале и его учителе, о том, что человек и природа едины. и как игра на..."
+   data-ka-quality="Дружелюбие"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611129109/LSrheG607fGyrw3kk58irKpjZrtuKGehfkEAwfYz.png" alt="Песня ветра" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Дружелюбие</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Песня ветра</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/20"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="пять дней созидательный труд основная и старшая школа, тема: созидательный труд город красногорск – школам россии. переехав в новый город, красногорск, максим думал, что заживет спокойно и тихо, никто ему не будет мешать, и он никого не будет трогать, но случайная встреча с машей изменила всё! он и подумать не мог, что один чел..."
+   data-ka-quality="Созидательный труд"
+   data-ka-cats="2 3">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611128567/C58kDtKFe1GX2bef2bD6gmBk6QEvVOqqS3sQNM25.png" alt="Пять дней" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Созидательный труд</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Пять дней</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="10–11 класс">Средняя школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/19"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="ванька адмирал герой, пример для подражания начальная школа, тема: герой, пример для подражания город рыбинск – школам россии. сидя за написанием сочинения на всероссийском конкурсе, ученик 10 «а» класса из города рыбинска ярославской области иван ковалёв размышлял, чем он приносит пользу людям. по мнению самого ивана, тем, что он смог органи..."
+   data-ka-quality="Герой, пример для подражания"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611128060/mEMTWLKSTVdXr1wKyLGkT6NbbD5TDN1833cLqsDK.png" alt="Ванька адмирал" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Герой, пример для подражания</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Ванька адмирал</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/18"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="великий справедливость средняя (основная) школа, тема: справедливость новгородская область – школам россии. девочка с удивительным именем калина и не менее сильным прозвищем скала при странных обстоятельствах знакомится с образованной и интеллигентной учительницей музыки верой дмитриевной дороховой. дружба, которая завяза..."
+   data-ka-quality="Справедливость"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611127853/KEObkWrpGPmFgvr3Kj37K2a908REoBw4PUcTaQXY.png" alt="Великий" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Справедливость</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Великий</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/17"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="лошадка для героя чувство долга начальная школа, тема: чувство долга псковская область — школам россии оксана колесова увлекается собой и музыкой. а если уроки ей не интересны, так это вина педагога. в школьном музее на уроке истории партизанского движения евгений александрович поручил девочке посетить военно-исторический музей, г..."
+   data-ka-quality="Чувство долга"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611127066/yGYQHlrKF2NA3bdfUmPqQ1RECiBygUUbC1PECFF7.png" alt="Лошадка для героя" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Чувство долга</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Лошадка для героя</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/16"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="мой друг единорог воображение, фантазия начальная школа, тема: воображение, фантазия интелрост – школам россии. полина — удивительный ребенок с огромной силой воображения. с самого детства она преображает всё вокруг своими выдумками и фантазиями. когда учительница дает ее классу задание помочь разобрать в библиотеке новые поступления книг..."
+   data-ka-quality="Воображение, фантазия"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611126819/cLlothHVo0zAQiBn6j4I0A4w2dgD52u2OKPwQ8Cl.png" alt="Мой друг единорог" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Воображение, фантазия</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Мой друг единорог</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/15"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="мой танец честность начальная школа, тема: честность республика удмуртия — школам россии. две подруги, полина и глафира, с раннего детства занимаются балетом. талантливая, интересная и целеустремленная глаша всегда была опорой и поддержкой в успехах красивой, но недостаточно энергичной полины. при отборе участников в м..."
+   data-ka-quality="Честность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611126374/4KBRI2YM6VNFPFaAeuPpWxycJtDCXp2q7Q7caCIT.png" alt="Мой танец" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Честность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Мой танец</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/14"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="честь имею честь средняя (основная) школа, тема: честь костромская область — школам россии. гришка свирин — одиннадцатилетний мальчишка из поселка сусанино костромской области — мечтает быть офицером. став воспитанником кадетского корпуса в костроме, он показывает себя ответственным, смелым, честным и достойным чело..."
+   data-ka-quality="Честь"
+   data-ka-cats="1 2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611126177/YzhyEGH0OAIjGEDoYGR33TLqT6n9yHnEXBVxDPnN.png" alt="Честь имею" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Честь</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Честь имею</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/13"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="хорошие песни доброжелательность начальная школа, тема: доброжелательность ярославская область – школам россии. дениска вместе с мамой ехал с дачи в электричке. на одной из остановок к ним подсела пожилая женщина, галина фёдоровна, которая сразу начала рассказывать о своих неприятностях и критичном отношении к современному миру. а..."
+   data-ka-quality="Доброжелательность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611125912/eTRPN2jyyosVFcUsOzD5zVbRMi0zEOw28WODmPij.png" alt="Хорошие песни" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Доброжелательность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Хорошие песни</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/12"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="новогодний подарок добро начальная школа, тема: добро астраханская область — школам россии. бизнесмен сергей привез новогодние подарки в детский дом. за праздничным чаепитием у него случается необычный разговор с девочкой. маленькая фея сообщает ему, что настоящий дед мороз исполняет только те желания, которые загадываются..."
+   data-ka-quality="Добро"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611125117/lYxdDvu31phXnpjJ1X70uYrbD4jkYigVB6ghHkVu.jpg" alt="Новогодний подарок" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Добро</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Новогодний подарок</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/11"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="стеша экологичность начальная школа, тема: экологичность москва и московская область — школам россии. стеша, главная героиня фильма, приезжает из затерянной среди лесов деревеньки в гости в большой город и заставляет своих новых знакомых по-иному взглянуть на привычные вещи, почувствовать окружающую живую природу. подо..."
+   data-ka-quality="Экологичность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611072741/hIORNtzA5GDnw0pJC0ju3yXa4fcr2EayB6Y8Roz3.png" alt="Стеша" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Экологичность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Стеша</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/10"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="друг в беде не бросит помощь вместо осуждения начальная школа, тема: помощь вместо осуждения интелрост – школам россии. девочка кристина совершает плохой поступок, который имеет серьезные последствия, – берет без спроса у мамы деньги на покупку желанной игрушки, отложенные на долгожданную операцию. кристина раскаивается в содеянном, но не знает..."
+   data-ka-quality="Помощь вместо осуждения"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611071950/VipnjOXZfiwU0nYpqUkLP4c8ghQCwr4KD0WWjCvS.png" alt="Друг в беде не бросит" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Помощь вместо осуждения</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Друг в беде не бросит</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/9"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="другой мир верность идеалам начальная школа, тема: верность идеалам интелрост – школам россии. «другой мир» – фильм о будущем, к которому может прийти как отдельный человек, так и все человечество в случае, если будет жить и трудиться, основываясь на ценностях созидания, красоты и добра. артем, состоявшийся ученый, едет в дере..."
+   data-ka-quality="Верность идеалам"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611070601/blmKinYaHRsuyJe43viUZc7sSIWVJz6I6jvvXufz.png" alt="Другой мир" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Верность идеалам</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Другой мир</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/8"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="за руку с богом бескорыстие начальная школа, тема: бескорыстие интелрост – школам россии. сюжет фильма повествует о десятилетнем мальчике, воспитаннике детского дома, который своими рассуждениями и бескорыстными делами заставляет нас задуматься о самом главном в жизни – ответственности за всё, что нас окружает. вместе с мишей..."
+   data-ka-quality="Бескорыстие"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611070348/SoMJCi6vg7KzemcmAsW5eIGJ4yFB8OpEkZGrbanE.png" alt="За руку с Богом" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Бескорыстие</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">За руку с Богом</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/7"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="трудный выбор моральный выбор начальная школа (и основная школа) тема: моральный выбор интелрост – школам россии. современные школьницы ангелина и катя учатся в одном классе и даже живут в одном подъезде. катя, незаметная с виду девочка, из небогатой семьи, столкнувшись с трудными жизненными обстоятельствами, проявляет сильные с..."
+   data-ka-quality="Моральный выбор"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/vag8iOHwy0ccb7P8/%D0%A2%D1%80%D1%83%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%B2%D1%8B%D0%B1%D0%BE%D1%80.png" alt="Трудный выбор" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Моральный выбор</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Трудный выбор</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/6"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="шайба мужество начальная школа, тема: мужество санкт-петербург – школам россии. митька – простой деревенский мальчишка семи лет, мечтающий быть похожим на своего старшего брата пашку, капитана хоккейной команды «солнечные». перед самым ответственным матчем пашка просит младшего брата принести на лед шайбу, но мить..."
+   data-ka-quality="Мужество"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611067163/t517KFYzAhG4S50AiVQ8VfcMz7owxBmY2a1s2D2t.png" alt="Шайба" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Мужество</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Шайба</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/4"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="не трус и не предатель дружба начальная школа, тема: дружба интелрост – школам россии. славка и вовка – не только одноклассники, но и лучшие друзья. но в любой дружбе наступает момент проверки. в их дружбе этот момент наступил тогда, когда скромного славку учительница, нина владимировна, попросила отнести дорогой микроскоп из кл..."
+   data-ka-quality="Дружба"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611065495/N8GTzyOR7oNmszE6mUmyf6d8p9OZT8ANZHEwIwWM.png" alt="Не трус и не предатель" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Дружба</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Не трус и не предатель</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/3"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="воин света отзывчивость начальная школа, тема: отзывчивость интелрост – школам россии. действие фильма происходит в палате детской больницы. два хулиганистых подростка давно обжили эту палату, и маленькому мальчику, который сильно скучает по дому, совсем не просто в их компании. что же будет происходить, когда в этой среде..."
+   data-ka-quality="Отзывчивость"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611066144/oF3434le39QHLAdo12HHZJP5wrczzg02ePb59Vt1.png" alt="Воин света" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Отзывчивость</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Воин света</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/2"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="наследники победы патриотизм начальная школа. тема: патриотизм интелрост – школам россии группа школьников решает создать отряд специального назначения «новые тимуровцы» для помощи хорошим людям, оказавшимся в трудной ситуации. их первым делом становится помощь мальчику в поисках нагрудного знака «отличный шофер», которым был н..."
+   data-ka-quality="Патриотизм"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/u0tDpQgK8tGGaZ0z/image%20%284%29.png" alt="Наследники Победы" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Патриотизм</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Наследники Победы</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+            <a href="https://daridarom.github.io/kinouroki-lk/films/1"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="мандарин радость за другого интелрост – школам россии тимофей, маленький рыцарь, влюбленный в свою одноклассницу – надменную красавицу кристину, был ею безжалостно отвергнут. но на помощь приходит его одноклассница настя, которая постоянно придумывает необычные игры и увлекательные истории. кристина, не ожидавшая такого поворо..."
+   data-ka-quality="Радость за другого"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/posters/1611066574/bj0xPWIHYNk1bIJBhNM3638wOT69qfXtZXqJ3iqC.png" alt="Мандарин" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Радость за другого</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Мандарин</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2021</span>        </div>
+    </div>
+</a>
+    </div>
+<div class="ka-empty text-center text-muted py-5" hidden data-ka-empty>
+    По этим условиям фильмов нет. <button type="button" class="btn btn-link p-0 align-baseline" data-ka-reset>Сбросить фильтры</button>
+</div>
+        </div>
+    </div>
+</main>
+
+<script src="https://lk.kinouroki.org/js/app.js?id=531f1498ff17693e4f55a2065473d3a1"></script>
+
+<script src="https://daridarom.github.io/kinouroki-lk/js/kinouroki-adaptive.js"></script>
+</body>
 </html>

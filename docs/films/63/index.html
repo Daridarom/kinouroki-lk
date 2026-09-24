@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="robots" content="noindex">
+    <title>Киноуроки | Фильмы | Торопись жить</title>
+    <link href="https://lk.kinouroki.org/css/app.css?id=ec445e8beadc7ebc8f6e2a0630a7cf9e" rel="stylesheet">
+    <style>
+        .text-red { color: red !important; }
+        @font-face { font-family: "Rubik-Light"; src: url('https://lk.kinouroki.org/fonts/Rubik-Light.ttf'); font-weight: 300; }
+        .Rubik-Light { font-family: Rubik-Light !important; }
+    </style>
+    
+    <link href="https://daridarom.github.io/kinouroki-lk/css/kinouroki-adaptive.css" rel="stylesheet">
+    <link href="https://lk.kinouroki.org/favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body class="films.show-section d-flex flex-column min-vh-100">
+
+<div class="ka-demo-bar">Копия кабинета для проверки улучшений · данные с lk.kinouroki.org на 24.09.2026 · вход и сохранение не работают</div>
+
+<nav id="top-navbar" class=" navbar navbar-expand navbar-dark shadow-sm border-bottom border-dark px-3">
+    <div class="d-flex align-items-center justify-content-between w-100" style="min-width:0">
+        
+        <button class="me-3" id="collapse-side-menu-btn" style="flex-shrink: 0" aria-controls="side-menu" aria-expanded="false" aria-label="Меню">
+            <svg width="20" height="20" viewBox="0 0 448 512" aria-hidden="true"><path fill="#1f3eeb" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"/></svg>
+        </button>
+        <ul class="navbar-nav d-flex" style="flex-shrink: 0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff">
+                    <span class="ka-avatar me-2" aria-hidden="true">П</span><span class="d-none d-md-inline-block">Педагог (демо)</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end shadow">
+                    <li><a class="dropdown-item" href="https://lk.kinouroki.org/users">Личный кабинет</a></li>
+                    <li><a class="dropdown-item border-top mt-2 pt-2" href="https://lk.kinouroki.org/practies">Мои социальные практики</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class=" main_auth ">
+    <div class="d-flex">
+        <div class="col-3 side-menu shadow-sm border-right" id="side-menu">
+    <div class="mb-3">
+        <center>
+            <a class="navbar-brand d-none d-md-block" href="https://daridarom.github.io/kinouroki-lk/films" style="margin-bottom: 25px">
+                <img src="https://lk.kinouroki.org/images/backgrounds/logo_w.png" width="35%" alt="Киноуроки">
+            </a>
+        </center>
+        <button class="btn btn-light text-muted w-100 py-2 fw-light" id="show-search" type="button">
+            <span class="me-2"> Универсальный поиск </span>
+        </button>
+    </div>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/news">Новости</a></li>
+    <li class="nav-item "><a class="nav-link" href="https://lk.kinouroki.org/users">Личный кабинет</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://lk.kinouroki.org/practies">Социальные практики</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://lk.kinouroki.org/initiatives"> Инициативы </a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://lk.kinouroki.org/statistics/activities">Статистика</a></li>
+    <li class="nav-item active">
+        <a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/films">Киноуроки</a>
+                <div class="list-group my-3 shadow">
+                        <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films"> Все киноуроки </a>
+                            <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films/category/1"> Начальная школа </a>
+                            <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films/category/2"> Основная школа </a>
+                            <a class="list-group-item list-group-item-action list-group-item-primary " href="https://daridarom.github.io/kinouroki-lk/films/category/3"> Средняя школа </a>
+                    </div>
+            </li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/jurnals">Журналы</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex " href="https://daridarom.github.io/kinouroki-lk/video-programms">Видеопрограммы </a></li>
+    <li class="nav-item "><a class="nav-link" href="https://daridarom.github.io/kinouroki-lk/webinars">Вебинары</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/faq">Вопросы и ответы</a></li>
+    <li class="nav-item "><a class="nav-link align-items-center d-flex" href="https://daridarom.github.io/kinouroki-lk/documents">Документы</a></li>
+    <li class="nav-item "><a class="nav-link" href="https://daridarom.github.io/kinouroki-lk/about">О проекте Киноуроки</a></li>
+    <li class="nav-item "><a class="nav-link" href="https://daridarom.github.io/kinouroki-lk/research">Исследование</a></li>
+    <div class="footer_component text-center">
+        <div class="row g-0 lead align-items-center justify-content-center mb-4">
+            <div class="text-white font-size-14">Телефон: <a class="text-white fw-light text-decoration-none px-0 text-dark" href="tel:88004445458">8 800 444 54 58</a></div>
+            <div class="text-white font-size-14 mt-3">E-Mail: <a class="text-white fw-light text-decoration-none px-0 text-dark" href="mailto:info@kinouroki.ru">info@kinouroki.ru </a></div>
+        </div>
+        <div class="row row-cols-auto g-0 social-links align-items-center justify-content-center bg-white rounded shadow py-2">
+            <a class="social-link" href="https://t.me/kinouroki" target="_blank" aria-label="Telegram"><svg aria-hidden="true" class="svg-inline--fa fa-telegram fa-w-16" focusable="false" height="28px" role="img" viewBox="0 0 496 512" width="28px"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"/></svg></a>
+            <a class="social-link" href="https://vk.com/kinouroki" target="_blank" aria-label="ВКонтакте"><svg aria-hidden="true" class="vk" focusable="false" height="28px" role="img" viewBox="0 0 576 512" width="28px"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg></a>
+        </div>
+        <div class="small fw-light text-light font-size-12 mt-4">Платформа разработана и поддерживается участниками проекта <br> «Киноуроки в школах мира» <br> 2020 - 2026 </div>
+    </div>
+</div>
+        <div class="container p-3">
+            <div class="col-lg-11 ka-film">
+    
+    <div class="fw-light font-size-28 text-muted">Торопись жить</div>
+    <div class="row row-cols-lg-auto mt-3 g-0 align-items-center justify-content-between">
+        <div class="fw-light mb-3 mb-lg-0 d-flex flex-wrap align-items-center gap-2">
+            Качество: <span class="btn btn-primary btn-sm rounded-pill font-size-14 disabled"> Обязанность </span>
+                            <a href="https://daridarom.github.io/kinouroki-lk/films/category/1" class="badge rounded-pill text-bg-light border fw-normal text-decoration-none">Начальная школа · 1–4 класс</a>
+                            <a href="https://daridarom.github.io/kinouroki-lk/films/category/2" class="badge rounded-pill text-bg-light border fw-normal text-decoration-none">Основная школа · 5–9 класс</a>
+                    </div>
+        <div class="text-right text-muted small mt-3 mt-md-0">Опубликован: <span>25 ноября 2024</span></div>
+    </div>
+
+    
+    <div class="d-flex flex-column">
+        <div class="mt-3 card p-3 pt-4 fw-light ka-film-body order-2 order-lg-1">
+            <p style=""><span style="font-size: 14pt;">ОСНОВНАЯ ШКОЛА. ТЕМА: ОБЯЗАННОСТЬ</span></p><p style="text-align: justify;"><span style="font-size: 14pt;">Наша главная обязанность в этой жизни – быть человеком<br>
+(Режиссер Е. В. Дубровская)</span></p><p style="text-align: justify;"><span style="font-size: 14pt;">В тихом провинциальном городке Торопец появляется загадочный художник по имени Светик. Не произнося ни слова, лишь своими рисунками он преображает жизнь вокруг: его портреты исцеляют сердца, возвращают улыбки и вселяют надежду. Он становится тихим ангелом-хранителем для…</span></p><h3><span style="font-size: 14pt;">Для проведения киноурока мы предлагаем следующие материалы:</span></h3><div class="my-3"><p style="font-size: 16px;"><span style="font-size: 14pt;">Рассматриваемое понятие: обязанность</span></p><p style="text-align: justify;"><span style="font-size: 14pt;">Определение: то, что входит в круг действий, поступков, обязательных для выполнения согласно закону, общественным требованиям, внутреннему побуждению.</span></p><p style="font-size: 16px;"><span style="font-size: 14pt;">Антипод: безответственность</span></p><p style="font-size: 16px;"><span style="font-size: 14pt;">Цитата:</span></p><p style="text-align: justify;"><span style="font-size: 14pt;">Кроме закона, существуют для человека нравственные обязанности (А. Н. Островский)</span></p></div>
+                            <p><a class="btn btn-primary" href="https://disk.yandex.ru/d/F_4RtmgieI6zSQ" target="_blank" rel="noopener">Скачать фильм и методическое пособие</a></p>
+                            <p><a class="btn btn-primary" href="https://disk.yandex.ru/i/zL5ztN7NIq-CkQ" target="_blank" rel="noopener">Рекомендации по публикации социальной практики</a></p>
+                            <p><a class="btn btn-primary" href="https://disk.yandex.ru/i/ooUJuKdwzCIWzw" target="_blank" rel="noopener">Программа воспитания «Киноуроки в школах России»</a></p>
+                    </div>
+
+        <div class="d-flex flex-column order-1 order-lg-2 ka-film-media">
+                            
+                <a class="btn btn-primary w-100 mt-3 d-lg-none" href="https://lk.kinouroki.org/lessons/59">Провести киноурок по фильму</a>
+                        <nav class="mt-3">
+                
+                <div class="nav nav-tabs ka-tabs" id="nav-tab" role="tablist">
+                                                                <button class="nav-item nav-link text-muted active" id="nav-film-tab" data-bs-toggle="tab" data-bs-target="#nav-film" type="button" role="tab" aria-controls="nav-film" aria-selected="true"> Фильм </button>
+                                                                                    <button class="nav-item nav-link text-muted" id="nav-tims-tab" data-bs-toggle="tab" data-bs-target="#nav-time" type="button" role="tab" aria-controls="nav-time" aria-selected="false"> Сроки </button>
+                                                                <a class="nav-item nav-link btn-seccondary bg-outline-primary text-primary d-none d-lg-block" href="https://lk.kinouroki.org/lessons/59" role="tab" aria-selected="false"> Провести киноурок по фильму </a>
+                                    </div>
+            </nav>
+            <div class="tab-content border-0 shadow-none" id="nav-tabContent">
+                
+                                                <div class="tab-pane fade show active" id="nav-film" role="tabpanel" aria-labelledby="nav-film-tab">
+                    <div class="border border-top-0 rounded-3 p-3"><div class="card-body">
+                        <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="https://rutube.ru/play/embed/925fc0265683cbe4d482f3cff7292efb/?p=SonQM13ClahJZqULu6oDcQ" data-ka-poster="https://lk.kinouroki.org/storage/films/poster/nOS5QbHeqCB17TA7/%D0%A2%D0%BE%D1%80%D0%BE%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B6%D0%B8%D1%82%D1%8C.png"></div>
+                    </div></div>
+                </div>
+                                                                <div class="tab-pane fade" id="nav-time" role="tabpanel" aria-labelledby="nav-tims-tab">
+                    <div class="border border-top-0 rounded-0 p-3"><div class="card-body">
+                        <div class="fw-light">Даты съемок фильма: 6–9 июля 2024 года.<br />
+<br />
+В главных ролях:<br />
+<br />
+Светик – Дмитрий Рыбкин<br />
+Лёня – Борис Николаев<br />
+Александра – Анна-Сесиль Свердлова<br />
+Тимофей –…</div>
+                    </div></div>
+                </div>
+                            </div>
+        </div>
+    </div>
+
+            
+        <div class="font-size-28 fw-light text-muted mt-4 mb-3 ka-h2">Ещё для этой ступени</div>
+        <div class="row films row-cols-1 g-0 align-items-start">
+            <a href="https://daridarom.github.io/kinouroki-lk/films/72"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="свет упорство основная школа и 10–11 класс, тема: упорство короткометражный профориентационный художественный фильм «свет» посвящён профессии «предприниматель» и раскрывает качество упорство. режиссёр елена дубровская. фильм «свет» — это вдохновляющая история о том, как талант и упорство побеждают обстоятельства...."
+   data-ka-quality="Упорство"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/zE290eopvUtnNVnd/%D0%A1%D0%B2%D0%B5%D1%82lv.png" alt="Свет" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Упорство</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Свет</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2026</span>        </div>
+    </div>
+</a>
+<a href="https://daridarom.github.io/kinouroki-lk/films/70"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="дед мороз знает творческая самодеятельность начальная школа, тема: творческая самодеятельность что делать, если семью на родительском собрании выбрали для выступления от класса на концерте, посвящённом новому году, а к двери подбросили трёх маленьких котят, на которых у бабушки аллергия?! под новый год свершаются чудеса... для проведения кино..."
+   data-ka-quality="Творческая самодеятельность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/sYgtXsenQUqI11B2/%D0%94%D0%B5%D0%B4%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%B7%D0%BD%D0%B0%D0%B5%D1%82.png" alt="Дед Мороз знает" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Творческая самодеятельность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Дед Мороз знает</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+<a href="https://daridarom.github.io/kinouroki-lk/films/69"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="я люблю тебя любознательность начальная школа, тема: любознательность что делать, если родился 31 декабря? огорчаться или радоваться? переживать о себе, считая, что дед мороз тебя не любит, или искать ответ на вопрос, для чего родился? вместе с агнией пройдём путь понимания. для проведения киноурока мы предлагаем следующие матер..."
+   data-ka-quality="Любознательность"
+   data-ka-cats="1">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/G5ABKQ1tXQhfdfTE/%D0%AF%20%D0%BB%D1%8E%D0%B1%D0%BB%D1%8E%20%D1%82%D0%B5%D0%B1%D1%8F_1.png" alt="Я люблю тебя" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Любознательность</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Я люблю тебя</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="1–4 класс">Начальная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+<a href="https://daridarom.github.io/kinouroki-lk/films/68"
+   class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
+   data-ka-search="строители мира мотив, побуждение основная школа тема: мотив, побуждение «строители мира» — третий профориентационный фильм системы воспитания «киноуроки в школах россии и мира» международного культурно-гуманитарного проекта «о будущем»и направлен на повышение престижа профессии «производитель работ». фильм раскрывает нравственное п..."
+   data-ka-quality="Мотив, побуждение"
+   data-ka-cats="2">
+    <div class="ka-poster">
+        <img src="https://lk.kinouroki.org/storage/films/poster/4bmznissSvOdPaiZ/%D0%A1%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D0%B8%20%D0%BC%D0%B8%D1%80%D0%B0.png" alt="Строители мира" loading="lazy" decoding="async" width="480" height="270">
+        <span class="ka-quality">Мотив, побуждение</span>
+    </div>
+    <div class="ka-body">
+        <div class="ka-title">Строители мира</div>
+        <div class="ka-meta">
+                            <span class="badge rounded-pill text-bg-light border fw-normal" title="5–9 класс">Основная школа</span>
+                        <span class="text-muted small">2025</span>        </div>
+    </div>
+</a>
+        </div>
+    </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://lk.kinouroki.org/js/app.js?id=531f1498ff17693e4f55a2065473d3a1"></script>
+
+<script src="https://daridarom.github.io/kinouroki-lk/js/kinouroki-adaptive.js"></script>
+</body>
+</html>

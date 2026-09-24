@@ -1,0 +1,99 @@
+/* ==========================================================================
+   kinouroki-adaptive.css — улучшения адаптивности ЛК «Киноуроки»
+   Подключается ПОСЛЕ боевого /css/app.css. Ничего в app.css не меняет.
+   Перенос в боевой проект: положить файл в public/css/ и добавить <link>
+   в layouts/app.blade.php сразу после app.css (или импортировать в app.scss).
+   Классы с префиксом ka- — новые; остальное — точечные переопределения прода.
+   ========================================================================== */
+
+/* ---------- 0. Плашка копии (в боевой проект НЕ переносить) ---------- */
+.ka-demo-bar { background: #fff8e1; color: #6b5316; font-size: 13px; text-align: center; padding: 4px 12px; }
+.ka-avatar { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #223d9d; font-weight: 500; }
+
+/* ---------- 1. Сетка фильмов ----------
+   Прод: .film-card { width: 24%; flex: 0 0 auto } на ЛЮБОЙ ширине экрана →
+   на телефоне 3 карточки по ~100px с обрезанными названиями «Ста…».
+   Решение: CSS Grid с автоподбором колонок (1 → 2 → 3 → 4). */
+.films {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px !important;
+  margin: 0 !important;
+}
+.films > .film-card { width: auto !important; max-width: none; margin: 0 !important; padding: 0 !important; }
+@media (max-width: 575.98px) {
+  .films { grid-template-columns: 1fr; gap: 14px !important; }
+}
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .films { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- 2. Карточка фильма (компонент x-film-card) ---------- */
+.ka-film-card { display: flex; flex-direction: column; height: 100%; color: #222f3e; }
+.ka-film-card:hover { color: #222f3e; }
+.ka-poster { position: relative; aspect-ratio: 16 / 9; background: #e9ecef; overflow: hidden; }
+.ka-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ka-quality {
+  position: absolute; left: 8px; top: 8px; max-width: calc(100% - 16px);
+  background: rgba(255, 255, 255, .95); color: #223d9d; border-radius: 999px;
+  font-size: 12px; line-height: 1.2; padding: 4px 10px; box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ka-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ka-title {
+  font-size: 1rem; font-weight: 400; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.ka-meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ka-meta .badge { font-size: 11px; }
+
+/* ---------- 3. Панель фильтров ---------- */
+.ka-filters .form-control, .ka-filters .form-select { font-size: 16px; } /* 16px — чтобы iOS не зумил поле */
+.ka-stages { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 575.98px) {
+  .ka-stages { flex-wrap: nowrap; overflow-x: auto; margin: 0 -1rem; padding: 0 1rem 4px; scrollbar-width: none; }
+  .ka-stages .btn { flex: none; white-space: nowrap; }
+}
+[data-ka-grid] > .film-card[hidden] { display: none !important; }
+
+/* ---------- 4. Страница фильма ---------- */
+/* Описание вставлено из Word/TinyMCE с инлайн-стилями: font-size 14pt, text-align: justify,
+   чужие шрифты. На телефоне justify даёт «реки» пробелов. Приводим к одному виду. */
+.ka-film-body { font-size: 1rem; line-height: 1.55; }
+.ka-film-body [style] {
+  font-size: inherit !important; font-family: inherit !important;
+  background-color: transparent !important; color: inherit !important;
+}
+.ka-film-body h3, .ka-film-body h3 span { font-size: 1.15rem !important; font-weight: 500; margin: 1rem 0 .5rem; }
+.ka-film-body .btn { white-space: normal; text-align: left; }
+@media (max-width: 991.98px) {
+  .ka-film-body [style] { text-align: left !important; }
+}
+
+/* Вкладки: на узком экране — горизонтальная прокрутка вместо переноса строк */
+.ka-tabs { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+.ka-tabs::-webkit-scrollbar { display: none; }
+.ka-tabs .nav-link { white-space: nowrap; }
+@media (max-width: 575.98px) {
+  #nav-tabContent .p-3 { padding: .5rem !important; }
+  #nav-tabContent .card-body { padding: 0; }
+}
+
+/* Ленивый плеер: обложка с кнопкой, iframe создаётся по клику */
+.ka-player { background: #0f1422; }
+.ka-player-cover { all: unset; cursor: pointer; display: block; position: relative; width: 100%; height: 100%; }
+.ka-player-cover img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
+.ka-player-cover::after {
+  content: "▶"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 72px; height: 72px; border-radius: 50%; background: rgba(255, 255, 255, .95); color: #223d9d;
+  display: grid; place-items: center; font-size: 26px; box-shadow: 0 6px 24px rgba(0, 0, 0, .3);
+}
+.ka-player-cover:focus-visible { outline: 3px solid #4582ec; outline-offset: 2px; }
+.ka-player iframe, .ka-player video { width: 100%; height: 100%; border: 0; }
+
+/* ---------- 5. Общее для телефона ---------- */
+@media (max-width: 575.98px) {
+  .main_auth > .d-flex > .container { padding: .75rem !important; }
+  .font-size-28 { font-size: 1.4rem !important; }
+}
+.ka-cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
