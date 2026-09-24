@@ -12,24 +12,61 @@ use App\Models\Film;
  */
 class CabinetController extends Controller
 {
-    /** Примеры практик: разной длины, чтобы ловить переполнение и переносы. */
-    private function samplePractices(): array
+    /**
+     * 96 практик с первых страниц /practies (24.09.2026), ОБЕЗЛИЧЕНЫ при снятии:
+     * автор → «Педагог N (пример)», школа → тип + номер-пример, населённый пункт → пример,
+     * фото → заглушка. Названия, фильмы, качества, классы и оценки — как на проде:
+     * на них проверяем отображение и поиск.
+     */
+    private function samplePractices(): \Illuminate\Support\Collection
     {
-        $films = Film::query()->latest('published_at')->limit(6)->get();
-        $samples = [
-            ['Добрые крышечки', 'МБОУ СОШ № 1 г. Пример', 'Пример-на-Волге, Примерская область', '5 «А»', 'Иванова М. П.', 11.5, 12, true],
-            ['Письмо солдату: как наш класс поддержал героев и что мы поняли о мужестве и чести за этот учебный год', 'Государственное бюджетное общеобразовательное учреждение средняя общеобразовательная школа № 1234 с углублённым изучением английского языка', 'Санкт-Примербург', '8 «Б»', 'Константинопольская-Преображенская А. В.', 16, 12, false],
-            ['Кормушки', 'МАОУ Гимназия № 7', 'пос. Примерный', '2 «В»', 'Петров С. С.', 6, 7, true],
-            ['Спектакль для малышей', 'МБОУ ООШ с. Примерное', 'с. Примерное', '6 «А»', 'Сидорова Е. А.', 9, 10, false],
-            ['Сад памяти', 'МКОУ СОШ № 3', 'г. Пример', '10 «А»', 'Кузнецова О. Н.', 14, 13, true],
-            ['Бусы для бабушек', 'МБОУ СОШ № 15', 'г. Образцово', '3 «Г»', 'Смирнова Т. И.', 12, 12, true],
-        ];
+        $films = Film::all()->keyBy('title');
 
-        return array_map(fn ($s, $i) => [
-            'id' => 1000 + $i, 'title' => $s[0], 'school' => $s[1], 'city' => $s[2], 'class' => $s[3],
-            'author' => $s[4], 'self' => $s[5], 'expert' => $s[6], 'moderated' => $s[7],
-            'film' => $films[$i] ?? null, 'date' => now()->subDays($i * 3)->translatedFormat('d F Y'),
-        ], $samples, array_keys($samples));
+        return collect(json_decode(file_get_contents(database_path('data/practices.json')), true))
+            ->map(fn ($p) => $p + ['filmModel' => $films[$p['film']] ?? null]);
+    }
+
+    /**
+     * KINOUROKI-ADAPTIVE [KA-032] поиск практик.
+     * Прод (/practies_search?name=…) ищет ТОЛЬКО по названию, кавычки считает частью слова
+     * («"Мечта"» находит 24 вместо 893), не ищет по фильму/качеству/школе, отвечает 3–12 с.
+     * Здесь: нормализация запроса (регистр, ё/е, кавычки и знаки), поиск по названию,
+     * фильму, качеству и учреждению, каждое слово запроса должно встретиться.
+     */
+    public static function normalize(string $s): string
+    {
+        $s = mb_strtolower($s);
+        $s = str_replace('ё', 'е', $s);
+        $s = preg_replace('/[«»"\'“”„()\[\].,!?:;—–-]+/u', ' ', $s);
+
+        return trim(preg_replace('/\s+/u', ' ', $s));
+    }
+
+    private function filterPractices(\Illuminate\Support\Collection $items, array $f): \Illuminate\Support\Collection
+    {
+        if ($q = self::normalize($f['q'] ?? '')) {
+            $words = explode(' ', $q);
+            $items = $items->filter(function ($p) use ($words) {
+                $hay = self::normalize($p['title'].' '.$p['film'].' '.$p['quality'].' '.$p['school']);
+                foreach ($words as $w) {
+                    if (! str_contains($hay, $w)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+        }
+        if ($film = $f['film'] ?? null) {
+            $items = $items->where('film', $film);
+        }
+
+        return match ($f['sort'] ?? 'new') {
+            'old' => $items->reverse(),
+            'score' => $items->sortByDesc('expert'),
+            'title' => $items->sortBy(fn ($p) => self::normalize($p['title'])),
+            default => $items,
+        };
     }
 
     public function profile()
@@ -39,16 +76,19 @@ class CabinetController extends Controller
 
     public function practices()
     {
+        $filters = request()->only(['q', 'film', 'sort']);
+
         return view('cabinet.practices', [
-            'title' => 'Социальные практики', 'total' => 93421, 'practices' => $this->samplePractices(),
-            'films' => Film::orderBy('title')->get(), 'withFilter' => true, 'cols' => 2,
+            'title' => 'Социальные практики', 'total' => 93421,
+            'practices' => $this->filterPractices($this->samplePractices(), $filters)->values(),
+            'films' => Film::orderBy('title')->get(), 'withFilter' => true, 'cols' => 2, 'filters' => $filters,
         ]);
     }
 
     public function initiatives()
     {
         return view('cabinet.practices', [
-            'title' => 'Инициативы', 'total' => null, 'practices' => array_slice($this->samplePractices(), 0, 3),
+            'title' => 'Инициативы', 'total' => null, 'practices' => $this->samplePractices()->take(6)->values(),
             'films' => collect(), 'withFilter' => false, 'cols' => 3,
         ]);
     }
@@ -57,7 +97,7 @@ class CabinetController extends Controller
     public function empty(string $title)
     {
         return view('cabinet.practices', [
-            'title' => $title, 'total' => 0, 'practices' => [], 'films' => collect(), 'withFilter' => false, 'cols' => 3,
+            'title' => $title, 'total' => 0, 'practices' => collect(), 'films' => collect(), 'withFilter' => false, 'cols' => 3,
         ]);
     }
 

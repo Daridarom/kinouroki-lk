@@ -1,121 +1,122 @@
-{{-- /practies, /initiatives, /practies/user/{id}, /practices/draft — разметка прода, данные — примеры. --}}
+{{-- /practies, /initiatives, /practies/user/{id}, /practices/draft
+     Разметка карточек — как на проде (снято 24.09.2026). Данные — обезличенные практики (database/data/practices.json).
+     Все отличия от прода помечены KINOUROKI-ADAPTIVE [KA-…], полный список — CHANGELOG.md. --}}
 @extends('layouts.app')
 @section('title', $title)
 @section('body_class', 'practies-section')
+@php($filters = $filters ?? [])
 @section('content')
 <div class="row">
+    {{-- Прод: order-2 order-lg-0 — на телефоне фильтр ВЫШЕ списка и занимает весь экран. [KA-021] --}}
     <div class="{{ $withFilter ? 'col-md-7 col-lg-8 order-2 order-md-0' : 'col-lg-12' }} practies">
         <div class="font-size-28 fw-light text-muted"> {{ $title }} @if(!is_null($total))<span class="badge badge-primary ms-3"> {{ $total }} </span>@endif</div>
 
-        @if(empty($practices))
-            {{-- Прод: пустой список не показывает НИЧЕГО. KINOUROKI-ADAPTIVE: понятное пустое состояние --}}
+        @if($practices->isEmpty() && !$withFilter)
+            {{-- KINOUROKI-ADAPTIVE [KA-023] пустое состояние. Прод: только заголовок и «0» --}}
             <div class="card p-4 mt-3 text-center fw-light ka-empty-state">
                 <div class="font-size-20 mb-2">Здесь пока пусто</div>
                 <p class="text-muted mb-3">Проведите киноурок и опубликуйте социальную практику класса — она появится в этом списке.</p>
                 <a class="btn btn-primary mx-auto" href="{{ route('cabinet.lessons') }}">Выбрать киноурок</a>
             </div>
         @else
-        {{-- Прод: row-cols-lg-{{ $cols }} — на планшете 1 колонка. KINOUROKI-ADAPTIVE: + row-cols-sm-2 --}}
-        <div class="row align-items-start row-cols-1 row-cols-sm-2 row-cols-lg-{{ $cols }} mt-3 g-3">
+        @if($withFilter)
+            <div class="small text-muted mt-2" data-ka-pr-found aria-live="polite">В копии: {{ $practices->count() }} практик (обезличенные примеры с первых страниц прода)</div>
+        @endif
+        {{-- [KA-022] row-cols-sm-2 + g-3: на планшете 2 колонки (прод: 1) --}}
+        <div class="row align-items-start row-cols-1 row-cols-sm-2 row-cols-lg-{{ $cols }} mt-2 g-3" data-ka-pr-grid>
             @foreach($practices as $p)
-            <div class="col">
+            <div class="col" data-ka-pr
+                 data-ka-text="{{ \App\Http\Controllers\CabinetController::normalize($p['title'].' '.$p['film'].' '.$p['quality'].' '.$p['school']) }}"
+                 data-ka-film="{{ $p['film'] }}" data-ka-expert="{{ $p['expert'] }}" data-ka-title="{{ \App\Http\Controllers\CabinetController::normalize($p['title']) }}" data-ka-i="{{ $loop->index }}">
                 <a class="card text-decoration-none text-dark h-100" href="{{ config('kinouroki.prod_url') }}/practies">
-                    <img alt="Фото социальной практики (пример)" class="card-img-top ka-cover" src="{{ asset('img/placeholder.svg') }}" loading="lazy">
+                    {{-- [KA-026] фиксированная пропорция фото: прод — фото любой высоты, карточки «скачут» --}}
+                    <img alt="Фото социальной практики (заглушка)" class="card-img-top ka-cover" src="{{ asset('img/placeholder.svg') }}" loading="lazy">
                     <div class="card-body practice-card ">
-                        <div class="row g-0 align-items-center justify-content-between">
-                            <div class="small text-muted mb-2 d-flex w-100">
-                                <div class="me-2"> №{{ $p['id'] }} · {{ $p['date'] }} </div>
-                                {{-- Прод: здесь внутри КАЖДОЙ карточки стоит отдельный <style>. Перенесено в CSS. --}}
-                                <div class="ms-auto d-flex">
-                                    @if($p['moderated'])
-                                    <div class="text-end d-flex align-center" title="Проверено модератором">
-                                        <img class="moderator_avatar rounded-circle ms-1" src="{{ asset('img/placeholder.svg') }}" width="20" height="20" alt="Модератор">
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
+                        <div class="small text-muted mb-2 d-flex w-100 align-items-center">
+                            <div class="me-2"> Социальная практика №{{ $p['id'] }} </div>
+                            @if($p['moderated'])
+                                <div class="ms-auto" title="Проверено экспертом"><span class="ka-check" aria-label="Проверено экспертом">✓</span></div>
+                            @endif
                         </div>
-                        {{-- KINOUROKI-ADAPTIVE: название практики в 2 строки вместо text-truncate --}}
+                        {{-- [KA-027] название в 2 строки (прод: обрезка в 1 строку text-truncate) --}}
                         <h4 class="ka-clamp-2 col px-0 font-size-20">{{ $p['title'] }}</h4>
                         <div class="font-size-14 fw-light my-2">
-                            <div> Страна: Россия, {{ $p['city'] }} </div>
-                            <div class="ka-clamp-2"> {{ $p['school'] }} </div>
+                            {{-- [KA-028] прод пишет «Страна: Россия, -», когда населённый пункт не указан --}}
+                            <div> Страна: Россия{{ $p['place'] ? ', '.$p['place'] : '' }} </div>
+                            <div class="ka-clamp-2"> Заведение: {{ $p['school'] }} </div>
                             <div> Класс: {{ $p['class'] }} </div>
                         </div>
-                        @if($p['film'])
-                        <div class="font-size-14 fw-light mb-2"> Фильм: {{ $p['film']->title }} </div>
-                        <div><span class="font-size-14 fw-light">Качество: </span><span class="me-2 disabled font-size-14 fw-light"> {{ $p['film']->quality }} </span></div>
-                        @endif
+                        <div class="font-size-14 fw-light mb-2"> Фильм: {{ $p['film'] }} </div>
+                        <div><span class="font-size-14 fw-light">Качество: </span><span class="me-2 disabled font-size-14 fw-light"> {{ $p['quality'] }} </span></div>
                         <div class="card-text small text-truncate col px-0"> Автор: <span class="text-muted"> {{ $p['author'] }} </span></div>
-                        <div class="card-text small text-truncate col px-0"> Самоанализ: <span class="text-muted {{ $p['self'] > $p['expert'] ? 'text-red' : '' }}"> {{ $p['self'] }} </span></div>
-                        <div class="card-text small text-truncate col px-0"> Экспертный анализ: <span class="text-muted"> {{ $p['expert'] }} </span></div>
+                        {{-- [KA-029] оценки: прод красит самоанализ красным ВСЕГДА (класс text-red на каждой карточке) — смысл цвета теряется.
+                             Здесь красный только если самооценка выше экспертной больше чем на 3 балла, с подсказкой. --}}
+                        @php($gap = $p['self'] - $p['expert'])
+                        <div class="card-text small col px-0 d-flex gap-3 flex-wrap">
+                            <span>Самоанализ: <span class="{{ $gap > 3 ? 'text-danger' : 'text-muted' }}" @if($gap > 3) title="Самооценка выше экспертной на {{ $gap }}" @endif> {{ rtrim(rtrim(number_format($p['self'], 1, '.', ''), '0'), '.') }} </span></span>
+                            <span>Эксперт: <span class="text-muted"> {{ rtrim(rtrim(number_format($p['expert'], 1, '.', ''), '0'), '.') }} </span></span>
+                        </div>
+                        <div class="card-text"><small class="text-muted"> {{ $p['ago'] }} </small></div>
                     </div>
                 </a>
             </div>
             @endforeach
         </div>
+        @if($withFilter)
+            <div class="text-center text-muted py-4" hidden data-ka-pr-empty>
+                Ничего не найдено. Попробуйте другое слово — поиск идёт по названию, фильму, качеству и учреждению.
+            </div>
+            {{-- [KA-030] «Показать ещё» вместо тысяч страниц пагинации на телефоне --}}
+            <div class="text-center mt-3"><button type="button" class="btn btn-outline-primary" data-ka-pr-more hidden>Показать ещё</button></div>
+        @endif
         @endif
     </div>
 
     @if($withFilter)
     <div class="col-md-5 col-lg-4 order-1 order-md-0">
-        {{-- KINOUROKI-ADAPTIVE: на телефоне фильтр свёрнут (на проде он занимает весь первый экран) --}}
+        {{-- [KA-021] на телефоне фильтр свёрнут под кнопку --}}
         <details class="ka-filter-details mt-3 mt-md-4" open>
-            <summary class="btn btn-outline-primary w-100 d-md-none">Фильтр и сортировка</summary>
-            <form class="form-group-lg mt-2 mt-md-0 card py-3" action="{{ config('kinouroki.prod_url') }}/practies_search">
+            <summary class="btn btn-outline-primary w-100 d-md-none">Поиск и фильтр</summary>
+            <form class="form-group-lg mt-2 mt-md-0 card py-3" method="GET" action="{{ route('cabinet.practices') }}" data-ka-pr-form>
                 <div class="px-3">
-                    <div class="fw-light text-muted"> Фильтр </div>
+                    {{-- [KA-031] один общий поиск сверху вместо полей «Номер» и «Название» по отдельности --}}
+                    <label class="fw-light text-muted" for="ka-pr-q">Поиск</label>
+                    <input type="search" class="form-control mt-1" name="q" id="ka-pr-q" value="{{ $filters['q'] ?? '' }}" placeholder="Название, фильм, качество, школа" autocomplete="off">
                     <div class="mt-2">
-                        <select class="form-select" name="order_by" aria-label="Порядок">
-                            <option selected value="0">Сначала новые</option><option value="1">Сначала старые</option>
-                            <option value="2">По оценке</option><option value="3">По названию</option>
+                        <label class="visually-hidden" for="ka-pr-sort">Порядок</label>
+                        <select class="form-select" name="sort" id="ka-pr-sort">
+                            <option value="new" @selected(($filters['sort'] ?? 'new') === 'new')>Сначала новые</option>
+                            <option value="old" @selected(($filters['sort'] ?? '') === 'old')>Сначала старые</option>
+                            <option value="score" @selected(($filters['sort'] ?? '') === 'score')>По оценке эксперта</option>
+                            <option value="title" @selected(($filters['sort'] ?? '') === 'title')>По названию</option>
                         </select>
                     </div>
-                    <div><input type="text" class="form-control mt-2 datepicker" name="period" id="period" placeholder="Период"></div>
-                    <div><input min="1" type="number" class="form-control mt-2" name="id" id="id" placeholder="Номер практики"></div>
-                    <div><input type="text" class="form-control mt-2" name="name" id="name" placeholder="Название практики"></div>
                     <div class="my-2">
-                        {{-- Прод: в пунктах «Название | Качество» — на телефоне список обрезан. KINOUROKI-ADAPTIVE: ka-select-wrap --}}
-                        <select class="form-select ka-select-wrap" name="lesson_id" aria-label="Киноурок">
-                            <option value="0" selected> Киноурок (не выбран)</option>
-                            @foreach($films as $f)<option value="{{ $f->lesson_id }}">{{ $f->title }} | {{ $f->quality }}</option>@endforeach
+                        <label class="visually-hidden" for="ka-pr-film">Киноурок</label>
+                        <select class="form-select ka-select-wrap" name="film" id="ka-pr-film">
+                            <option value="">Киноурок: все</option>
+                            @foreach($films as $f)<option value="{{ $f->title }}" @selected(($filters['film'] ?? '') === $f->title)>{{ $f->title }} | {{ $f->quality }}</option>@endforeach
                         </select>
                     </div>
-                    <label class="text-muted fw-light" for="country_id">Страна</label>
-                    <select name="country_id" id="country_id" class="form-control form-select js-choice">
-                        <option value="0">Не выбрано</option><option value="670">Россия</option><option value="675">Беларусь</option><option value="676">Казахстан</option>
-                    </select>
+                    <div><input type="text" class="form-control mt-2" name="period" id="period" placeholder="Период (на проде — календарь)" disabled></div>
                     <div class="row px-4">
-                        {{-- Прод: у чекбоксов нет id, поэтому клик по подписи не ставит галочку. KINOUROKI-ADAPTIVE: добавлены id --}}
+                        {{-- [KA-033] у чекбоксов появились id: клик по подписи ставит галочку (прод: не ставит) --}}
                         @foreach(['photos' => 'Есть фотографии', 'video' => 'Есть видео', 'docs' => 'Есть вложения', 'initiative' => 'Инициатива'] as $name => $label)
                         <div class="form-check mt-2">
-                            <input type="hidden" name="{{ $name }}" value="0">
-                            <input type="checkbox" class="form-check-input" name="{{ $name }}" id="f-{{ $name }}">
+                            <input type="checkbox" class="form-check-input" name="{{ $name }}" id="f-{{ $name }}" disabled>
                             <label class="form-check-label" for="f-{{ $name }}">{{ $label }}</label>
                         </div>
                         @endforeach
                     </div>
-                    <div class="col"><button type="button" class="mt-3 btn btn-primary w-100">Применить</button></div>
+                    <div class="col d-flex gap-2 mt-3">
+                        <button type="submit" class="btn btn-primary flex-grow-1">Применить</button>
+                        <a class="btn btn-outline-secondary" href="{{ route('cabinet.practices') }}" data-ka-pr-reset>Сбросить</a>
+                    </div>
+                    <p class="small text-muted mt-2 mb-0">В копии поиск срабатывает сразу при вводе. Флажки и период на проде работают через сервер — здесь отключены.</p>
                 </div>
             </form>
         </details>
     </div>
     @endif
 </div>
-
-@if(!empty($practices) && $withFilter)
-{{-- Пагинация прода: 10+ кнопок в ряд — на телефоне страница уезжает вправо (ширина 406 px при экране 375).
-     KINOUROKI-ADAPTIVE: ka-pagination прячет лишние номера на узком экране --}}
-<nav class="mt-3 d-flex justify-content-center" aria-label="Страницы">
-    <ul class="pagination ka-pagination flex-wrap">
-        <li class="page-item disabled"><span class="page-link">‹</span></li>
-        <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
-        @foreach(range(2, 8) as $pg)<li class="page-item ka-page-far"><a class="page-link" href="#">{{ $pg }}</a></li>@endforeach
-        <li class="page-item disabled"><span class="page-link">...</span></li>
-        <li class="page-item"><a class="page-link" href="#">4671</a></li>
-        <li class="page-item"><a class="page-link" href="#">4672</a></li>
-        <li class="page-item"><a class="page-link" href="#" rel="next">›</a></li>
-    </ul>
-</nav>
-@endif
 @endsection

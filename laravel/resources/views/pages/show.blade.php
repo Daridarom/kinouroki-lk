@@ -5,6 +5,16 @@
 @php($enc = fn ($p) => implode('/', array_map('rawurlencode', explode('/', $p))))
 @section('content')
 <div class="font-size-28 title fw-light text-muted mb-3">{{ $page['title'] }}</div>
+@php($searchable = collect($page['sections'])->contains(fn ($s) => in_array($s['type'], ['links', 'faq', 'list'])))
+@if($searchable)
+    {{-- KINOUROKI-ADAPTIVE [KA-024] поиск по списку документов / вопросов / вебинаров --}}
+    <div class="ka-live-search mb-3">
+        <label class="visually-hidden" for="ka-page-search">Поиск на странице</label>
+        <input id="ka-page-search" type="search" class="form-control" placeholder="Найти на странице: слово из названия или вопроса" data-ka-live-search="#ka-page-content" autocomplete="off">
+        <div class="small text-muted mt-1" data-ka-live-found aria-live="polite"></div>
+    </div>
+@endif
+<div id="ka-page-content">
 @foreach($page['sections'] as $s)
     @switch($s['type'])
         @case('text')
@@ -26,10 +36,12 @@
         @case('faq')
             <div class="accordion accordion-flush rounded overflow-hidden shadow-sm" id="accordionFAQ">
                 @foreach($s['items'] as $i => [$q, $a])
-                <div class="accordion-item">
+                {{-- KINOUROKI-ADAPTIVE [KA-025] у каждого вопроса свой адрес #faq-N: ссылкой можно поделиться, вопрос откроется сам --}}
+                <div class="accordion-item" id="faq-{{ $i + 1 }}">
                     <h2 class="accordion-header" id="h{{ $i }}"><button class="accordion-button collapsed fw-light" type="button" data-bs-toggle="collapse" data-bs-target="#c{{ $i }}" aria-expanded="false" aria-controls="c{{ $i }}">{{ $q }}</button></h2>
                     <div id="c{{ $i }}" class="accordion-collapse collapse" aria-labelledby="h{{ $i }}" data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body fw-light">@foreach(preg_split('/\n\n/', $a) as $para)<p>{{ $para }}</p>@endforeach</div>
+                        <div class="accordion-body fw-light">@foreach(preg_split('/\n\n/', $a) as $para)<p>{{ $para }}</p>@endforeach
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-ka-copy-link="#faq-{{ $i + 1 }}">Скопировать ссылку на вопрос</button></div>
                     </div>
                 </div>
                 @endforeach
@@ -56,4 +68,5 @@
             @break
     @endswitch
 @endforeach
+</div>
 @endsection

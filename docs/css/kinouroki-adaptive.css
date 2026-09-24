@@ -6,11 +6,11 @@
    Классы с префиксом ka- — новые; остальное — точечные переопределения прода.
    ========================================================================== */
 
-/* ---------- 0. Плашка копии (в боевой проект НЕ переносить) ---------- */
+/* ---------- 0. [KA-000] Плашка копии (в боевой проект НЕ переносить) ---------- */
 .ka-demo-bar { background: #fff8e1; color: #6b5316; font-size: 13px; text-align: center; padding: 4px 12px; }
 .ka-avatar { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: #223d9d; font-weight: 500; }
 
-/* ---------- 1. Сетка фильмов ----------
+/* ---------- 1. [KA-002] Сетка фильмов ----------
    Прод: .film-card { width: 24%; flex: 0 0 auto } на ЛЮБОЙ ширине экрана →
    на телефоне 3 карточки по ~100px с обрезанными названиями «Ста…».
    Решение: CSS Grid с автоподбором колонок (1 → 2 → 3 → 4). */
@@ -28,7 +28,7 @@
   .films { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* ---------- 2. Карточка фильма (компонент x-film-card) ---------- */
+/* ---------- 2. [KA-003] Карточка фильма (компонент x-film-card) ---------- */
 .ka-film-card { display: flex; flex-direction: column; height: 100%; color: #222f3e; }
 .ka-film-card:hover { color: #222f3e; }
 .ka-poster { position: relative; aspect-ratio: 16 / 9; background: #e9ecef; overflow: hidden; }
@@ -47,7 +47,7 @@
 .ka-meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .ka-meta .badge { font-size: 11px; }
 
-/* ---------- 3. Панель фильтров ---------- */
+/* ---------- 3. [KA-004] Панель фильтров каталога ---------- */
 .ka-filters .form-control, .ka-filters .form-select { font-size: 16px; } /* 16px — чтобы iOS не зумил поле */
 .ka-stages { display: flex; flex-wrap: wrap; gap: 6px; }
 @media (max-width: 575.98px) {
@@ -56,7 +56,7 @@
 }
 [data-ka-grid] > .film-card[hidden] { display: none !important; }
 
-/* ---------- 4. Страница фильма ---------- */
+/* ---------- 4. [KA-008][KA-009][KA-010] Страница фильма ---------- */
 /* Описание вставлено из Word/TinyMCE с инлайн-стилями: font-size 14pt, text-align: justify,
    чужие шрифты. На телефоне justify даёт «реки» пробелов. Приводим к одному виду. */
 .ka-film-body { font-size: 1rem; line-height: 1.55; }
@@ -91,7 +91,7 @@
 .ka-player-cover:focus-visible { outline: 3px solid #4582ec; outline-offset: 2px; }
 .ka-player iframe, .ka-player video { width: 100%; height: 100%; border: 0; }
 
-/* ---------- 5. Общее для телефона ---------- */
+/* ---------- 5. [KA-013] Общее для телефона ---------- */
 @media (max-width: 575.98px) {
   .main_auth > .d-flex > .container { padding: .75rem !important; }
   .font-size-28 { font-size: 1.4rem !important; }
@@ -102,7 +102,7 @@
    6. Страницы кабинета: профиль, социальные практики, киноуроки, статистика
    ========================================================================== */
 
-/* Длинные строки без пробелов (имена файлов «МР_…_фильм_….pdf», адреса, ссылки)
+/* [KA-016][KA-019] Длинные строки без пробелов (имена файлов «МР_…_фильм_….pdf», адреса, ссылки)
    на проде выходят за край экрана. */
 .ka-break { overflow-wrap: anywhere; word-break: break-word; }
 .main_auth .container { overflow-wrap: break-word; }
@@ -110,14 +110,14 @@
 /* Текст в 2 строки с многоточием — вместо text-truncate в одну строку */
 .ka-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* Кнопка «Смотреть все новости...»: на проде col-lg-2 — на телефоне на всю ширину и с переносом */
+/* [KA-014] Кнопка «Смотреть все новости...»: на проде col-lg-2 — на телефоне на всю ширину и с переносом */
 .ka-btn-auto { white-space: normal; }
 @media (max-width: 575.98px) { .ka-btn-auto { width: 100%; } }
 
-/* Точка «в сети» у фото профиля: на проде — абсолютные отступы 120px/-50px, при другом размере фото уезжает */
+/* [KA-014] Точка «в сети» у фото профиля: на проде — абсолютные отступы 120px/-50px, при другом размере фото уезжает */
 .ka-online-dot { position: absolute; right: 18px; bottom: 6px; }
 
-/* Метки качества («Ответственность за свои поступки перед другими людьми») — перенос вместо вылета за карточку */
+/* [KA-015] Метки качества («Ответственность за свои поступки перед другими людьми») — перенос вместо вылета за карточку */
 .ka-pill-wrap { white-space: normal; text-align: left; max-width: 100%; }
 
 /* Длинные пункты выпадающего списка «Название | Качество» */
@@ -128,24 +128,61 @@
 .practies .card { transition: .2s; }
 .practies .card:hover { box-shadow: 0 0 .3125rem rgba(173, 181, 189, .5) !important; }
 
-/* Фильтр практик: на телефоне свёрнут под кнопку, на компьютере всегда открыт */
+/* [KA-021] Фильтр практик: на телефоне свёрнут под кнопку, на компьютере всегда открыт */
 .ka-filter-details > summary { list-style: none; }
 .ka-filter-details > summary::-webkit-details-marker { display: none; }
 @media (min-width: 768px) { .ka-filter-details > summary { display: none; } }
 
-/* Пагинация: на узком экране прячем дальние номера, чтобы строка не шире экрана */
+/* [KA-030] Пагинация: на узком экране прячем дальние номера, чтобы строка не шире экрана */
 @media (max-width: 575.98px) {
   .ka-pagination .ka-page-far:nth-child(n+5) { display: none; }
   .ka-pagination .page-link { padding: .375rem .6rem; }
 }
 
-/* Пустые списки */
+/* [KA-023] Пустые списки */
 .ka-empty-state { max-width: 560px; }
 
-/* Таблицы статистики — горизонтальная прокрутка внутри блока, а не обрезка */
+/* [KA-018] Таблицы статистики — горизонтальная прокрутка внутри блока, а не обрезка */
 .ka-table { min-width: 640px; }
 .ka-table th { white-space: nowrap; font-weight: 500; }
 @media (max-width: 575.98px) {
   .statistics-section .font-size-36 { font-size: 1.75rem !important; }
   .statistics-section .font-size-24 { font-size: 1.15rem !important; }
 }
+
+/* ==========================================================================
+   7. Практики, поиск, навигация, доступность (KA-021…KA-037, см. CHANGELOG.md)
+   ========================================================================== */
+
+/* [KA-026] одинаковая пропорция фото практики */
+.practies .card-img-top.ka-cover { aspect-ratio: 16 / 10; object-fit: cover; }
+/* отметка «проверено экспертом» вместо аватара модератора размером 20px */
+.ka-check { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #14ad75; color: #fff; font-size: 12px; }
+
+/* [KA-034] затемнение фона под открытым мобильным меню, страница под меню не прокручивается */
+.ka-shade { display: none; }
+@media (max-width: 800px) {
+  body.ka-menu-open { overflow: hidden; }
+  body.ka-menu-open .ka-shade { display: block; position: fixed; inset: 0; background: rgba(15, 20, 34, .45); z-index: 998; }
+}
+
+/* [KA-035] кнопка «Наверх» */
+.ka-to-top {
+  position: fixed; right: 16px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%; border: 0; background: #223d9d; color: #fff;
+  font-size: 20px; box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+}
+
+/* [KA-036] видимый фокус при работе с клавиатуры (на проде фокус почти не виден) */
+.main_auth a:focus-visible, .main_auth button:focus-visible, .main_auth .form-control:focus-visible,
+.main_auth .form-select:focus-visible, #side-menu a:focus-visible {
+  outline: 3px solid #ffbf47; outline-offset: 2px; box-shadow: none;
+}
+
+/* [KA-037] уважать настройку «уменьшить движение»: без масштабирования карточек */
+@media (prefers-reduced-motion: reduce) {
+  .film-card, .film-card:hover, .film-card:active, .practies .card { transition: none !important; transform: none !important; }
+}
+
+/* [KA-024] поиск по странице */
+.ka-live-search .form-control { font-size: 16px; }

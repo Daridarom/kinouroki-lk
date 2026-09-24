@@ -94,6 +94,113 @@
     if (window.matchMedia('(max-width: 767.98px)').matches) d.removeAttribute('open');
   });
 
+
+  /* ---------- [KA-030][KA-032] Практики: мгновенный поиск, сортировка, «Показать ещё» ---------- */
+  var prForm = document.querySelector('[data-ka-pr-form]');
+  var prGrid = document.querySelector('[data-ka-pr-grid]');
+  if (prForm && prGrid) {
+    var PAGE = 24, limit = PAGE;
+    var prItems = Array.prototype.slice.call(prGrid.querySelectorAll('[data-ka-pr]'));
+    var prQ = prForm.querySelector('[name=q]'), prFilm = prForm.querySelector('[name=film]'), prSort = prForm.querySelector('[name=sort]');
+    var prMore = document.querySelector('[data-ka-pr-more]'), prEmpty = document.querySelector('[data-ka-pr-empty]');
+    var prFound = document.querySelector('[data-ka-pr-found]');
+    var normQ = function (s) {
+      return (s || '').toLowerCase().replace(/ё/g, 'е').replace(/[«»"'“”„()\[\].,!?:;—–-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    };
+    var prApply = function (resetLimit) {
+      if (resetLimit) limit = PAGE;
+      var words = normQ(prQ.value).split(' ').filter(Boolean), match = [];
+      prItems.forEach(function (el) {
+        var ok = words.every(function (w) { return el.dataset.kaText.indexOf(w) >= 0; }) &&
+                 (!prFilm.value || el.dataset.kaFilm === prFilm.value);
+        if (ok) match.push(el); else el.hidden = true;
+      });
+      match.sort(function (a, b) {
+        if (prSort.value === 'score') return b.dataset.kaExpert - a.dataset.kaExpert;
+        if (prSort.value === 'title') return a.dataset.kaTitle.localeCompare(b.dataset.kaTitle, 'ru');
+        var d = a.dataset.kaI - b.dataset.kaI; return prSort.value === 'old' ? -d : d;
+      });
+      match.forEach(function (el, i) { el.hidden = i >= limit; prGrid.appendChild(el); });
+      if (prMore) { prMore.hidden = match.length <= limit; prMore.textContent = 'Показать ещё (' + Math.max(0, match.length - limit) + ')'; }
+      if (prEmpty) prEmpty.hidden = match.length > 0;
+      if (prFound) prFound.textContent = (words.length || prFilm.value ? 'Найдено: ' : 'В копии: ') + match.length + ' из ' + prItems.length + ' практик (обезличенные примеры)';
+      var p = new URLSearchParams();
+      if (prQ.value) p.set('q', prQ.value);
+      if (prFilm.value) p.set('film', prFilm.value);
+      if (prSort.value !== 'new') p.set('sort', prSort.value);
+      history.replaceState(null, '', location.pathname + (p.toString() ? '?' + p : ''));
+    };
+    var prT;
+    prQ.addEventListener('input', function () { clearTimeout(prT); prT = setTimeout(function () { prApply(true); }, 200); });
+    prFilm.addEventListener('change', function () { prApply(true); });
+    prSort.addEventListener('change', function () { prApply(true); });
+    prForm.addEventListener('submit', function (e) { e.preventDefault(); prApply(true); });
+    var prReset = prForm.querySelector('[data-ka-pr-reset]');
+    if (prReset) prReset.addEventListener('click', function (e) { e.preventDefault(); prQ.value = ''; prFilm.value = ''; prSort.value = 'new'; prApply(true); });
+    if (prMore) prMore.addEventListener('click', function () { limit += PAGE; prApply(false); });
+    var sp2 = new URLSearchParams(location.search);
+    if (sp2.get('q')) prQ.value = sp2.get('q');
+    if (sp2.get('film')) prFilm.value = sp2.get('film');
+    if (sp2.get('sort')) prSort.value = sp2.get('sort');
+    prApply(true);
+  }
+
+  /* ---------- [KA-024] Поиск по странице: документы, вопросы, вебинары ---------- */
+  var live = document.querySelector('[data-ka-live-search]');
+  if (live) {
+    var scope = document.querySelector(live.getAttribute('data-ka-live-search'));
+    var liveFound = document.querySelector('[data-ka-live-found]');
+    var rows = Array.prototype.slice.call(scope.querySelectorAll('.list-group-item, .accordion-item'));
+    var nrm = function (s) { return (s || '').toLowerCase().replace(/ё/g, 'е'); };
+    live.addEventListener('input', function () {
+      var q = nrm(live.value.trim()), n = 0;
+      rows.forEach(function (r) { var ok = !q || nrm(r.textContent).indexOf(q) >= 0; r.hidden = !ok; if (ok) n++; });
+      scope.querySelectorAll('.list-group').forEach(function (g) {
+        var any = Array.prototype.some.call(g.children, function (c) { return !c.hidden; });
+        g.hidden = !any;
+        var h = g.previousElementSibling; if (h && h.tagName === 'H4') h.hidden = !any;
+      });
+      if (liveFound) liveFound.textContent = q ? 'Найдено: ' + n : '';
+    });
+  }
+
+  /* ---------- [KA-025] FAQ: открыть вопрос по адресу #faq-N и скопировать ссылку ---------- */
+  if (/^#faq-\d+$/.test(location.hash)) {
+    var item = document.querySelector(location.hash);
+    var btn2 = item && item.querySelector('.accordion-button');
+    if (btn2) { setTimeout(function () { btn2.click(); item.scrollIntoView({ block: 'start' }); }, 300); }
+  }
+  document.querySelectorAll('[data-ka-copy-link]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var url = location.href.split('#')[0] + b.getAttribute('data-ka-copy-link');
+      var done = function () { b.textContent = 'Ссылка скопирована'; setTimeout(function () { b.textContent = 'Скопировать ссылку на вопрос'; }, 2000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { prompt('Ссылка на вопрос:', url); });
+      else prompt('Ссылка на вопрос:', url);
+    });
+  });
+
+  /* ---------- [KA-034] Мобильное меню: закрытие по пункту, по Esc и по тапу на затемнение ---------- */
+  var sm = document.getElementById('side-menu'), smBtn = document.getElementById('collapse-side-menu-btn');
+  if (sm && smBtn) {
+    var shade = document.createElement('div'); shade.className = 'ka-shade'; document.body.appendChild(shade);
+    var isMobile = function () { return window.matchMedia('(max-width: 800px)').matches; };
+    var isOpen = function () { return isMobile() && /translateX\(0/.test(sm.style.transform || ''); };
+    var sync = function () { var o = isOpen(); document.body.classList.toggle('ka-menu-open', o); smBtn.setAttribute('aria-expanded', String(o)); };
+    var close = function () { if (isOpen()) smBtn.click(); };
+    new MutationObserver(sync).observe(sm, { attributes: true, attributeFilter: ['style', 'class'] });
+    shade.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    sm.addEventListener('click', function (e) { if (e.target.closest('a[href]')) close(); });
+    sync();
+  }
+
+  /* ---------- [KA-035] Кнопка «Наверх» на длинных страницах ---------- */
+  var up = document.createElement('button');
+  up.type = 'button'; up.className = 'ka-to-top'; up.setAttribute('aria-label', 'Наверх'); up.textContent = '↑'; up.hidden = true;
+  document.body.appendChild(up);
+  up.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  window.addEventListener('scroll', function () { up.hidden = window.scrollY < 900; }, { passive: true });
+
   /* ---------- 3. Боковое меню: запасной вариант ---------- */
   var btn = document.getElementById('collapse-side-menu-btn');
   var menu = document.getElementById('side-menu');
