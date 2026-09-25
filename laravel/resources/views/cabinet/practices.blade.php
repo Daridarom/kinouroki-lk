@@ -9,7 +9,7 @@
 <div class="row">
     {{-- Прод: order-2 order-lg-0 — на телефоне фильтр ВЫШЕ списка и занимает весь экран. [KA-021] --}}
     <div class="{{ $withFilter ? 'col-md-7 col-lg-8 order-2 order-md-0' : 'col-lg-12' }} practies">
-        <div class="font-size-28 fw-light text-muted"> {{ $title }} @if(!is_null($total))<span class="badge badge-primary ms-3"> {{ $total }} </span>@endif</div>
+        <h1 class="font-size-28 fw-light text-muted ka-h1"> {{ $title }} @if(!is_null($total))<span class="badge badge-primary ms-3"> {{ $total }} </span>@endif</h1>{{-- [KA-048] --}}
 
         @if($practices->isEmpty() && !$withFilter)
             {{-- KINOUROKI-ADAPTIVE [KA-023] пустое состояние. Прод: только заголовок и «0» --}}

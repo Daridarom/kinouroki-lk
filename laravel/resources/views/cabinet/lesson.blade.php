@@ -5,7 +5,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <div class="fw-light font-size-28 mb-4">{{ $film->title }}</div>
+        <h1 class="fw-light font-size-28 mb-4 ka-h1">{{ $film->title }}</h1>{{-- [KA-048] --}}
         <div class="row g-0 mt-3 pt-3 border-top">
             <div class="col-lg-8">
                 @if($film->video)

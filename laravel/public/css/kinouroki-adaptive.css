@@ -239,3 +239,30 @@
 
 /* [KA-046] Метка качества в списке киноуроков: белый текст на светло-голубом (disabled) — контраст ниже 3:1 */
 .ka-pill-contrast.disabled, .ka-pill-contrast:disabled { opacity: 1 !important; background: #e8efff !important; border-color: #c9d8fb !important; color: #223d9d !important; }
+
+/* [KA-048] Заголовки страниц стали h1 (для экранных дикторов и поисковиков) — вид как у прежнего div */
+.ka-h1 { font-weight: 300; line-height: 1.2; margin-top: 0; }
+h1.ka-h1.font-size-28, h2.ka-h1.font-size-28 { font-size: 1.75rem; }
+h1.ka-h1.font-size-36 { font-size: 2.25rem; }
+@media (max-width: 575.98px) {
+  h1.ka-h1.font-size-28, h2.ka-h1.font-size-28 { font-size: 1.4rem; }
+  h1.ka-h1.font-size-36 { font-size: 1.75rem; }
+}
+
+/* [KA-049] Галочки фильтра крупнее (на проде 17 px), подпись нажимается вместе с галочкой (KA-033) */
+.ka-filter-details .form-check-input { width: 1.25rem; height: 1.25rem; margin-top: .15rem; }
+.ka-filter-details .form-check { min-height: 32px; display: flex; gap: .5rem; align-items: flex-start; }
+
+/* [KA-050] Кнопка-подсказка «?» в статистике: зона нажатия 44×44 вместо 27 px */
+.statistics-section .btn-link.p-0[data-bs-toggle="modal"] { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; }
+
+/* [KA-051] Самый мелкий текст (12 px): роль в профиле, контакты под меню — до 13 px на телефоне */
+@media (max-width: 575.98px) {
+  .main_auth .font-size-12, #side-menu .font-size-12 { font-size: 13px !important; }
+}
+
+/* [KA-052] Описание фильма на широком экране: строки по 900+ px (около 150 знаков) тяжело читать.
+   Ограничиваем ширину абзаца ~75 знаками; картинки и кнопки не трогаем. */
+@media (min-width: 992px) {
+  .ka-film-body p, .ka-film-body li, .ka-film-body h3 { max-width: 75ch; }
+}

@@ -5,7 +5,7 @@
 @section('content')
 <div class="col-lg-11 ka-film">
     {{-- Шапка — как на проде; добавлены чипы ступеней (KINOUROKI-ADAPTIVE) --}}
-    <div class="fw-light font-size-28 text-muted">{{ $film->title }}</div>
+    <h1 class="fw-light font-size-28 text-muted ka-h1">{{ $film->title }}</h1>{{-- [KA-048] --}}
     <div class="row row-cols-lg-auto mt-3 g-0 align-items-center justify-content-between">
         <div class="fw-light mb-3 mb-lg-0 d-flex flex-wrap align-items-center gap-2">
             Качество: <span class="btn btn-primary btn-sm rounded-pill font-size-14 disabled"> {{ $film->quality }} </span>
@@ -96,7 +96,7 @@
 
     @if($related->isNotEmpty())
         {{-- KINOUROKI-ADAPTIVE: «Ещё для этой ступени» --}}
-        <div class="font-size-28 fw-light text-muted mt-4 mb-3 ka-h2">Ещё для этой ступени</div>
+        <h2 class="font-size-28 fw-light text-muted mt-4 mb-3 ka-h1">Ещё для этой ступени</h2>
         <div class="row films row-cols-1 g-0 align-items-start">
             @foreach($related as $r)<x-film-card :film="$r" />@endforeach
         </div>

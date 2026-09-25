@@ -2,7 +2,7 @@
 @section('title', 'Новости')
 @section('body_class', 'news-section')
 @section('content')
-<div class="font-size-28 title fw-light text-muted mb-3">Новости <span class="badge badge-primary ms-3">{{ $news->count() }}</span></div>
+<h1 class="font-size-28 title fw-light text-muted mb-3 ka-h1">Новости <span class="badge badge-primary ms-3">{{ $news->count() }}</span></h1>{{-- [KA-048] --}}
 {{-- Разметка карточек как на проде (card + card-img-top), сетка row-cols адаптивная --}}
 <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3">
     @foreach($news as $n)

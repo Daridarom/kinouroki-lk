@@ -3,9 +3,10 @@
 
 @section('content')
 {{-- Заголовок — как на проде --}}
-<div class="font-size-28 title fw-light text-muted mb-3">
+{{-- [KA-048] заголовок страницы — h1 (прод: div, на страницах нет ни одного h1) --}}
+<h1 class="font-size-28 title fw-light text-muted mb-3 ka-h1">
     {{ $category ? $category->name : 'Фильмы' }} <span class="badge badge-primary ms-3">{{ $films->count() }}</span>
-</div>
+</h1>
 
 {{-- KINOUROKI-ADAPTIVE: панель поиска и фильтров. Работает и без JS (обычная GET-форма),
      а js/kinouroki-adaptive.js фильтрует карточки мгновенно, без перезагрузки. --}}

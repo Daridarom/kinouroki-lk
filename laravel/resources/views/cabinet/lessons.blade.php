@@ -3,7 +3,7 @@
 @section('title', 'Киноуроки')
 @section('body_class', 'lessons.index-section')
 @section('content')
-<div class="font-size-28 fw-light text-muted title"> Киноуроки <span class="badge badge-primary ms-3">{{ $films->count() }}</span></div>
+<h1 class="font-size-28 fw-light text-muted title ka-h1"> Киноуроки <span class="badge badge-primary ms-3">{{ $films->count() }}</span></h1>{{-- [KA-048] --}}
 {{-- KINOUROKI-ADAPTIVE [KA-045] поиск по 67 киноурокам: название, фильм, качество. Прод: только прокрутка --}}
 <div class="ka-live-search mt-3">
     <label class="visually-hidden" for="ka-lessons-search">Поиск киноурока</label>

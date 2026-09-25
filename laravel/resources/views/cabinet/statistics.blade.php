@@ -6,7 +6,7 @@
 @section('body_class', 'statistics-section')
 @php($tabs = ['preschools' => 'ДОУ', 'classes' => 'Класс', 'schools' => 'Школа', 'municipalities' => 'МО', 'activities' => 'Активности', 'premia' => 'Народная премия'])
 @section('content')
-<div class="row"><div class="col-12 font-size-36 text-center text-sm-start"> Статистика</div></div>
+<div class="row"><h1 class="col-12 font-size-36 text-center text-sm-start ka-h1"> Статистика</h1></div>{{-- [KA-048] --}}
 
 <div class="row mt-3 mt-sm-5 font-size-24 justify-content-center justify-content-md-start mx-2 mx-sm-0 gap-2">
     <div class="col-auto switch-button-left py-1" style="background-color: #4582EC; color: white"><a class="text-white" href="{{ route('cabinet.statistics', 'classes') }}"> Статистика</a></div>

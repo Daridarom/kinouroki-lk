@@ -3,6 +3,7 @@
 @section('title', 'Личный кабинет')
 @section('body_class', 'users.show-section')
 @section('content')
+<h1 class="visually-hidden">Личный кабинет</h1>{{-- [KA-048] --}}
 {{-- KINOUROKI-ADAPTIVE [KA-043] на телефоне сначала карточка педагога и «Активность», потом новости (прод: 3 блока новостей сверху, профиль — ниже двух экранов).
      Порядок меняется только классами order-*; на компьютере вид прода. --}}
 <div class="d-flex flex-column">

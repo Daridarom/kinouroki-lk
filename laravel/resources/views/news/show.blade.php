@@ -3,7 +3,7 @@
 @section('body_class', 'news-section')
 @section('content')
 <div class="col-lg-9">
-    <div class="font-size-28 fw-light text-muted mb-2">{{ $n->title }}</div>
+    <h1 class="font-size-28 fw-light text-muted mb-2 ka-h1">{{ $n->title }}</h1>{{-- [KA-048] --}}
     <div class="small text-muted mb-3">{{ implode(', ', $n->categories ?? []) }} · {{ $n->published_label }}</div>
     <img src="{{ $n->imageUrl() }}" alt="" class="img-fluid rounded mb-3 ka-cover">
     <div class="card p-3 fw-light ka-film-body">

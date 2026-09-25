@@ -4,7 +4,7 @@
 @php($prod = config('kinouroki.prod_url'))
 @php($enc = fn ($p) => implode('/', array_map('rawurlencode', explode('/', $p))))
 @section('content')
-<div class="font-size-28 title fw-light text-muted mb-3">{{ $page['title'] }}</div>
+<h1 class="font-size-28 title fw-light text-muted mb-3 ka-h1">{{ $page['title'] }}</h1>{{-- [KA-048] --}}
 @php($searchable = collect($page['sections'])->contains(fn ($s) => in_array($s['type'], ['links', 'faq', 'list'])))
 @if($searchable)
     {{-- KINOUROKI-ADAPTIVE [KA-024] поиск по списку документов / вопросов / вебинаров --}}
