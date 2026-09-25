@@ -13,7 +13,8 @@
     {{-- [KA-053] превью 480×270 WebP вместо оригинала 0,3–1,9 МБ; пока грузится — название фильма на фирменном фоне, а не серый прямоугольник.
          Первые карточки грузятся сразу (eager), остальные — по мере прокрутки. --}}
     <div class="ka-poster" data-ka-poster-title="{{ $film->title }}">
-        <img src="{{ $film->posterThumbUrl() }}" alt="{{ $film->title }}" loading="{{ $eager ? 'eager' : 'lazy' }}" @if($eager) fetchpriority="high" @endif decoding="async" width="480" height="270">
+        @php([$thumb, $thumb2x] = $film->posterThumbs())
+        <img src="{{ $thumb }}" @if($thumb2x) srcset="{{ $thumb }} 480w, {{ $thumb2x }} 960w" sizes="(max-width: 575px) calc(100vw - 32px), (max-width: 991px) 45vw, 260px" @endif alt="{{ $film->title }}" loading="{{ $eager ? 'eager' : 'lazy' }}" @if($eager) fetchpriority="high" @endif decoding="async" width="480" height="270">
         <span class="ka-quality">{{ $film->quality }}</span>
     </div>
     <div class="ka-body">

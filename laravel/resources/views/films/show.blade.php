@@ -58,14 +58,14 @@
                 @if($film->triller)
                 <div class="tab-pane show active" id="nav-triller" role="tabpanel" aria-labelledby="nav-triller-tab">
                     <div class="border border-top-0 rounded-3 p-3"><div class="card-body">
-                        <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="{{ $film->trillerIsFile() ? \App\Models\Film::prod($film->triller) : $film->triller }}" data-ka-poster="{{ $film->posterUrl() }}"></div>
+                        <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="{{ $film->trillerIsFile() ? \App\Models\Film::prod($film->triller) : $film->triller }}" data-ka-poster="{{ $film->posterThumbs()[1] ?? $film->posterUrl() }}"></div>
                     </div></div>
                 </div>
                 @endif
                 @if($film->video)
                 <div class="tab-pane fade {{ $film->triller ? '' : 'show active' }}" id="nav-film" role="tabpanel" aria-labelledby="nav-film-tab">
                     <div class="border border-top-0 rounded-3 p-3"><div class="card-body">
-                        <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="{{ $film->video }}" data-ka-poster="{{ $film->posterUrl() }}"></div>
+                        <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="{{ $film->video }}" data-ka-poster="{{ $film->posterThumbs()[1] ?? $film->posterUrl() }}"></div>
                     </div></div>
                 </div>
                 @endif

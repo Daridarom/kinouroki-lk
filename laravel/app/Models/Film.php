@@ -47,21 +47,46 @@ class Film extends Model
     }
 
     /**
-     * KINOUROKI-ADAPTIVE [KA-053] Лёгкое превью постера для карточек (480×270 WebP, ~30 КБ вместо 0,3–1,9 МБ).
-     * Если превью ещё не создано командой `php artisan kinouroki:poster-thumbs` — отдаём оригинал.
-     * На проде: постеры лежат в storage/app/public/films/poster/…; путь в БД — «films/poster/…» или «/storage/films/poster/…».
+     * KINOUROKI-ADAPTIVE [KA-053] Лёгкие превью постера для карточек: 480×270 и 960×540 (для чётких экранов), WebP.
+     * Было: оригиналы PNG/BMP 0,3–1,9 МБ (67 постеров = 35 МБ). Стало: 0,8 МБ (или 1,7 МБ на экранах с высокой плотностью).
+     * Превью создаёт `php artisan kinouroki:poster-thumbs` в storage/app/public/thumbs/<путь постера>.webp и …@2x.webp.
+     * В копии превью уже лежат в public/img/thumbs/. Если превью нет — отдаём оригинал, ничего не ломается.
+     *
+     * @return array{0: ?string, 1: ?string} [превью 1x, превью 2x]
      */
-    public function posterThumbUrl(): ?string
+    public function posterThumbs(): array
     {
-        $path = ltrim(preg_replace('#^/?storage/#', '', (string) $this->poster), '/');
-        if ($path !== '' && str_starts_with($path, 'films/poster/')) {
-            $thumb = \App\Console\Commands\PosterThumbs::THUMB_DIR.'/'.preg_replace('/\.[^.\/]+$/', '', substr($path, strlen('films/poster/'))).'.webp';
-            if (is_file(storage_path('app/public/'.$thumb))) {
-                return asset('storage/'.implode('/', array_map('rawurlencode', explode('/', $thumb))));
+        $rel = self::storageRelative($this->poster);
+        if ($rel !== null) {
+            $base = preg_replace('/\.[^.\/]+$/', '', $rel);
+            foreach ([['app/public/thumbs/', 'storage/thumbs/', 'storage_path'], ['img/thumbs/', 'img/thumbs/', 'public_path']] as [$dir, $url, $fn]) {
+                if (is_file($fn($dir.$base.'.webp'))) {
+                    $enc = fn ($p) => asset($url.implode('/', array_map('rawurlencode', explode('/', $p))));
+                    $x2 = is_file($fn($dir.$base.'@2x.webp')) ? $enc($base.'@2x.webp') : null;
+
+                    return [$enc($base.'.webp'), $x2];
+                }
             }
         }
 
-        return $this->posterUrl();
+        return [$this->posterUrl(), null];
+    }
+
+    public function posterThumbUrl(): ?string
+    {
+        return $this->posterThumbs()[0];
+    }
+
+    /** «https://lk…/storage/films/poster/a/b.png», «/storage/films/…», «films/…» → «films/poster/a/b.png» */
+    private static function storageRelative(?string $path): ?string
+    {
+        if (! $path) {
+            return null;
+        }
+        $p = rawurldecode(preg_replace('#^https?://[^/]+#', '', $path));
+        $p = ltrim(preg_replace('#^/?storage/#', '', $p), '/');
+
+        return str_starts_with($p, 'films/') ? $p : null;
     }
 
     public function trillerIsFile(): bool

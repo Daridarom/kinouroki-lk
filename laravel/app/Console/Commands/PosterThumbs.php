@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\File;
  * KINOUROKI-ADAPTIVE [KA-053] Уменьшенные превью постеров фильмов.
  *
  * Проблема прода (замер 25.09.2026): постеры — PNG/BMP по 0,3–1,9 МБ, на странице /films 67 штук = 35 МБ.
- * На телефоне превью долго серые. Команда делает рядом копии 480×270 в WebP (~20–40 КБ каждая),
- * оригиналы не трогает. Повторный запуск пересобирает только изменившиеся постеры.
+ * На телефоне превью долго серые. Команда делает копии 480×270 и 960×540 (для чётких экранов) в WebP
+ * в storage/app/public/thumbs/<путь постера>.webp и …@2x.webp. Оригиналы не трогает.
+ * Повторный запуск пересобирает только изменившиеся постеры. Итог на 67 постерах: 35 МБ → 0,8 МБ (1x) / 1,7 МБ (2x).
  *
  * Запуск на сервере:  php artisan kinouroki:poster-thumbs
  * Нужно: расширение GD с поддержкой WebP (php -r 'var_dump(function_exists("imagewebp"));').
@@ -19,13 +20,13 @@ use Illuminate\Support\Facades\File;
 class PosterThumbs extends Command
 {
     protected $signature = 'kinouroki:poster-thumbs
-        {--src=films/poster : Папка постеров внутри storage/app/public}
+        {--src=films/poster,films/posters : Папки постеров внутри storage/app/public (через запятую)}
         {--width=480} {--height=270} {--quality=78}
         {--force : Пересобрать все, даже неизменившиеся}';
 
     protected $description = 'Создаёт лёгкие WebP-превью постеров фильмов (оригиналы не изменяются)';
 
-    public const THUMB_DIR = 'films/poster-thumbs';
+    public const THUMB_DIR = 'thumbs';
 
     public function handle(): int
     {
@@ -35,45 +36,50 @@ class PosterThumbs extends Command
         }
 
         $root = storage_path('app/public');
-        $src = $root.'/'.trim($this->option('src'), '/');
-        if (! is_dir($src)) {
-            $this->error("Нет папки {$src}");
-            return self::FAILURE;
-        }
-
         [$w, $h, $q] = [(int) $this->option('width'), (int) $this->option('height'), (int) $this->option('quality')];
         $made = $skipped = $failed = 0;
         $before = $after = 0;
 
-        foreach (File::allFiles($src) as $file) {
-            $ext = strtolower($file->getExtension());
-            if (! in_array($ext, ['png', 'jpg', 'jpeg', 'bmp', 'webp', 'gif'], true)) {
-                continue;
-            }
-            $rel = ltrim(str_replace($src, '', $file->getPathname()), '/');
-            $out = $root.'/'.self::THUMB_DIR.'/'.preg_replace('/\.[^.]+$/', '', $rel).'.webp';
-
-            if (! $this->option('force') && is_file($out) && filemtime($out) >= $file->getMTime()) {
-                $skipped++;
+        foreach (array_filter(array_map('trim', explode(',', $this->option('src')))) as $srcRel) {
+            $src = $root.'/'.trim($srcRel, '/');
+            if (! is_dir($src)) {
+                $this->warn("Нет папки {$src} — пропускаю");
                 continue;
             }
 
-            $img = self::open($file->getPathname(), $ext);
-            if (! $img) {
-                $this->warn("Не удалось открыть: {$rel}");
-                $failed++;
-                continue;
+            foreach (File::allFiles($src) as $file) {
+                $ext = strtolower($file->getExtension());
+                if (! in_array($ext, ['png', 'jpg', 'jpeg', 'bmp', 'webp', 'gif'], true)) {
+                    continue;
+                }
+                $rel = ltrim(substr($file->getPathname(), strlen($root)), '/');
+                $base = $root.'/'.self::THUMB_DIR.'/'.preg_replace('/\.[^.\/]+$/', '', $rel);
+                $targets = [[$base.'.webp', $w, $h], [$base.'@2x.webp', $w * 2, $h * 2]];
+
+                $fresh = ! $this->option('force') && collect($targets)->every(fn ($t) => is_file($t[0]) && filemtime($t[0]) >= $file->getMTime());
+                if ($fresh) {
+                    $skipped++;
+                    continue;
+                }
+
+                $img = self::open($file->getPathname(), $ext);
+                if (! $img) {
+                    $this->warn("Не удалось открыть: {$rel}");
+                    $failed++;
+                    continue;
+                }
+
+                File::ensureDirectoryExists(dirname($base.'.webp'));
+                foreach ($targets as [$out, $tw, $th]) {
+                    $thumb = self::cover($img, $tw, $th);
+                    imagewebp($thumb, $out, $q);
+                    imagedestroy($thumb);
+                    $after += filesize($out);
+                }
+                imagedestroy($img);
+                $before += $file->getSize();
+                $made++;
             }
-
-            $thumb = self::cover($img, $w, $h);
-            File::ensureDirectoryExists(dirname($out));
-            imagewebp($thumb, $out, $q);
-            imagedestroy($img);
-            imagedestroy($thumb);
-
-            $before += $file->getSize();
-            $after += filesize($out);
-            $made++;
         }
 
         $this->info(sprintf(

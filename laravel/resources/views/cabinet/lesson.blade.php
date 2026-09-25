@@ -9,7 +9,7 @@
         <div class="row g-0 mt-3 pt-3 border-top">
             <div class="col-lg-8">
                 @if($film->video)
-                <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="{{ $film->video }}" data-ka-poster="{{ $film->posterUrl() }}"></div>
+                <div class="ratio ratio-16x9 rounded overflow-hidden mb-4 ka-player" data-ka-src="{{ $film->video }}" data-ka-poster="{{ $film->posterThumbs()[1] ?? $film->posterUrl() }}"></div>
                 @endif
                 <a class="btn btn-primary btn-sm mb-3 rounded d-block" href="{{ route('films.show', $film) }}">Подробнее о фильме</a>
                 <div class="my-3 border-top py-3 border-bottom fw-light ka-film-body">
