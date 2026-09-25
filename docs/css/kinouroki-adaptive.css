@@ -238,4 +238,4 @@
 }
 
 /* [KA-046] Метка качества в списке киноуроков: белый текст на светло-голубом (disabled) — контраст ниже 3:1 */
-.ka-pill-contrast.disabled, .ka-pill-contrast:disabled { opacity: 1; background: #e8efff; border-color: #c9d8fb; color: #223d9d; }
+.ka-pill-contrast.disabled, .ka-pill-contrast:disabled { opacity: 1 !important; background: #e8efff !important; border-color: #c9d8fb !important; color: #223d9d !important; }
