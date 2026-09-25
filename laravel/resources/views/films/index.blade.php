@@ -49,7 +49,7 @@
      KINOUROKI-ADAPTIVE: сетка переопределена в kinouroki-adaptive.css (1 → 2 → 3 → 4 колонки). --}}
 <div class="row films row-cols-1 g-0 align-items-start" data-ka-grid>
     @forelse($films as $film)
-        <x-film-card :film="$film" />
+        <x-film-card :film="$film" :eager="$loop->index < 4" />
     @empty
         <p class="text-muted">По этим условиям фильмов нет.</p>
     @endforelse

@@ -36,7 +36,7 @@ class Film extends Model
         if (Str::startsWith($path, ['http://', 'https://'])) {
             return $path;
         }
-        $encoded = implode('/', array_map('rawurlencode', explode('/', $path)));
+        $encoded = '/'.ltrim(implode('/', array_map('rawurlencode', explode('/', $path))), '/');
 
         return config('kinouroki.prod_url').$encoded;
     }
@@ -44,6 +44,24 @@ class Film extends Model
     public function posterUrl(): ?string
     {
         return self::prod($this->poster);
+    }
+
+    /**
+     * KINOUROKI-ADAPTIVE [KA-053] Лёгкое превью постера для карточек (480×270 WebP, ~30 КБ вместо 0,3–1,9 МБ).
+     * Если превью ещё не создано командой `php artisan kinouroki:poster-thumbs` — отдаём оригинал.
+     * На проде: постеры лежат в storage/app/public/films/poster/…; путь в БД — «films/poster/…» или «/storage/films/poster/…».
+     */
+    public function posterThumbUrl(): ?string
+    {
+        $path = ltrim(preg_replace('#^/?storage/#', '', (string) $this->poster), '/');
+        if ($path !== '' && str_starts_with($path, 'films/poster/')) {
+            $thumb = \App\Console\Commands\PosterThumbs::THUMB_DIR.'/'.preg_replace('/\.[^.\/]+$/', '', substr($path, strlen('films/poster/'))).'.webp';
+            if (is_file(storage_path('app/public/'.$thumb))) {
+                return asset('storage/'.implode('/', array_map('rawurlencode', explode('/', $thumb))));
+            }
+        }
+
+        return $this->posterUrl();
     }
 
     public function trillerIsFile(): bool

@@ -4,14 +4,16 @@
     Здесь: постер 16:9 без искажений, название в 2 строки, качество, ступени, год.
     Классы прода (film-card, card, rounded…) сохранены, новые — с префиксом ka-.
 --}}
-@props(['film'])
+@props(['film', 'eager' => false])
 <a href="{{ route('films.show', $film) }}"
    class="film-card ka-film-card bg-white card rounded overflow-hidden text-decoration-none"
    data-ka-search="{{ mb_strtolower($film->title.' '.$film->quality.' '.$film->lead(300)) }}"
    data-ka-quality="{{ $film->quality }}"
    data-ka-cats="{{ $film->categories->pluck('id')->join(' ') }}">
-    <div class="ka-poster">
-        <img src="{{ $film->posterUrl() }}" alt="{{ $film->title }}" loading="lazy" decoding="async" width="480" height="270">
+    {{-- [KA-053] превью 480×270 WebP вместо оригинала 0,3–1,9 МБ; пока грузится — название фильма на фирменном фоне, а не серый прямоугольник.
+         Первые карточки грузятся сразу (eager), остальные — по мере прокрутки. --}}
+    <div class="ka-poster" data-ka-poster-title="{{ $film->title }}">
+        <img src="{{ $film->posterThumbUrl() }}" alt="{{ $film->title }}" loading="{{ $eager ? 'eager' : 'lazy' }}" @if($eager) fetchpriority="high" @endif decoding="async" width="480" height="270">
         <span class="ka-quality">{{ $film->quality }}</span>
     </div>
     <div class="ka-body">

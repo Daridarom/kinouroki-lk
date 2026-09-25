@@ -145,6 +145,11 @@
     prApply(true);
   }
 
+  /* ---------- [KA-053] Постер не загрузился — убираем «битую картинку», остаётся название на фирменном фоне ---------- */
+  document.querySelectorAll('.ka-poster img').forEach(function (img) {
+    img.addEventListener('error', function () { img.remove(); });
+  });
+
   /* ---------- [KA-024] Поиск по странице: документы, вопросы, вебинары ---------- */
   var live = document.querySelector('[data-ka-live-search]');
   if (live) {

@@ -266,3 +266,12 @@ h1.ka-h1.font-size-36 { font-size: 2.25rem; }
 @media (min-width: 992px) {
   .ka-film-body p, .ka-film-body li, .ka-film-body h3 { max-width: 75ch; }
 }
+
+/* [KA-053] Пока постер грузится (или если не загрузился) — название фильма на фирменном фоне вместо серого прямоугольника */
+.ka-poster { background: linear-gradient(135deg, #223d9d, #4582ec); }
+.ka-poster::before {
+  content: attr(data-ka-poster-title); position: absolute; inset: 0; display: grid; place-items: center;
+  padding: 12px 16px; color: rgba(255,255,255,.92); font-size: 1.1rem; line-height: 1.25; text-align: center;
+}
+.ka-poster img { position: relative; z-index: 1; }
+.ka-poster .ka-quality { z-index: 2; }
