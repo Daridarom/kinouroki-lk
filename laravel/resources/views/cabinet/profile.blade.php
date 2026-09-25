@@ -3,7 +3,10 @@
 @section('title', 'Личный кабинет')
 @section('body_class', 'users.show-section')
 @section('content')
-<div class="col-lg-12">
+{{-- KINOUROKI-ADAPTIVE [KA-043] на телефоне сначала карточка педагога и «Активность», потом новости (прод: 3 блока новостей сверху, профиль — ниже двух экранов).
+     Порядок меняется только классами order-*; на компьютере вид прода. --}}
+<div class="d-flex flex-column">
+<div class="col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0">
     @foreach(['Важное', 'Педагогам', 'Акции'] as $cat)
     <div class="card p-3 ms-lg-auto {{ $loop->first ? '' : 'mt-3' }}">
         {{-- Прод: class="… justify-content-between flex" — класса «flex» в Bootstrap нет, шапка карточки не выстраивается в строку.
@@ -26,7 +29,7 @@
     </div>
     @endforeach
 </div>
-<div class="row justify-content-between align-items-start mt-3">
+<div class="row justify-content-between align-items-start mt-lg-3 order-1 order-lg-2">
     <div class="col-lg-6">
         <div class="row g-0 row-cols-auto bg-white shadow-sm rounded p-3">
             <div class="mx-auto">
@@ -56,5 +59,6 @@
             </ul>
         </div>
     </div>
+</div>
 </div>
 @endsection

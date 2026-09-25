@@ -186,3 +186,56 @@
 
 /* [KA-024] поиск по странице */
 .ka-live-search .form-control { font-size: 16px; }
+
+/* ==========================================================================
+   8. Второй круг аудита 25.09.2026 (KA-039…KA-047)
+   ========================================================================== */
+
+/* [KA-039] Карточка практики на телефоне и планшете.
+   Прод (app.css): .practice-card position:absolute поверх фото, карточка 300px, overflow:hidden —
+   автор, школа, фильм, качество и оценки появляются ТОЛЬКО при наведении мыши.
+   На сенсорном экране наведения нет: педагог видит одно фото и название.
+   Решение: без мыши (hover:none) или на узком экране текст идёт под фото, фото ниже. */
+@media (hover: none), (max-width: 767.98px) {
+  .practies .card { height: auto !important; overflow: visible !important; }
+  .practies .card .practice-card { position: static !important; height: auto !important; transform: none !important; opacity: 1 !important; background: #fff; }
+  .practies .card-img-top.ka-cover { height: auto !important; max-height: 190px; }
+}
+
+/* [KA-040] Таблицы статистики: первая колонка закреплена при прокрутке вбок,
+   тень справа подсказывает, что таблица шире экрана */
+.table-responsive { position: relative; background:
+  linear-gradient(to right, #fff 30%, rgba(255,255,255,0)) left center / 24px 100% no-repeat local,
+  linear-gradient(to left, #fff 30%, rgba(255,255,255,0)) right center / 24px 100% no-repeat local,
+  radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.14), transparent) left center / 10px 100% no-repeat scroll,
+  radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.14), transparent) right center / 10px 100% no-repeat scroll; }
+@media (max-width: 767.98px) {
+  .ka-table th:first-child, .ka-table td:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 #dee2e6; }
+  .ka-table th, .ka-table td { white-space: nowrap; }
+  .ka-table td:first-child { white-space: normal; min-width: 130px; }
+}
+
+/* [KA-041] Строки, которые листаются вбок (вкладки статистики, ступени, вкладки фильма):
+   затухание у правого края — видно, что дальше есть ещё пункты */
+@media (max-width: 767.98px) {
+  .ka-tabs, .ka-stages, .ka-hscroll {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+            mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  }
+}
+
+/* [KA-042] Мелкий текст на телефоне: на проде кнопки btn-sm и значки ~11px — трудно читать.
+   Минимум 13px, высота кнопки не меньше 36px. */
+@media (max-width: 575.98px) {
+  .main_auth .btn-sm { font-size: 13px; min-height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+  .main_auth .badge, .ka-meta .badge { font-size: 12px; }
+  .main_auth .small, .main_auth small { font-size: 13px; }
+}
+
+/* [KA-044] Меню на телефоне: пункты и контакты — не меньше 44px по высоте (рекомендация для пальца) */
+@media (max-width: 800px) {
+  #side-menu .nav-link, #side-menu a[href^="tel:"], #side-menu a[href^="mailto:"] { min-height: 44px; display: flex; align-items: center; }
+}
+
+/* [KA-046] Метка качества в списке киноуроков: белый текст на светло-голубом (disabled) — контраст ниже 3:1 */
+.ka-pill-contrast.disabled, .ka-pill-contrast:disabled { opacity: 1; background: #e8efff; border-color: #c9d8fb; color: #223d9d; }

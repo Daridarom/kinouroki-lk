@@ -150,7 +150,7 @@
   if (live) {
     var scope = document.querySelector(live.getAttribute('data-ka-live-search'));
     var liveFound = document.querySelector('[data-ka-live-found]');
-    var rows = Array.prototype.slice.call(scope.querySelectorAll('.list-group-item, .accordion-item'));
+    var rows = Array.prototype.slice.call(scope.querySelectorAll('.list-group-item, .accordion-item, [data-ka-live-item]')); // [KA-045] + карточки киноуроков
     var nrm = function (s) { return (s || '').toLowerCase().replace(/ё/g, 'е'); };
     live.addEventListener('input', function () {
       var q = nrm(live.value.trim()), n = 0;
